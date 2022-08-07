@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> DD_MapsEditor_m </title>
+        <!-- Copyright (c) 2022, Brenkman Andrey and/or its affiliates. All rights reserved. -->
+        <!-- Last modified -02.08.2022-07.08.2022- -->
+        <link rel='stylesheet' href='DD_DarkDungeon_Client_040822.css'/>
+    </head>    
+    
+    <body>
+ 
+        <h1 align = "center"> <img src="image/DD_Map/monsters/mons_1.png"> DD_MapsEditor (в разработке) <img src="image/DD_Map/monsters/mons_1.png"></h1>
+        <h4 align = "center"> Последнее изменение <time datetime = "2022-08-07">07.08.22</time> </h4>
+
+        <a href="http://alphagameset.xyz/" class = "st7" title="Главный сайт со всеми работами "> На главную </a>
+
+        Рердактор карт для игры 
+        <abbr title="Игра находится на очень ранней стадии разработки и что получится и получится ли непонятно">Темное Подземелье</abbr>.
+        <!--<a href="4_DD_Resource/For_Serega_030822.rar" download>Это файл с редактором для Сереги</a> -->
+        
+        <script>
+
+            //false true;
+            window.itIsONLINE = false;
+
+            if(window.itIsONLINE){
+                    // 1. Создаём новый объект XMLHttpRequest
+                    var xhr = new XMLHttpRequest();
+
+                    // 2. Конфигурируем его: GET-запрос на URL
+                    xhr.open('GET','http://alphagameset.xyz/0_0_SQL_base/CountRequestsGet.php/?name=requests_dd', false);
+
+
+                    // 3. Отсылаем запрос
+                    xhr.send();
+                
+                    // 4. Если код ответа сервера не 200, то это ошибка
+                    if (xhr.status != 200) {
+                        // обработать ошибку
+                        //alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+                    } else {
+                        // вывести результат
+                        document.write(' Запросов к странице = ' + xhr.response);// xhr.responseText по старому
+                    }
+            }
+        </script>
+
+        <br>
+        <!-- buttons class = "" value="nameUserMapDefault" -->
+        <div id="container" >
+			<input type = "button" class = "styled" id = "buttonSaveMap" value = "Save Map in Browser (Сохранить карту в браузер)"     onclick="SaveLoad_w.saveInBrowser()" />  
+            <input type = "button" class = "styled" id = "buttonLoadMap" value = "Load Map from Browser (Загрузить карту из браузера)" onclick="SaveLoad_w.loadInBrowser()" /> 
+            <input type = "button" class = "styled" id = "buttonResetMap" value = "Reset (обнулить)"                                   onclick="SaveLoad_w.resetInBrowser()" /> <br>
+            <input type = "button" class = "styled_off"  id = "buttonPostMap" value = "Save Map in Server (записать карту на сервер)" onclick="SaveLoadServer_w.saveInServer()" />
+            <input type = "text" id="st_map_save_in_server" value = "OK" name = "st_map_save_in_server"> 
+            <input type = "text"                    id = "nameUserMap"   name = "nameUserMap" 
+            required size = "20"
+            placeholder="name for user map"
+            minlength="4" maxlength="15">
+            <a href="http://alphagameset.xyz/3_DD_DarkDungeon_Saved_Maps/" class = "st7" 
+            title="Можно посмотреть все сохраненные карты и скачать их." > Посмотреть записанные карты </a>
+            
+        </div>
+
+        <script>
+            if(! window.itIsONLINE) { 
+                document.getElementById("buttonPostMap").disabled = true;
+                document.getElementById("nameUserMap").disabled = true;
+            } 
+
+        </script>
+        <!--The game canvas-1600-800 -->
+        <canvas id='game-canvas' width='1200' height='800'>
+            Your browser does not support HTML5 Canvas<br>
+            Ваш браузер не поддерживает HTML5 графику<br>
+        </canvas>
+
+        <!-- Scripts --> 
+        <script type="module" src = 'DD_Module_js/DD_MapsEditor_m_040822.js'>        </script>
+        
+        
+    </body>
+    
+</html>
