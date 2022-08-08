@@ -17,7 +17,7 @@
 
 import { TestModule } from './TestModule.js';
 import { UserInputMouse }          from './DD_UserInputMouse_m_040822.js';
-import { SaveLoad }                from './DD_SaveLoadInBrowser_m_040822.js';
+import { SaveLoadBrowser }                from './DD_SaveLoadInBrowser_m_040822.js';
 import { SaveLoadServer }          from './DD_SaveLoadInServer_m_060822.js';
 import { Resourse }                from './DD_Resourse_m_050822.js';
 import { UserInputKey }            from './DD_UserInputKey_m_040822.js';
@@ -25,7 +25,7 @@ import { Map }                     from './DD_Map_m_040822.js';
 import { SpritesMap }              from './DD_HTML5_SpritesMaps_m_040822.js';
 import { HTML5_Canvas }            from './DD_HTML5_Canvas_m_040822.js';
 
-window.SaveLoad_w = SaveLoad;
+window.SaveLoadBrowser_w = SaveLoadBrowser;
 window.SaveLoadServer_w = SaveLoadServer;
 
 console.log("module DD_MapsEditor.js start: currentDate" + TestModule.currentDate);
@@ -75,7 +75,7 @@ MapsEditor.start();
  // загрузка всего документа(вместе с картинками, звуком и т.д.) закончена
  window.onload = function() {
 
-    SaveLoad.ini_LoadInBrowser();
+    SaveLoadBrowser.ini_loadFromBrowser();
     Map.drawMap(0,0);
     Map.drawSelectTiles(0);
     //Map.draw(100,50);

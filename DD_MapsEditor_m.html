@@ -10,18 +10,18 @@
     <body>
  
         <h1 align = "center"> <img src="image/DD_Map/monsters/mons_1.png"> DD_MapsEditor (в разработке) <img src="image/DD_Map/monsters/mons_1.png"></h1>
-        <h4 align = "center"> Последнее изменение <time datetime = "2022-08-07">07.08.22</time> </h4>
+        <h4 align = "center"> Последнее изменение <time datetime = "2022-08-08">08.08.22</time> </h4>
 
         <a href="http://alphagameset.xyz/" class = "st7" title="Главный сайт со всеми работами "> На главную </a>
 
         Рердактор карт для игры 
         <abbr title="Игра находится на очень ранней стадии разработки и что получится и получится ли непонятно">Темное Подземелье</abbr>.
         <!--<a href="4_DD_Resource/For_Serega_030822.rar" download>Это файл с редактором для Сереги</a> -->
-        
+        <a href="https://github.com/LongWayA/DD_DarkDungeon.git"> DD_MapsEditor_m add to github.com </a>
         <script>
 
             //false true;
-            window.itIsONLINE = false;
+            window.itIsONLINE = true;
 
             if(window.itIsONLINE){
                     // 1. Создаём новый объект XMLHttpRequest
@@ -48,23 +48,30 @@
         <br>
         <!-- buttons class = "" value="nameUserMapDefault" -->
         <div id="container" >
-			<input type = "button" class = "styled" id = "buttonSaveMap" value = "Save Map in Browser (Сохранить карту в браузер)"     onclick="SaveLoad_w.saveInBrowser()" />  
-            <input type = "button" class = "styled" id = "buttonLoadMap" value = "Load Map from Browser (Загрузить карту из браузера)" onclick="SaveLoad_w.loadInBrowser()" /> 
-            <input type = "button" class = "styled" id = "buttonResetMap" value = "Reset (обнулить)"                                   onclick="SaveLoad_w.resetInBrowser()" /> <br>
-            <input type = "button" class = "styled_off"  id = "buttonPostMap" value = "Save Map in Server (записать карту на сервер)" onclick="SaveLoadServer_w.saveInServer()" />
-            <input type = "text" id="st_map_save_in_server" value = "OK" name = "st_map_save_in_server"> 
+			<input type = "button" class = "styled" id = "buttonSaveMapBr" value = "Save Map in Browser"       onclick="SaveLoadBrowser_w.saveInBrowser()" />  
+            <input type = "button" class = "styled" id = "buttonLoadMapBr" value = "Load Map from Browser"     onclick="SaveLoadBrowser_w.loadFromBrowser()" /> 
+            <input type = "button" class = "styled_res" id = "buttonResetMap" value = "Reset Map"                  onclick="SaveLoadBrowser_w.resetMapInBrowser()" /> 
+            <input type = "button" class = "styled_off"  id = "buttonSaveMapServ" value = "Save Map in Server" onclick="SaveLoadServer_w.saveInServer()" />    
+            <input type = "button" class = "styled_off" id = "buttonLoadMapServ" value = "Load Map from Server"    onclick="SaveLoadServer_w.loadFromServer()" /> <br>
+            <input type = "text" id="st_map_save_in_server" value = "Размер записанной карты" name = "st_map_save_in_server"> 
             <input type = "text"                    id = "nameUserMap"   name = "nameUserMap" 
-            required size = "20"
-            placeholder="name for user map"
-            minlength="4" maxlength="15">
+            required size = "50"
+            placeholder="enter name map saving in server(имя записываемой карты)"
+            minlength="4" maxlength="30">
             <a href="http://alphagameset.xyz/3_DD_DarkDungeon_Saved_Maps/" class = "st7" 
-            title="Можно посмотреть все сохраненные карты и скачать их." > Посмотреть записанные карты </a>
+            title="Можно посмотреть все сохраненные карты и скачать их." > Посмотреть записанные карты </a><br>
+            
+            <input type = "text"                    id = "nameMapLoadingFromServer"   name = "nameMapLoadingFromServer" 
+            required size = "100"
+            placeholder="enter full name map loading from server(имя карты смотрите и копипасте в списке записанных карт)"
+            minlength="50" maxlength="100">            
             
         </div>
 
         <script>
             if(! window.itIsONLINE) { 
-                document.getElementById("buttonPostMap").disabled = true;
+                document.getElementById("buttonSaveMapServ").disabled = true;
+                document.getElementById("buttonLoadMapServ").disabled = true;
                 document.getElementById("nameUserMap").disabled = true;
             } 
 

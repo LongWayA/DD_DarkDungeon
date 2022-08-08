@@ -19,18 +19,18 @@ import { Resourse }     from './DD_Resourse_m_050822.js';
 import { Map }          from './DD_Map_m_040822.js';
 import { HTML5_Canvas } from './DD_HTML5_Canvas_m_040822.js';
 
-export let SaveLoad = {};
-SaveLoad.isOk = " ";//
+export let SaveLoadBrowser = {};
+SaveLoadBrowser.isOk = " ";//
 
-SaveLoad.NAME = "SaveLoad";//
+SaveLoadBrowser.NAME = "SaveLoadBrowser";//
 
-SaveLoad.OKresponse = "";
+SaveLoadBrowser.OKresponse = "";
 
 // 
  //=============================================================================
- SaveLoad.saveInBrowser = function() {
+ SaveLoadBrowser.saveInBrowser = function() {
 
-  //console.log( "DD_SaveLoadInBrowser.js: SaveLoad.SaveInBrowser ");
+  //console.log( "DD_SaveLoadInBrowser.js: SaveLoadBrowser.SaveInBrowser ");
   let saveGrounds  = "";
   let saveItems    = "";
   let saveMonsters = "";
@@ -63,9 +63,9 @@ SaveLoad.OKresponse = "";
 
 // 
  //=============================================================================
- SaveLoad.loadInBrowser = function() {
+ SaveLoadBrowser.loadFromBrowser = function() {
 
-  //console.log( "DD_SaveLoadInBrowser.js: SaveLoad.LoadInBrowser ");
+  //console.log( "DD_SaveLoadInBrowser.js: SaveLoadBrowser.LoadInBrowser ");
 
   let saveGrounds  = localStorage.GROUND;
   let saveItems    = localStorage.ITEMS;
@@ -102,9 +102,9 @@ SaveLoad.OKresponse = "";
 
 // 
  //=============================================================================
- SaveLoad.ini_LoadInBrowser = function() {
+ SaveLoadBrowser.ini_loadFromBrowser = function() {
 
- // console.log( "DD_SaveLoadInBrowser.js: SaveLoad.LoadInBrowser ");
+ // console.log( "DD_SaveLoadInBrowser.js: SaveLoadBrowser.LoadInBrowser ");
 
   let saveGrounds  = Resourse.savedGrounds;
   let saveItems    = Resourse.savedItems;
@@ -139,9 +139,9 @@ SaveLoad.OKresponse = "";
 //=============================================================================
 
 //=============================================================================
-SaveLoad.resetInBrowser = function() {
+SaveLoadBrowser.resetMapInBrowser = function() {
 
-  //console.log( "DD_SaveLoadInBrowser.js: SaveLoad.LoadInBrowser ");
+  //console.log( "DD_SaveLoadInBrowser.js: SaveLoadBrowser.LoadInBrowser ");
 
   let saveGrounds  = Resourse.resetGrounds;
   let saveItems    = Resourse.resetItems;
@@ -177,7 +177,7 @@ SaveLoad.resetInBrowser = function() {
 
 // стартовая инициализация
  //=============================================================================
- SaveLoad.ini = function() {
+ SaveLoadBrowser.ini = function() {
 
 
 };
@@ -187,7 +187,7 @@ SaveLoad.resetInBrowser = function() {
  HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
  HTML5_Canvas.context.strokeText ('module DD_SaveLoadInBrowser.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
- SaveLoad.isOk = "OK";//
+ SaveLoadBrowser.isOk = "OK";//
  //=============================================================================
 //alert("module DD_SaveLoadInBrowser.js done");
 //console.log("module DD_SaveLoadInBrowser.js done");
