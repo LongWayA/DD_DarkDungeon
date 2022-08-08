@@ -36,8 +36,8 @@ class Tile_for_Map_C {
 
 };
 
-import { SpritesMap }   from './DD_HTML5_SpritesMaps_m_040822.js';
-import { HTML5_Canvas } from './DD_HTML5_Canvas_m_040822.js';
+import { SpritesMap }   from './DD_HTML5_SpritesMaps_m.js';
+import { HTML5_Canvas } from './DD_HTML5_Canvas_m.js';
 
 export let Map = {};
   Map.isOk = " ";//

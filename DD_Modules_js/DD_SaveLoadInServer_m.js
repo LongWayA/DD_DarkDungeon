@@ -15,8 +15,8 @@
 
 //console.log("module DD_SaveLoadInServer.js start");
 
-import { HTML5_Canvas } from './DD_HTML5_Canvas_m_040822.js';
-import { Map }          from './DD_Map_m_040822.js';
+import { HTML5_Canvas } from './DD_HTML5_Canvas_m.js';
+import { Map }          from './DD_Map_m.js';
 
 export let SaveLoadServer = {};
 SaveLoadServer.isOk = " ";//

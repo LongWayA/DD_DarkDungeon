@@ -25,7 +25,7 @@
   //console.log("module DD_UserInputKey.js start");
 //==============================================================================
 
-import { HTML5_Canvas } from './DD_HTML5_Canvas_m_040822.js';
+import { HTML5_Canvas } from './DD_HTML5_Canvas_m.js';
 
 export let UserInputKey = {};
  UserInputKey.isOk = " ";//

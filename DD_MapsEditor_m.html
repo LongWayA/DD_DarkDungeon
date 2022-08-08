@@ -4,7 +4,7 @@
         <title> DD_MapsEditor_m </title>
         <!-- Copyright (c) 2022, Brenkman Andrey and/or its affiliates. All rights reserved. -->
         <!-- Last modified -02.08.2022-07.08.2022- -->
-        <link rel='stylesheet' href='DD_DarkDungeon_Client_040822.css'/>
+        <link rel='stylesheet' href='DD_DarkDungeon_Client.css'/>
     </head>    
     
     <body>
@@ -21,7 +21,7 @@
         <script>
 
             //false true;
-            window.itIsONLINE = true;
+            window.itIsONLINE = false;
 
             if(window.itIsONLINE){
                     // 1. Создаём новый объект XMLHttpRequest
@@ -72,7 +72,9 @@
             if(! window.itIsONLINE) { 
                 document.getElementById("buttonSaveMapServ").disabled = true;
                 document.getElementById("buttonLoadMapServ").disabled = true;
+                document.getElementById("st_map_save_in_server").disabled = true;
                 document.getElementById("nameUserMap").disabled = true;
+                document.getElementById("nameMapLoadingFromServer").disabled = true;
             } 
 
         </script>
@@ -83,7 +85,7 @@
         </canvas>
 
         <!-- Scripts --> 
-        <script type="module" src = 'DD_Module_js/DD_MapsEditor_m_040822.js'>        </script>
+        <script type="module" src = 'DD_Modules_js/DD_MapsEditor_m.js'>        </script>
         
         
     </body>

@@ -33,9 +33,10 @@ class Tile_for_load_Image_C {
 
 };
 
-import { HTML5_Canvas } from './DD_HTML5_Canvas_m_040822.js';
+import { HTML5_Canvas } from './DD_HTML5_Canvas_m.js';
 
 export let SpritesMap = {};
+
   SpritesMap.isOk = " ";//
 
   SpritesMap.NAME = "SpritesMaps";//

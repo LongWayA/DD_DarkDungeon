@@ -15,9 +15,9 @@
 
 //console.log("module DD_SaveLoadInBrowser start");
 
-import { Resourse }     from './DD_Resourse_m_050822.js';
-import { Map }          from './DD_Map_m_040822.js';
-import { HTML5_Canvas } from './DD_HTML5_Canvas_m_040822.js';
+import { Resourse }     from './DD_Resourse_m.js';
+import { Map }          from './DD_Map_m.js';
+import { HTML5_Canvas } from './DD_HTML5_Canvas_m.js';
 
 export let SaveLoadBrowser = {};
 SaveLoadBrowser.isOk = " ";//

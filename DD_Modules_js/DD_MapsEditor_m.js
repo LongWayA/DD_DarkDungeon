@@ -15,21 +15,19 @@
 
 //console.log("module DD_MapsEditor.js start");
 
-import { TestModule } from './TestModule.js';
-import { UserInputMouse }          from './DD_UserInputMouse_m_040822.js';
-import { SaveLoadBrowser }                from './DD_SaveLoadInBrowser_m_040822.js';
-import { SaveLoadServer }          from './DD_SaveLoadInServer_m_060822.js';
-import { Resourse }                from './DD_Resourse_m_050822.js';
-import { UserInputKey }            from './DD_UserInputKey_m_040822.js';
-import { Map }                     from './DD_Map_m_040822.js';
-import { SpritesMap }              from './DD_HTML5_SpritesMaps_m_040822.js';
-import { HTML5_Canvas }            from './DD_HTML5_Canvas_m_040822.js';
+import { HTML5_Canvas }     from './DD_HTML5_Canvas_m.js';      // 1
+import { SpritesMap }       from './DD_HTML5_SpritesMaps_m.js'; // 2
+import { Map }              from './DD_Map_m.js';               // 3
+import { Resourse }         from './DD_Resourse_m.js';          // 4
+import { SaveLoadBrowser }  from './DD_SaveLoadInBrowser_m.js'; // 5
+import { SaveLoadServer }   from './DD_SaveLoadInServer_m.js';  // 6
+import { UserInputKey }     from './DD_UserInputKey_m.js';      // 7
+import { UserInputMouse }   from './DD_UserInputMouse_m.js';    // 8
 
 window.SaveLoadBrowser_w = SaveLoadBrowser;
 window.SaveLoadServer_w = SaveLoadServer;
 
-console.log("module DD_MapsEditor.js start: currentDate" + TestModule.currentDate);
-TestModule.setf = "Ok"
+
 // 
 window.MapsEditor = {};
 MapsEditor.NAME = "DD_MapsEditor";//
@@ -80,7 +78,6 @@ MapsEditor.start();
     Map.drawSelectTiles(0);
     //Map.draw(100,50);
     //console.log('DD_MapsEditor.js: window.onload');
-    console.log('DD_MapsEditor.js: TestModule.setf = ' + TestModule.setf);
 };
 //=============================================================================
 
@@ -88,6 +85,7 @@ MapsEditor.start();
 //=============================================================================
 //MapsEditor.isOkF = function(){
 function isOkF(){
+
   //DD_HTML5_Canvas.js
   if(HTML5_Canvas.isOk != "OK") console.log("DD_MapsEditor.js:module DD_HTML5_Canvas.js NOT OK!");//
   //if(HTML5_Canvas.isOk == "OK") console.log("DD_MapsEditor.js:module DD_HTML5_Canvas.js OK!");//
@@ -103,6 +101,21 @@ function isOkF(){
   //if(Map.isOk == "OK") console.log("DD_MapsEditor.js:module DD_Map.js OK!");//
   //if(Map.isOk != "OK")       alert("DD_MapsEditor.js:module DD_Map.js NOT OK!");//
 
+  //DD_Resourse_m.js
+  if(Resourse.isOk != "OK") console.log("DD_MapsEditor.js:module DD_Resourse_m.js NOT OK!");//
+  //if(Resourse.isOk == "OK") console.log("DD_MapsEditor.js:module DD_Resourse_m.js OK!");//
+  //if(Resourse.isOk != "OK")       alert("DD_MapsEditor.js:module DD_Resourse_m.js NOT OK!");//
+
+  //DD_SaveLoadInBrowser_m.js
+  if(SaveLoadBrowser.isOk != "OK") console.log("DD_MapsEditor.js:module DD_SaveLoadInBrowser_m.js NOT OK!");//
+  //if(SaveLoadBrowser.isOk == "OK") console.log("DD_MapsEditor.js:module DD_SaveLoadInBrowser_m.js OK!");//
+  //if(SaveLoadBrowser.isOk != "OK")       alert("DD_MapsEditor.js:module DD_SaveLoadInBrowser_m.js NOT OK!");//
+
+  //DD_SaveLoadInServer_m.js
+  if(SaveLoadServer.isOk != "OK") console.log("DD_MapsEditor.js:module DD_SaveLoadInServer_m.js NOT OK!");//
+  //if(SaveLoadServer.isOk == "OK") console.log("DD_MapsEditor.js:module DD_SaveLoadInServer_m.js OK!");//
+  //if(SaveLoadServer.isOk != "OK")       alert("DD_MapsEditor.js:module DD_SaveLoadInServer_m.js NOT OK!");//
+
   //DD_UserInputKey.js
   if(UserInputKey.isOk != "OK") console.log("DD_MapsEditor.js:module DD_UserInputKey.js NOT OK!");//
   //if(UserInputKey.isOk == "OK") console.log("DD_MapsEditor.js:module DD_UserInputKey.js OK!");//
@@ -115,7 +128,6 @@ function isOkF(){
 };
 //=============================================================================
 
-//MapsEditor.isOkF();
 
 //============================================================================
 HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//

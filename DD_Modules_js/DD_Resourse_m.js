@@ -19,9 +19,10 @@
   //console.log("module DD_Resourse_050822.js start");
 //==============================================================================
 
-import { HTML5_Canvas } from './DD_HTML5_Canvas_m_040822.js';
+import { HTML5_Canvas } from './DD_HTML5_Canvas_m.js';
 
 export let Resourse = {};
+Resourse.isOk = " ";//
 Resourse.NAME = "Resourse";//
 
 //************************************************
@@ -113,6 +114,8 @@ mmmmmmmmmmmmmmmmmmmmmmmm`;
  //=============================================================================
  HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
  HTML5_Canvas.context.strokeText ('module DD_Resourse_050822.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+
+ Resourse.isOk = "OK";//
 
  //=============================================================================
 //alert("module DD_Resourse_050822.js done");
