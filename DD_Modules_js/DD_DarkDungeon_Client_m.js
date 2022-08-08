@@ -18,10 +18,10 @@
   */
 
 //console.log("module DD_DarkDungeon_Client_m.js start");
-import { HTML5_Canvas }            from './DD_HTML5_Canvas_m_040822.js';
-import { Map }                     from './DD_Map_m_040822.js';
-import { Sprites }                 from './DD_HTML5_SpritesSheeva_m_mk3_040822.js';
-import { Timer }                   from './DD_Timer_m_040822.js';
+import { HTML5_Canvas }  from './DD_HTML5_Canvas_m.js';
+import { Map }           from './DD_Map_m.js';
+import { Sprites }       from './DD_HTML5_SpritesSheeva_mk3_m.js';
+import { Timer }         from './DD_Timer_m.js';
 
 // 
 window.DD = {};

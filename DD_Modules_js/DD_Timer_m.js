@@ -20,10 +20,13 @@
   //console.log("module DD_Timer.js start");
 //==============================================================================
 
-import { HTML5_Canvas } from './DD_HTML5_Canvas_m_040822.js';
+import { HTML5_Canvas } from './DD_HTML5_Canvas_m.js';
 
 export let Timer = {};
- Timer.NAME = "Timer";//
+
+  Timer.isOk = " ";//
+
+  Timer.NAME = "Timer";//
 
   Timer.ticksPerSecond;// количество циклов в секунду или по другому количество кадров в секунду
         // 1000 задержка в секунду. т.е тысяча милисекунд это секунда
@@ -111,6 +114,8 @@ export let Timer = {};
  //=============================================================================
  HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
  HTML5_Canvas.context.strokeText ('module DD_Timer.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+
+ Timer.isOk = "OK";//
 
  //=============================================================================
 //alert("module DD_Timer.js done");
