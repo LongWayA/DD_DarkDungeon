@@ -18,12 +18,9 @@
 
 window.SaveLoadServer = {};
 SaveLoadServer.isOk = " ";//
-
 SaveLoadServer.NAME = "SaveLoadServer";//
-
 SaveLoadServer.OKresponse = "";
-
-
+SaveLoadServer.stopClick = false;//
 // 
  //=============================================================================
  SaveLoadServer.saveInServer = function() {
@@ -87,29 +84,93 @@ SaveLoadServer.OKresponse = "";
     console.log(xhr.response);
     SaveLoadServer.OKresponse = xhr.response;
     document.getElementById("st_map_save_in_server").value = SaveLoadServer.OKresponse;
+    SaveLoadServer.stopClick = false;
   } else {
     console.log("Ошибка " + this.status);
   }
 };
-
-
   // удалить ключ
   // delete localStorage.test;
 
-};
+};//SaveLoadServer.saveInServer = function() {
+//=============================================================================
+
+//=============================================================================
+//
+SaveLoadServer.mapStrigToDraw = function(mapOneString) {
+        
+  if(mapOneString !== ""){
+
+      let pozChar = mapOneString.length;
+
+      // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
+      for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
+          pozChar = pozChar - 2; 
+          for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+              pozChar = pozChar - 1;
+              Map.MapArrayTile_2d[i][j].M_char = mapOneString[pozChar];
+          }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+      }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
+
+  //////////////////////////////////////////////////////////// 
+  pozChar = pozChar - 1;
+  
+      // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
+      for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
+          pozChar = pozChar - 2; 
+          for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+              pozChar = pozChar - 1;
+              Map.MapArrayTile_2d[i][j].I_char = mapOneString[pozChar];
+          }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+      }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
+
+  ////////////////////////////////////////////////////////////    
+  pozChar = pozChar - 1;
+  
+      // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
+      for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
+          pozChar = pozChar - 2; 
+          for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+              pozChar = pozChar - 1;
+ 
+              //  if( j > Map.heightMaxTilesCount - 3) {
+              //console.log(' i = ' + i + ' j = ' + j);
+              // console.log(i + ' ' + j + ' mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
+              //}//if( j > Map.heightMaxTilesCount - 3) {
+
+              Map.MapArrayTile_2d[i][j].G_char = mapOneString[pozChar];
+  
+          }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+      }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
+
+        Map.drawMap(0,0,false);        
+        
+  }//if(mapOneString !== ""){
+}//SaveLoadServer.mapStrigToDraw = function(mapOneString) {
 //=============================================================================
 
 // 
  //=============================================================================
  SaveLoadServer.loadFromServer = function() {
 
-// console.log( "DD_SaveLoadInServer_m.js: SaveLoadServer.loadFromServer ");
+// console.log( "DD_SaveLoadInServer.js: SaveLoadServer.loadFromServer ");
+//SaveLoadServer.storyLoadingMapsJ.focus();
+
+
 
     // заполним FormData данными из формы
     let formData = new FormData();
     let nameUserMap = document.getElementById('nameMapLoadingFromServer');
     let nameUserMapValue = "testItems_165996122574092100.map";
-    if(nameUserMap.value != "") nameUserMapValue = nameUserMap.value;
+    
+    if(nameUserMap.value != "") {
+      nameUserMapValue = nameUserMap.value;
+    } else {
+      //let questionAboutListOfMapFiles = prompt('Display a list of recorded maps?(Вывести список записанных карт?)', "NO");
+      //let questionAboutListOfMapFiles = confirm('Display a list of recorded maps?(Вывести список записанных карт?');
+      //console.log( "DD_SaveLoadInServer.js: questionAboutListOfMapFiles = " + questionAboutListOfMapFiles);
+      //if(questionAboutListOfMapFiles != null){ };
+    }
     
     formData.append("nameUserMapValue", nameUserMapValue);
 
@@ -129,135 +190,77 @@ SaveLoadServer.OKresponse = "";
   }
 */
 
-    SaveLoadServer.mapStrigToDraw = function(mapOneString) {
-        
-        //let mapOneString ="";
-        let mapOneStringArray;
-        let saveMonsters = "";
-        
-        if(mapOneString !== ""){
-            //console.log(mapOneString);  
-            //console.log('mapOneString.length = ' + mapOneString.length);
-            
-            //////////////////////////////////////////////////     
-            //24
-            let pozChar = mapOneString.length;
-            //console.log(' pozChar = ' + pozChar);
-            //console.log(' mapOneString[pozChar] = ' + mapOneString[pozChar]);
-            //console.log(' mapOneString[pozChar] = ' + mapOneString[mapOneString.length]);
-            //console.log(' mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
-
-            //pozChar = pozChar - 1;
-
-            // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-            for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-                pozChar = pozChar - 2; 
-                for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-                    pozChar = pozChar - 1;
-       
-                    //  if( j > Map.heightMaxTilesCount - 3) {
-                    //console.log(' i = ' + i + ' j = ' + j);
-                    // console.log(i + ' ' + j + ' mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
-                    //}//if( j > Map.heightMaxTilesCount - 3) {
-    
-                    // saveMonsters = saveMonsters + mapOneString[pozChar];
-   
-                   // console.log(i + ' ' + j + ' mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
-                    Map.MapArrayTile_2d[i][j].M_char = mapOneString[pozChar];
-        
-                }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-                // console.log(' j = ' + j + ' pozChar = ' + pozChar);
-                // console.log('_saveMonsters = ' + saveMonsters);
-            }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-
-            //console.log('saveMonsters = ' + saveMonsters);
-            //Map.drawMap(0,0,true);
-
-        //////////////////////////////////////////////////////////// 
-        // console.log('>>>>>> mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
-        pozChar = pozChar - 1;
-        
-            // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-            for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-                pozChar = pozChar - 2; 
-                for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-                    pozChar = pozChar - 1;
-       
-                    //  if( j > Map.heightMaxTilesCount - 3) {
-                    //console.log(' i = ' + i + ' j = ' + j);
-                    // console.log(i + ' ' + j + ' mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
-                    //}//if( j > Map.heightMaxTilesCount - 3) {
-    
-                    // saveMonsters = saveMonsters + mapOneString[pozChar];
-   
-                   // console.log(i + ' ' + j + ' mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
-                    Map.MapArrayTile_2d[i][j].I_char = mapOneString[pozChar];
-        
-                }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-                // console.log(' j = ' + j + ' pozChar = ' + pozChar);
-                // console.log('_saveMonsters = ' + saveMonsters);
-            }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-
-            //console.log('saveMonsters = ' + saveMonsters);
-        
-        
-        ////////////////////////////////////////////////////////////    
-        //console.log('>>>>>> mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
-        pozChar = pozChar - 1;
-        
-            // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-            for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-                pozChar = pozChar - 2; 
-                for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-                    pozChar = pozChar - 1;
-       
-                    //  if( j > Map.heightMaxTilesCount - 3) {
-                    //console.log(' i = ' + i + ' j = ' + j);
-                    // console.log(i + ' ' + j + ' mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
-                    //}//if( j > Map.heightMaxTilesCount - 3) {
-    
-                    // saveMonsters = saveMonsters + mapOneString[pozChar];
-   
-                    //console.log(i + ' ' + j + ' mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
-                    Map.MapArrayTile_2d[i][j].G_char = mapOneString[pozChar];
-        
-                }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-                // console.log(' j = ' + j + ' pozChar = ' + pozChar);
-                // console.log('_saveMonsters = ' + saveMonsters);
-            }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-
-            //console.log('saveMonsters = ' + saveMonsters);
-            Map.drawMap(0,0,false);        
-        
-        
-        ////////////////////////////////////////////////////////////      
-        
-            
-        }//if(mapOneString !== ""){
-    }//SaveLoadServer.mapStrigToDraw = function(mapOneString) {
-
-    
     // 
     xhr.onload = function() {
         if (xhr.status == 200) {
             //console.log(xhr.response);
-            SaveLoadServer.mapStrigToDraw(xhr.response);
+            if(xhr.response != "") {
+                SaveLoadServer.mapStrigToDraw(xhr.response);
+            }
         } else {
             console.log("Ошибка " + this.status);
         }
     };
-};
+};//SaveLoadServer.loadFromServer = function() {
 //=============================================================================
 
 
+// 
+ //=============================================================================
+ SaveLoadServer.loadListMapsFromServer = function() {
+
+
+    // заполним FormData данными из формы
+    let formData = new FormData();
+    //formData.append("nameUserMapValue", nameUserMapValue);
+
+    // отправим данные
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://alphagameset.xyz/3_DD_DarkDungeon/3_DD_PHP_Server/DD_ListMap.php");
+    xhr.send(formData);
+
+    // 
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+           // console.log(xhr.response);
+            if(xhr.response != "") {
+                SaveLoadServer.storyLoadingMapsJ.value = xhr.response;
+            }
+        } else {
+            console.log("Ошибка " + this.status);
+        }
+    };
+
+
+
+
+  
+};//SaveLoadServer.loadListMapsFromServer = function() {
+//=============================================================================
+
+
+// 
+ //=============================================================================
+ SaveLoadServer.storyLoadingMapsJ_click = function() {
+    if(SaveLoadServer.stopClick == false){ 
+        //console.log("SaveLoadServer.storyLoadingMapsJ_click ");
+        SaveLoadServer.loadListMapsFromServer();
+        SaveLoadServer.stopClick = true;
+    }
+    
+};//SaveLoadServer.modifyText = function() {
+//=============================================================================
+
+SaveLoadServer.storyLoadingMapsJ = document.getElementById("storyLoadingMaps");
+SaveLoadServer.storyLoadingMapsJ.addEventListener("click", SaveLoadServer.storyLoadingMapsJ_click, false);//click  input
 
 
 // стартовая инициализация
  //=============================================================================
  SaveLoadServer.ini = function() {
+  SaveLoadServer.storyLoadingMapsJ.focus();
 
-
-};
+};//SaveLoadServer.ini = function() {
 //=============================================================================
 
  //=============================================================================

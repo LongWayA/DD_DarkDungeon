@@ -20,13 +20,19 @@
 window.MapsEditor = {};
 MapsEditor.NAME = "DD_MapsEditor";//
 
- isOkF();
+if(window.itIsDebugging == true){
+  isOkF();
+}
+ 
 //=============================================================================
 MapsEditor.ini = function(){
   //console.log('MapsEditor.ini');
   SpritesMap.loadAllSprite();
   SpritesMap.ini_tiles_char();
 
+  MapsEditor.checkbox_drawGrounds_checked  = true;
+  MapsEditor.checkbox_drawItems_checked    = true;
+  MapsEditor.checkbox_drawMonsters_checked = true;
   //R.UserInputKey.ini();
 
 };
@@ -52,15 +58,51 @@ MapsEditor.start = function(){
   
   };
   //=============================================================================
+
+//=============================================================================
+ //
+ MapsEditor.drawMap_by_checkboxGrounds = function(){
+    //console.log('DD_MapsEditor.js:drawMap_by_checkboxGrounds');
+    MapsEditor.checkbox_drawGrounds_checked = MapsEditor.checkbox_drawGrounds.checked;
+    //console.log('DD_MapsEditor.js:MapsEditor.checkbox_drawGrounds_checked =' + MapsEditor.checkbox_drawGrounds_checked);
+    Map.drawMap(0,0);
+  };
+//=============================================================================
+
+//=============================================================================
+ //
+ MapsEditor.drawMap_by_checkboxItems = function(){
+
+  //console.log('DD_MapsEditor.js:drawMap_by_checkboxItems');
+  MapsEditor.checkbox_drawItems_checked = MapsEditor.checkbox_drawItems.checked;
+  Map.drawMap(0,0);
+};
+//=============================================================================
+
+//=============================================================================
+ //
+ MapsEditor.drawMap_by_checkboxMonsters = function(){
+
+  //console.log('DD_MapsEditor.js:drawMap_by_checkboxMonsters');
+  MapsEditor.checkbox_drawMonsters_checked = MapsEditor.checkbox_drawMonsters.checked;
+  Map.drawMap(0,0);
+};
+//=============================================================================
+
+  MapsEditor.checkbox_drawGrounds = document.getElementById("checkbox_drawGrounds");
+  MapsEditor.checkbox_drawGrounds.addEventListener("click", MapsEditor.drawMap_by_checkboxGrounds, false);//click  input
+  MapsEditor.checkbox_drawItems = document.getElementById("checkbox_drawItems");
+  MapsEditor.checkbox_drawItems.addEventListener("click", MapsEditor.drawMap_by_checkboxItems, false);//click  input
+  MapsEditor.checkbox_drawMonsters = document.getElementById("checkbox_drawMonsters");
+  MapsEditor.checkbox_drawMonsters.addEventListener("click", MapsEditor.drawMap_by_checkboxMonsters, false);//click  input
+
+
+
   
-
-MapsEditor.ini();
-MapsEditor.start();
-
 //=============================================================================
  // загрузка всего документа(вместе с картинками, звуком и т.д.) закончена
  window.onload = function() {
-
+    
     SaveLoadBrowser.ini_loadFromBrowser();
     Map.drawMap(0,0);
     Map.drawSelectTiles(0);
@@ -116,6 +158,9 @@ function isOkF(){
 };
 //=============================================================================
 
+
+MapsEditor.ini();
+MapsEditor.start();
 
 //============================================================================
 HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//

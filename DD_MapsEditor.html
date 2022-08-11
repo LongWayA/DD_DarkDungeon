@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><!-- ru -->
+
     <head>
         <meta charset="utf-8">
         <title> DD_MapsEditor </title>
@@ -11,18 +12,20 @@
     <body>
  
         <h1 class = "w"> <img src="image/DD_Map/monsters/mons_1.png" alt = "g"> DD_MapsEditor (в разработке) <img src="image/DD_Map/monsters/mons_1.png" alt = "g"></h1>
-        <h4 class = "w"> Последнее изменение <time datetime = "2022-08-08">08.08.22</time> </h4>
+        <h4 class = "w"> Последнее изменение <time datetime = "2022-08-11">11.08.22</time> </h4>
 
         <a href="http://alphagameset.xyz/" class = "st7" title="Главный сайт со всеми работами "> На главную </a>
 
         Рердактор карт для игры 
         <abbr title="Игра находится на очень ранней стадии разработки и что получится и получится ли непонятно">Темное Подземелье</abbr>.
-        <!--<a href="4_DD_Resource/For_Serega_030822.rar" download>Это файл с редактором для Сереги</a> -->
-        <a href="https://github.com/LongWayA/DD_DarkDungeon.git"> DD_MapsEditor_m add to github.com </a>
-        <script>
 
+        <a href="https://github.com/LongWayA/DD_DarkDungeon.git"> DD_MapsEditor_m add to github.com </a>
+
+        <script>
             //false true;
             window.itIsONLINE = false;
+
+            window.itIsDebugging = true;
 
             if(window.itIsONLINE){
                     // 1. Создаём новый объект XMLHttpRequest
@@ -49,36 +52,46 @@
         <br>
         <!-- buttons class = "" value="nameUserMapDefault" -->
         <div id="container" >
-			<input type = "button" class = "styled" id = "buttonSaveMapBr" value = "Save Map in Browser"       onclick="SaveLoadBrowser.saveInBrowser()" />  
-            <input type = "button" class = "styled" id = "buttonLoadMapBr" value = "Load Map from Browser"     onclick="SaveLoadBrowser.loadFromBrowser()" /> 
-            <input type = "button" class = "styled_res" id = "buttonResetMap" value = "Reset Map"                  onclick="SaveLoadBrowser.resetMapInBrowser()" /> 
-            <input type = "button" class = "styled_off"  id = "buttonSaveMapServ" value = "Save Map in Server" onclick="SaveLoadServer.saveInServer()" />    
-            <input type = "button" class = "styled_off" id = "buttonLoadMapServ" value = "Load Map from Server"    onclick="SaveLoadServer.loadFromServer()" /> <br>
-            <input type = "text" id="st_map_save_in_server" value = "Размер записанной карты" name = "st_map_save_in_server"> 
-            <input type = "text"                    id = "nameUserMap"   name = "nameUserMap" 
-            required size = "50"
-            placeholder="enter name map saving in server(имя записываемой карты)"
-            minlength="4" maxlength="30">
+			<input type = "button" class = "styled"     id = "buttonSaveMapBr"       value = "Save Map in Browser"     onclick="SaveLoadBrowser.saveInBrowser()" />  
+            <input type = "button" class = "styled"     id = "buttonLoadMapBr"       value = "Load Map from Browser"   onclick="SaveLoadBrowser.loadFromBrowser()" /> 
+            <input type = "button" class = "styled_res" id = "buttonResetMap"        value = "Reset Map"               onclick="SaveLoadBrowser.resetMapInBrowser()" /> 
+            <input type = "button" class = "styled_off" id = "buttonSaveMapServ"     value = "Save Map in Server"      onclick="SaveLoadServer.saveInServer()" />    
+            <input type = "button" class = "styled_off" id = "buttonLoadMapServ"     value = "Load Map from Server"    onclick="SaveLoadServer.loadFromServer()" /> <br>
+            <input type = "text"                        id = "st_map_save_in_server" value = "Размер записанной карты" name = "st_map_save_in_server"> 
+            <input type = "text"                        id = "nameUserMap"                name = "nameUserMap" 
+            required size = "50"      placeholder = "enter name map saving in server(имя записываемой карты)" 
+            minlength = "4" maxlength = "30">
+
             <a href="http://alphagameset.xyz/3_DD_DarkDungeon_Saved_Maps/" class = "st7" 
-            title="Можно посмотреть все сохраненные карты и скачать их." > Посмотреть записанные карты </a><br>
+            title="Можно посмотреть все сохраненные карты и скачать их." > Посмотреть записанные карты на сервере. </a><br>
             
-            <input type = "text"                    id = "nameMapLoadingFromServer"   name = "nameMapLoadingFromServer" 
-            required size = "100"
-            placeholder="enter full name map loading from server(имя карты смотрите и копипасте в списке записанных карт)"
-            minlength="50" maxlength="100">            
+            <input type = "text"                        id = "nameMapLoadingFromServer"   name = "nameMapLoadingFromServer" 
+            required size = "100"     placeholder = "enter full name map loading from server(имя карты смотрите и копипасте в списке записанных карт)"
+            minlength = "50" maxlength = "50"> <br>
             
+            <textarea id = "storyLoadingMaps" name = "storyLoadingMaps" rows = "5" cols = "97">
+                Click to open List loading maps.(Кликнуть чтобы получить список записанных карт.)
+                Границы окна можно двигать.
+            </textarea><br>
+            <input type = "checkbox" name ="drawGrounds" id = "checkbox_drawGrounds" checked >drawGrounds _
+            <input type = "checkbox" name ="drawItems" id = "checkbox_drawItems" checked >drawItems _
+            <input type = "checkbox" name ="drawMonsters" id = "checkbox_drawMonsters" checked >drawMonsters<br>
         </div>
 
         <script>
+
+            //document.getElementById("storyLoadingMaps").value = " ";select()readonly
+
             if(! window.itIsONLINE) { 
                 document.getElementById("buttonSaveMapServ").disabled = true;
                 document.getElementById("buttonLoadMapServ").disabled = true;
                 document.getElementById("st_map_save_in_server").disabled = true;
                 document.getElementById("nameUserMap").disabled = true;
                 document.getElementById("nameMapLoadingFromServer").disabled = true;
+                document.getElementById("storyLoadingMaps").disabled = true;
             } 
-
         </script>
+
         <!--The game canvas-1600-800 -->
         <canvas id='game-canvas' width='1200' height='800'>
             Your browser does not support HTML5 Canvas<br>
@@ -86,15 +99,15 @@
         </canvas>
 
         <!-- Scripts --> 
-        <script src = 'DD_Scripts_js/DD_HTML5_Canvas.js'>         </script> <!-- 1 -->
-        <script src = 'DD_Scripts_js/DD_HTML5_SpritesMaps.js'>    </script> <!-- 2 -->  
-        <script src = 'DD_Scripts_js/DD_Map.js'>                  </script> <!-- 3 -->  
-        <script src = 'DD_Scripts_js/DD_Resourse.js'>             </script> <!-- 4 -->  
-        <script src = 'DD_Scripts_js/DD_SaveLoadInBrowser.js'>    </script> <!-- 5 -->   
-        <script src = 'DD_Scripts_js/DD_SaveLoadInServer.js'>     </script> <!-- 6 -->
-        <script src = 'DD_Scripts_js/DD_UserInputMouse.js'>       </script> <!-- 7 -->
-        <script src = 'DD_Scripts_js/DD_UserInputKey.js'>         </script> <!-- 8 -->
-        <script src = 'DD_Scripts_js/DD_MapsEditor.js'>           </script> <!-- 9 -->
+        <script src = '_DD_Scripts_js/DD_HTML5_Canvas.js'>         </script> <!-- 1 -->
+        <script src = '_DD_Scripts_js/DD_HTML5_SpritesMaps.js'>    </script> <!-- 2 -->  
+        <script src = '_DD_Scripts_js/DD_Map.js'>                  </script> <!-- 3 -->  
+        <script src = '_DD_Scripts_js/DD_Resourse.js'>             </script> <!-- 4 -->  
+        <script src = '_DD_Scripts_js/DD_SaveLoadInBrowser.js'>    </script> <!-- 5 -->   
+        <script src = '_DD_Scripts_js/DD_SaveLoadInServer.js'>     </script> <!-- 6 -->
+        <script src = '_DD_Scripts_js/DD_UserInputMouse.js'>       </script> <!-- 7 -->
+        <script src = '_DD_Scripts_js/DD_UserInputKey.js'>         </script> <!-- 8 -->
+        <script src = '_DD_Scripts_js/DD_MapsEditor.js'>           </script> <!-- 9 -->
         
         
     </body>

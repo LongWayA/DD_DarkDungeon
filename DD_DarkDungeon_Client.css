@@ -2,11 +2,23 @@
 /* Copyright (c) 2022, Brenkman Andrey and/or its affiliates. All rights reserved. */
 /* Last modified 07.07.2018 - 15.06.2019 - 23.11.2019 - */
 
+textarea {
+  resize: none;
+}
+
 h1.st1 {
   background-color: white;
   color: red;
   margin: 10px;
   padding: 10px;
+  text-align: center;
+}
+
+h1.w {
+  text-align: center;
+}
+
+h4.w {
   text-align: center;
 }
 

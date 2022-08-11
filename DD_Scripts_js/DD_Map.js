@@ -110,9 +110,10 @@ window.Map = {};
 
         Map.imageK = SpritesMap.tilesLoad[SpritesMap.GROUNDS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
 
-        // рисуем тайл на экране в заданном месте и заданного размера
-        HTML5_Canvas.Image.drawImageG(Map.imageK, i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height);
-
+        if(MapsEditor.checkbox_drawGrounds_checked == true){
+          // рисуем тайл на экране в заданном месте и заданного размера
+          HTML5_Canvas.Image.drawImageG(Map.imageK, i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height);
+        }
          // рисуем символ соответствующий тайлу
          HTML5_Canvas.context.strokeText (Map.MapArrayTile_2d[i][j].G_char, i * Map.tile.width + _left, j * Map.tile.height + _top + 10);//
 
@@ -131,9 +132,11 @@ window.Map = {};
           tipeTiles = SpritesMap.ItemsMapChars.get(I_char_L);// по символу находим номер нужного тайла
 
           Map.imageK = SpritesMap.tilesLoad[SpritesMap.ITEMS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
-
-          // рисуем тайл на экране в заданном месте и заданного размера
-          HTML5_Canvas.Image.drawImageG(Map.imageK, i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height);
+          
+          if(MapsEditor.checkbox_drawItems_checked == true){
+            // рисуем тайл на экране в заданном месте и заданного размера
+            HTML5_Canvas.Image.drawImageG(Map.imageK, i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height);
+          }
         }
         //--------------------------------------------------------------------------------------
        
@@ -146,8 +149,10 @@ window.Map = {};
 
           Map.imageK = SpritesMap.tilesLoad[SpritesMap.MONSTERS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
 
-          // рисуем тайл на экране в заданном месте и заданного размера
-          HTML5_Canvas.Image.drawImageG(Map.imageK, i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height);
+          if(MapsEditor.checkbox_drawMonsters_checked == true){
+            // рисуем тайл на экране в заданном месте и заданного размера
+            HTML5_Canvas.Image.drawImageG(Map.imageK, i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height);
+          }
         }
         //-------------------------------------------------------------------------------------- 
         
