@@ -18,7 +18,6 @@ window.MapsEditor = {};
 MapsEditor.NAME = "DD_MapsEditor";//
 MapsEditor.stopClick = false;//
 
-
 if(window.itIsDebugging == true){
   isOkF();
 }
@@ -77,9 +76,7 @@ MapsEditor.ini = function(){
   SpritesMap.loadAllSprite();
   SpritesMap.ini_tiles_char();
 
-  MapsEditor.checkbox_drawGrounds_checked  = true;
-  MapsEditor.checkbox_drawItems_checked    = true;
-  MapsEditor.checkbox_drawMonsters_checked = true;
+  
   //R.UserInputKey.ini();
 
 };
@@ -110,9 +107,9 @@ MapsEditor.start = function(){
  //
  MapsEditor.drawMap_by_checkboxGrounds = function(){
     //console.log('DD_MapsEditor.js:drawMap_by_checkboxGrounds');
-    MapsEditor.checkbox_drawGrounds_checked = MapsEditor.checkbox_drawGrounds.checked;
+    EditorFrameDraw.checkbox_drawGrounds_checked = MapsEditor.checkbox_drawGrounds.checked;
     //console.log('DD_MapsEditor.js:MapsEditor.checkbox_drawGrounds_checked =' + MapsEditor.checkbox_drawGrounds_checked);
-    Map.drawMap(0,0);
+    EditorFrameDraw.drowFrameMap();
   };
 //=============================================================================
 
@@ -121,8 +118,8 @@ MapsEditor.start = function(){
  MapsEditor.drawMap_by_checkboxItems = function(){
 
   //console.log('DD_MapsEditor.js:drawMap_by_checkboxItems');
-  MapsEditor.checkbox_drawItems_checked = MapsEditor.checkbox_drawItems.checked;
-  Map.drawMap(0,0);
+  EditorFrameDraw.checkbox_drawItems_checked = MapsEditor.checkbox_drawItems.checked;
+  EditorFrameDraw.drowFrameMap();
 };
 //=============================================================================
 
@@ -131,8 +128,8 @@ MapsEditor.start = function(){
  MapsEditor.drawMap_by_checkboxMonsters = function(){
 
   //console.log('DD_MapsEditor.js:drawMap_by_checkboxMonsters');
-  MapsEditor.checkbox_drawMonsters_checked = MapsEditor.checkbox_drawMonsters.checked;
-  Map.drawMap(0,0);
+  EditorFrameDraw.checkbox_drawMonsters_checked = MapsEditor.checkbox_drawMonsters.checked;
+  EditorFrameDraw.drowFrameMap();
 };
 //=============================================================================
 
@@ -151,9 +148,7 @@ MapsEditor.start = function(){
  window.onload = function() {
     
     LoadFromScripts.ini_loadFromBrowser();
-    Map.drawMap(0,0);
-    Map.drawSelectTiles(0);
-    //Map.draw(100,50);
+    EditorFrameDraw.drowFrame();
     //console.log('DD_MapsEditor.js: window.onload');
 };
 //=============================================================================
@@ -177,6 +172,16 @@ function isOkF(){
   if(Map.isOk != "OK") console.log("DD_MapsEditor.js:script DD_Map.js NOT OK!");//
   //if(Map.isOk == "OK") console.log("DD_MapsEditor.js:script DD_Map.js OK!");//
   //if(Map.isOk != "OK")       alert("DD_MapsEditor.js:script DD_Map.js NOT OK!");//
+
+  //DD_MapFrameDraw.js
+  if(MapFrameDraw.isOk != "OK") console.log("DD_MapsEditor.js:script DD_MapFrameDraw.js NOT OK!");//
+  //if(MapFrameDraw.isOk == "OK") console.log("DD_MapsEditor.js:script DD_MapFrameDraw.js OK!");//
+  //if(MapFrameDraw.isOk != "OK")       alert("DD_MapsEditor.js:script DD_MapFrameDraw.js NOT OK!");//
+
+  //DD_TilesFrameDraw.js
+  if(TilesFrameDraw.isOk != "OK") console.log("DD_MapsEditor.js:script DD_TilesFrameDraw.js NOT OK!");//
+  //if(TilesFrameDraw.isOk == "OK") console.log("DD_MapsEditor.js:script DD_TilesFrameDraw.js OK!");//
+  //if(TilesFrameDraw.isOk != "OK")       alert("DD_MapsEditor.js:script DD_TilesFrameDraw.js NOT OK!");//
 
   //DD_SaveInBrowser.js
   if(SaveInBrowser.isOk != "OK") console.log("DD_MapsEditor.js:script DD_SaveInBrowser.js NOT OK!");//
@@ -202,6 +207,11 @@ function isOkF(){
   if(LoadFromServer.isOk != "OK") console.log("DD_MapsEditor.js:script DD_LoadFromServer.js NOT OK!");//
   //if(LoadFromServer.isOk == "OK") console.log("DD_MapsEditor.js:script DD_LoadFromServer.js OK!");//
   //if(LoadFromServer.isOk != "OK")       alert("DD_MapsEditor.js:script DD_LoadFromServer.js NOT OK!");//
+  
+ //DD_EditorFrameDraw.js
+ if(EditorFrameDraw.isOk != "OK") console.log("DD_MapsEditor.js:script DD_EditorFrameDraw.js NOT OK!");//
+ //if(EditorFrameDraw.isOk == "OK") console.log("DD_MapsEditor.js:script DD_EditorFrameDraw.js OK!");//
+ //if(EditorFrameDraw.isOk != "OK")       alert("DD_MapsEditor.js:script DD_EditorFrameDraw.js NOT OK!");//
 
   //DD_UserInputKey.js
   if(UserInputKey.isOk != "OK") console.log("DD_MapsEditor.js:script DD_UserInputKey.js NOT OK!");//

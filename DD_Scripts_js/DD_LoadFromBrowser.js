@@ -47,7 +47,7 @@ LoadFromBrowser.OKresponse = "";
     }
     pozChar = pozChar + 1;
   }
-  Map.drawMap(0,0);
+  EditorFrameDraw.drowFrameMap();;
 
   //console.log(saveGrounds);
   //console.log(saveItems); 

@@ -68,7 +68,7 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
           }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
       }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
 
-        Map.drawMap(0,0,false);        
+        EditorFrameDraw.drowFrameMap(0,0,false);        
         
   }//if(mapOneString !== ""){
 }//LoadFromServer.mapStrigToDraw = function(mapOneString) {

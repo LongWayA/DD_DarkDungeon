@@ -85,17 +85,17 @@ UserInputMouse.clik = function(_X, _Y) {
           //console.log("DD_UserInputMouse.js: По вертикали мы в зоне тайловой карты Y = " + _Y);
           UserInputMouse.clikMapSetTile(_X, _Y);
 
-     } else if ( ( _Y > Map.drawSelectTilesG_Y0) && (_Y < Map.drawSelectTilesG_Y_Max) ){
+     } else if ( ( _Y > TilesFrameDraw.drawSelectTilesG_Y0) && (_Y < TilesFrameDraw.drawSelectTilesG_Y_Max) ){
 
           //console.log("DD_UserInputMouse.js: По вертикали мы в зоне выбора тайлов уровня земля Y = " + _Y);
           UserInputMouse.clikMapGetTile(_X, _Y, "GROUND"); 
 
-     } else if ( ( _Y > Map.drawSelectTilesI_Y0) && (_Y< Map.drawSelectTilesI_Y_Max) ){
+     } else if ( ( _Y > TilesFrameDraw.drawSelectTilesI_Y0) && (_Y< TilesFrameDraw.drawSelectTilesI_Y_Max) ){
 
           //console.log("DD_UserInputMouse.js: По вертикали мы в зоне выбора тайлов уровня предметы Y = " + _Y);
           UserInputMouse.clikMapGetTile(_X, _Y, "ITEM"); 
 
-     } else if ( ( _Y >Map.drawSelectTilesM_Y0) && (_Y< Map.drawSelectTilesM_Y_Max) ){
+     } else if ( ( _Y >TilesFrameDraw.drawSelectTilesM_Y0) && (_Y< TilesFrameDraw.drawSelectTilesM_Y_Max) ){
 
           //console.log("DD_UserInputMouse.js: По вертикали мы в зоне выбора тайлов уровня монстры Y = " + _Y);
           UserInputMouse.clikMapGetTile(_X, _Y, "MONSTER"); 
@@ -123,7 +123,7 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                //console.log("DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetChar = " + UserInputMouse.clikMapGetChar);
 
                Map.MapArrayTile_2d[x-1][y-1].G_char = UserInputMouse.clikMapGetChar;
-               Map.drawMap(0,0);
+               EditorFrameDraw.drowFrameMap();;
 
           }
      } else if( UserInputMouse.selectedLayer == "ITEM" ){
@@ -137,7 +137,7 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                //console.log("DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetChar = " + UserInputMouse.clikMapGetChar);
 
                Map.MapArrayTile_2d[x-1][y-1].I_char = UserInputMouse.clikMapGetChar;
-               Map.drawMap(0,0);
+               EditorFrameDraw.drowFrameMap();;
 
           }
      } else if( UserInputMouse.selectedLayer == "MONSTER" ){
@@ -151,7 +151,7 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                //console.log("DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetChar = " + UserInputMouse.clikMapGetChar);
 
                Map.MapArrayTile_2d[x-1][y-1].M_char = UserInputMouse.clikMapGetChar;
-               Map.drawMap(0,0);
+               EditorFrameDraw.drowFrameMap();;
 
           }
      }
@@ -173,14 +173,14 @@ UserInputMouse.clikMapGetTile = function(_X, _Y, _layer) {
      let Y0_dro = 1;
      let typeLayer ="";
      let trueLayer = false;
-     X0_dro =  Map.drawSelectTilesG_X0; 
+     X0_dro =  TilesFrameDraw.drawSelectTilesG_X0; 
 
      let clikMapGet_X = Math.ceil( (_X+X0_dro) / Map.tile.width);// округление до наибольшего целого
 
      if (_layer == "GROUND"){
           //console.log("DD_UserInputMouse.js: _layer == GROUND ");
           maxCount = SpritesMap.GROUNDS_MAX_COUNT;
-          Y0_dro = Map.drawSelectTilesG_Y0;
+          Y0_dro = TilesFrameDraw.drawSelectTilesG_Y0;
           typeLayer = SpritesMap.GROUNDS;
           trueLayer = true;
 
@@ -188,7 +188,7 @@ UserInputMouse.clikMapGetTile = function(_X, _Y, _layer) {
 
           //console.log("DD_UserInputMouse.js: ITEM ");
           maxCount = SpritesMap.ITEMS_MAX_COUNT ;
-          Y0_dro = Map.drawSelectTilesI_Y0;
+          Y0_dro = TilesFrameDraw.drawSelectTilesI_Y0;
           typeLayer = SpritesMap.ITEMS;
           trueLayer = true;
 
@@ -196,7 +196,7 @@ UserInputMouse.clikMapGetTile = function(_X, _Y, _layer) {
 
           //console.log("DD_UserInputMouse.js: MONSTER ");
           maxCount = SpritesMap.MONSTERS_MAX_COUNT ;
-          Y0_dro = Map.drawSelectTilesM_Y0;
+          Y0_dro = TilesFrameDraw.drawSelectTilesM_Y0;
           typeLayer = SpritesMap.MONSTERS;
           trueLayer = true;
      } 
@@ -213,7 +213,7 @@ UserInputMouse.clikMapGetTile = function(_X, _Y, _layer) {
 
           if (clikMapGet_X < maxCount) {
                     
-               Map.drawSelectTiles(0);
+               EditorFrameDraw.drowFrameTilesP();
                UserInputMouse.selectedLayer = _layer;
                //
                let j = clikMapGet_X - 1;
