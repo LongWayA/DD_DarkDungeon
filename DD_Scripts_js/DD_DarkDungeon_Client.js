@@ -17,11 +17,9 @@
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
   */
 
-//console.log("module DD_DarkDungeon_Client_m.js start");
-
 // 
 window.DD = {};
-DD.NAME = "DD_DarkDungeon_Client_m";//
+DD.NAME = "DarkDungeon_Client";//
 DD.sprite = 1;
 DD.loadEnd = 0;
 
@@ -129,8 +127,6 @@ Timer.timerId = setTimeout( function tick(){
 
 //============================================================================
 HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-HTML5_Canvas.context.strokeText ('module DD_Client.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+HTML5_Canvas.context.strokeText ('script DD_Client.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
 //==============================================================================
-//alert("module DD_Client.js done");
-//console.log("module DD_Client.js done");

@@ -16,8 +16,6 @@
  
  */
 
-  //alert("module DD_UserInputMouse.js start");
-  //console.log("module DD_UserInputMouse.js start");
 //==============================================================================
 
 window.UserInputMouse = {};
@@ -28,19 +26,6 @@ window.UserInputMouse = {};
 
  UserInputMouse.NAME = "UserInputMouse";//
 
-     //Map.widthMax_px = 1200;// это размеры тайловой карты
-     //Map.heightMax_px = 500;
-     //Map.drawSelectTilesG_X0 = _left;                // задаем горизонтальное расстояние для тайлов слоя граунд
-     //Map.drawSelectTilesG_Y0 = Map.heightMax_px + 10;// задаем вертикальное расстояние для тайлов слоя граунд
-     //Map.drawSelectTilesG_Y_Max = Map.drawSelectTilesG_Y0 + Map.tile.height;// задаем вертикальное расстояние для тайлов слоя граунд
-
-     //Map.drawSelectTilesI_X0 = _left;                // задаем горизонтальное расстояние для тайлов слоя предметы
-     //Map.drawSelectTilesI_Y0 = Map.drawSelectTilesG_Y0 + Map.tile.height + 10;// задаем вертикальное расстояние для тайлов слоя предметы
-     //Map.drawSelectTilesI_Y_Max = Map.drawSelectTilesI_Y0 + Map.tile.height;// задаем вертикальное расстояние для тайлов слоя предметы
-
-     //Map.drawSelectTilesM_X0 = _left;                // задаем горизонтальное расстояние для тайлов слоя монстры
-     //Map.drawSelectTilesM_Y0 = Map.drawSelectTilesI_Y0 + Map.tile.height + 10;// задаем вертикальное расстояние для тайлов слоя монстры
-     //Map.drawSelectTilesM_Y_Max = Map.drawSelectTilesM_Y0 + Map.tile.height;
 
 //==============================================================================     
 // Add the event listeners for mousedown, mousemove, and mouseup
@@ -248,58 +233,10 @@ UserInputMouse.clikMapGetTile = function(_X, _Y, _layer) {
 }
 //==============================================================================
 
-
-
-
-//
-//==============================================================================
-/*
-HTML5_Canvas.Id.onclick = function(event) {
-
-     console.log("DD_UserInputMouse.js: HTML5_Canvas.Id.onclick");
-
-     UserInputMouse.Bm = event.button
-     console.log("UserInputMouse.Bm = " + UserInputMouse.Bm);
-
-     UserInputMouse.Xm = event.clientX;
-     console.log("UserInputMouse.Xm = " + UserInputMouse.Xm);
-
-     UserInputMouse.Xom = event.offsetX;
-     console.log("UserInputMouse.Xom = " + UserInputMouse.Xom);
-
-     UserInputMouse.XMm = event.offsetX;
-     console.log("UserInputMouse.XMm = " + UserInputMouse.XMm);
-
-     UserInputMouse.Ym = event.clientY;
-     console.log("UserInputMouse.Ym = " + UserInputMouse.Ym);
-
-     UserInputMouse.Yom = event.offsetY;
-     console.log("UserInputMouse.Yom = " + UserInputMouse.Yom);
-};
-*/
-//==============================================================================
-
- //
-//==============================================================================
-UserInputMouse.ini = function() {
-  
-};
-//==============================================================================
-
-
 //==============================================================================
 HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-HTML5_Canvas.context.strokeText ('module DD_UserInputMouse.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+HTML5_Canvas.context.strokeText ('script DD_UserInputMouse.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
 UserInputMouse.isOk = "OK";//
 
 //==============================================================================
-//alert("module DD_UserInputMouse.js done");
-//console.log("module DD_UserInputMouse.js done");
-/*
-   if (event.altKey && event.shiftKey) {
-       alert('Ура!');
-     }
-//UserInputMouse.clikMapGetGROUND_Tipe = Math.round(_X / Map.tile.width);
-
-*/

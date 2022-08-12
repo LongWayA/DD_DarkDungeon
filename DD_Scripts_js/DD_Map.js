@@ -15,8 +15,6 @@
   */
 
 
-  //alert("module DD_Map.js start");
-  //console.log("module DD_Map.js start");
 //==============================================================================
 
 class Tile_for_Map_C {
@@ -270,9 +268,7 @@ window.Map = {};
 
  //=============================================================================
  HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
- HTML5_Canvas.context.strokeText ('module DD_Map.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+ HTML5_Canvas.context.strokeText ('script DD_Map.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
  Map.isOk = "OK";//
  //=============================================================================
-//alert("module DD_Map.js done");
-//console.log("module DD_Map.js done");

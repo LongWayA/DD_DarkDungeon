@@ -13,91 +13,16 @@
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
   */
 
-//console.log("module DD_SaveLoadInServer.js start");
+window.LoadFromServer = {};
+LoadFromServer.isOk = " ";//
+LoadFromServer.NAME = "LoadFromServer";//
+LoadFromServer.OKresponse = "";
 
 
-window.SaveLoadServer = {};
-SaveLoadServer.isOk = " ";//
-SaveLoadServer.NAME = "SaveLoadServer";//
-SaveLoadServer.OKresponse = "";
-SaveLoadServer.stopClick = false;//
-// 
- //=============================================================================
- SaveLoadServer.saveInServer = function() {
-
-  //console.log( "DD_SaveLoadInServer.js: SaveLoadServer.SaveInServer ");
-  let saveGrounds  = "";
-  let saveItems    = "";
-  let saveMonsters = "";
-
-  // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-  
-  for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
-    for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
-      saveGrounds = saveGrounds + Map.MapArrayTile_2d[i][j].G_char;
-      saveItems = saveItems + Map.MapArrayTile_2d[i][j].I_char;
-      saveMonsters = saveMonsters + Map.MapArrayTile_2d[i][j].M_char;
-    }
-    saveGrounds  = saveGrounds  + "\n";
-    saveItems    = saveItems    + "\n";
-    saveMonsters = saveMonsters + "\n";
-  }
-
-  //console.log(saveGrounds);
-  //console.log(saveItems); 
-  //console.log(saveMonsters);
-
-    // заполним FormData данными из формы
-    let formData = new FormData();
-
-    let nameUserMap = document.getElementById('nameUserMap');
-    let nameUserMapValue = "nameUserMapDefault";
-    if(nameUserMap.value != "") nameUserMapValue = nameUserMap.value;
-
-  // добавим ещё одно поле
-  formData.append("saveGroundsInServer",  saveGrounds);
-  formData.append("saveItemsInServer",    saveItems);
-  formData.append("saveMonstersInServer", saveMonsters);
-  formData.append("nameUserMapValue", nameUserMapValue);
-
-
-  // отправим данные
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://alphagameset.xyz/3_DD_DarkDungeon/3_DD_PHP_Server/DD_SaveMap.php");
-  xhr.send(formData);
-
-  //xhr.onload = () => alert(xhr.response);
-  //let myTextArea = document.getElementById('myTextarea');
-    
- /*   
-  xhr.onload = () => {
-      console.log(xhr.response);
-      SaveLoad.OKresponse = xhr.response;
-      myTextArea.innerHTML = SaveLoad.OKresponse;
-  }
-*/
-
-
- // 
- xhr.onload = function() {
-  if (xhr.status == 200) {
-    console.log(xhr.response);
-    SaveLoadServer.OKresponse = xhr.response;
-    document.getElementById("st_map_save_in_server").value = SaveLoadServer.OKresponse;
-    SaveLoadServer.stopClick = false;
-  } else {
-    console.log("Ошибка " + this.status);
-  }
-};
-  // удалить ключ
-  // delete localStorage.test;
-
-};//SaveLoadServer.saveInServer = function() {
-//=============================================================================
 
 //=============================================================================
 //
-SaveLoadServer.mapStrigToDraw = function(mapOneString) {
+LoadFromServer.mapStrigToDraw = function(mapOneString) {
         
   if(mapOneString !== ""){
 
@@ -146,15 +71,15 @@ SaveLoadServer.mapStrigToDraw = function(mapOneString) {
         Map.drawMap(0,0,false);        
         
   }//if(mapOneString !== ""){
-}//SaveLoadServer.mapStrigToDraw = function(mapOneString) {
+}//LoadFromServer.mapStrigToDraw = function(mapOneString) {
 //=============================================================================
 
 // 
  //=============================================================================
- SaveLoadServer.loadFromServer = function() {
+ LoadFromServer.loadFromServer = function() {
 
-// console.log( "DD_SaveLoadInServer.js: SaveLoadServer.loadFromServer ");
-//SaveLoadServer.storyLoadingMapsJ.focus();
+// console.log( "DD_LoadFromServer.js: LoadFromServer.loadFromServer ");
+//LoadFromServer.storyLoadingMapsJ.focus();
 
 
 
@@ -195,19 +120,19 @@ SaveLoadServer.mapStrigToDraw = function(mapOneString) {
         if (xhr.status == 200) {
             //console.log(xhr.response);
             if(xhr.response != "") {
-                SaveLoadServer.mapStrigToDraw(xhr.response);
+                LoadFromServer.mapStrigToDraw(xhr.response);
             }
         } else {
             console.log("Ошибка " + this.status);
         }
     };
-};//SaveLoadServer.loadFromServer = function() {
+};//LoadFromServer.loadFromServer = function() {
 //=============================================================================
 
 
 // 
  //=============================================================================
- SaveLoadServer.loadListMapsFromServer = function() {
+ LoadFromServer.loadListMapsFromServer = function() {
 
 
     // заполним FormData данными из формы
@@ -224,50 +149,20 @@ SaveLoadServer.mapStrigToDraw = function(mapOneString) {
         if (xhr.status == 200) {
            // console.log(xhr.response);
             if(xhr.response != "") {
-                SaveLoadServer.storyLoadingMapsJ.value = xhr.response;
+                MapsEditor.storyLoadingMapsJ.value = xhr.response;
             }
         } else {
             console.log("Ошибка " + this.status);
         }
     };
 
-
-
-
-  
-};//SaveLoadServer.loadListMapsFromServer = function() {
+};//LoadFromServer.loadListMapsFromServer = function() {
 //=============================================================================
 
-
-// 
- //=============================================================================
- SaveLoadServer.storyLoadingMapsJ_click = function() {
-    if(SaveLoadServer.stopClick == false){ 
-        //console.log("SaveLoadServer.storyLoadingMapsJ_click ");
-        SaveLoadServer.loadListMapsFromServer();
-        SaveLoadServer.stopClick = true;
-    }
-    
-};//SaveLoadServer.modifyText = function() {
-//=============================================================================
-
-SaveLoadServer.storyLoadingMapsJ = document.getElementById("storyLoadingMaps");
-SaveLoadServer.storyLoadingMapsJ.addEventListener("click", SaveLoadServer.storyLoadingMapsJ_click, false);//click  input
-
-
-// стартовая инициализация
- //=============================================================================
- SaveLoadServer.ini = function() {
-  SaveLoadServer.storyLoadingMapsJ.focus();
-
-};//SaveLoadServer.ini = function() {
-//=============================================================================
 
  //=============================================================================
  HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
- HTML5_Canvas.context.strokeText ('module DD_SaveLoadInServer.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+ HTML5_Canvas.context.strokeText ('script DD_LoadFromServer.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
- SaveLoadServer.isOk = "OK";//
+ LoadFromServer.isOk = "OK";//
  //=============================================================================
-//alert("module DD_SaveLoadInServer.js done");
-//console.log("module DD_SaveLoadInServer.js done");

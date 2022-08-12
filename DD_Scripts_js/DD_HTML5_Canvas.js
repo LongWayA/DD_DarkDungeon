@@ -106,8 +106,6 @@ strokeStyle = color
 
 */
 
-//alert("module DD_HTML5_Canvas.js start");
-//console.log("module DD_HTML5_Canvas.js start");
 //==============================================================================
 
 // самый корневой класс Р-роуте-корень
@@ -297,10 +295,8 @@ HTML5_Canvas.Image.drawImageG = function(_image, _left, _top, _width = 0, _heigh
   HTML5_Canvas.dyT = 20;//
   //============================================================================
   HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-  HTML5_Canvas.context.strokeText ('module DD_HTML5_Canvas.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+  HTML5_Canvas.context.strokeText ('script DD_HTML5_Canvas.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
   HTML5_Canvas.isOk = "OK";//
 
 //==============================================================================
-//alert("module DD_HTML5_Canvas.js done");
-//console.log("module DD_HTML5_Canvas.js done");

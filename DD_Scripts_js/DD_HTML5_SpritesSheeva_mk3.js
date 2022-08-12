@@ -59,8 +59,7 @@
 
   */
 
-//alert("module DD_HTML5_SpritesSheeva_mk3.js start");
-//console.log("module DD_HTML5_SpritesSheeva_mk3.js start");
+
 //==============================================================================
 
 
@@ -242,10 +241,8 @@ window.Sprites = {};
 
 //============================================================================
 HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-HTML5_Canvas.context.strokeText ('module DD_HTML5_SpritesSheeva_mk3.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+HTML5_Canvas.context.strokeText ('script DD_HTML5_SpritesSheeva_mk3.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
 Sprites.isOk = "OK";//
 
 //==============================================================================
-//alert("module DD_HTML5_SpritesSheeva_mk3.js done");
-//console.log("module DD_HTML5_SpritesSheeva_mk3.js done");

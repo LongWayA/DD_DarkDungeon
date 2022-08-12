@@ -15,9 +15,6 @@
    ArenaFjs_R
   */
 
-
-  //alert("module DD_Timer.js start");
-  //console.log("module DD_Timer.js start");
 //==============================================================================
 
 window.Timer = {};
@@ -111,10 +108,8 @@ window.Timer = {};
 
  //=============================================================================
  HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
- HTML5_Canvas.context.strokeText ('module DD_Timer.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+ HTML5_Canvas.context.strokeText ('script DD_Timer.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
  Timer.isOk = "OK";//
 
  //=============================================================================
-//alert("module DD_Timer.js done");
-//console.log("module DD_Timer.js done");

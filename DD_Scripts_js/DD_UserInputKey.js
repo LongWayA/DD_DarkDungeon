@@ -21,8 +21,6 @@
   Цитата с сайта https://learn.javascript.ru/keyboard-events
  */
 
-  //alert("module DD_UserInputKey.js start");
-  //console.log("module DD_UserInputKey.js start");
 //==============================================================================
 
 
@@ -235,10 +233,8 @@ UserInputKey.tick = function(_CommandToFighter_R) {
 
 //==============================================================================
 HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-HTML5_Canvas.context.strokeText ('module DD_UserInputKey.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+HTML5_Canvas.context.strokeText ('script DD_UserInputKey.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
 UserInputKey.isOk = "OK";//
 
 //==============================================================================
-//alert("module DD_UserInputKey.js done");
-//console.log("module DD_UserInputKey.js done");

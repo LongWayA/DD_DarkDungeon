@@ -15,8 +15,6 @@
 
   */
 
-//alert("module DD_HTML5_SpritesSheeva_mk3.js start");
-//console.log("module DD_HTML5_SpritesMaps.js start");
 //==============================================================================
 
 
@@ -485,13 +483,11 @@ console.log("DD_HTML5_SpritesMaps.js:SpritesMap.MonstersMapString.get(nameTilesI
 
 //============================================================================
 HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-HTML5_Canvas.context.strokeText ('module DD_HTML5_SpritesMaps.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+HTML5_Canvas.context.strokeText ('script DD_HTML5_SpritesMaps.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
 SpritesMap.isOk = "OK";//
 
 //==============================================================================
-//alert("module DD_HTML5_SpritesMaps.js done");
-//console.log("module DD_HTML5_SpritesMaps.js done");
 
 /*
 Методы и свойства:

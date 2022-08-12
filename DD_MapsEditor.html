@@ -12,7 +12,7 @@
     <body>
  
         <h1 class = "w"> <img src="image/DD_Map/monsters/mons_1.png" alt = "g"> DD_MapsEditor (в разработке) <img src="image/DD_Map/monsters/mons_1.png" alt = "g"></h1>
-        <h4 class = "w"> Последнее изменение <time datetime = "2022-08-11">11.08.22</time> </h4>
+        <h4 class = "w"> Последнее изменение <time datetime = "2022-08-12">12.08.22</time> </h4>
 
         <a href="http://alphagameset.xyz/" class = "st7" title="Главный сайт со всеми работами "> На главную </a>
 
@@ -23,7 +23,7 @@
 
         <script>
             //false true;
-            window.itIsONLINE = false;
+            window.itIsONLINE = true;
 
             window.itIsDebugging = true;
 
@@ -52,11 +52,11 @@
         <br>
         <!-- buttons class = "" value="nameUserMapDefault" -->
         <div id="container" >
-			<input type = "button" class = "styled"     id = "buttonSaveMapBr"       value = "Save Map in Browser"     onclick="SaveLoadBrowser.saveInBrowser()" />  
-            <input type = "button" class = "styled"     id = "buttonLoadMapBr"       value = "Load Map from Browser"   onclick="SaveLoadBrowser.loadFromBrowser()" /> 
-            <input type = "button" class = "styled_res" id = "buttonResetMap"        value = "Reset Map"               onclick="SaveLoadBrowser.resetMapInBrowser()" /> 
-            <input type = "button" class = "styled_off" id = "buttonSaveMapServ"     value = "Save Map in Server"      onclick="SaveLoadServer.saveInServer()" />    
-            <input type = "button" class = "styled_off" id = "buttonLoadMapServ"     value = "Load Map from Server"    onclick="SaveLoadServer.loadFromServer()" /> <br>
+			<input type = "button" class = "styled"     id = "buttonSaveMapBr"       value = "Save Map in Browser"     onclick="MapsEditor.saveInBrowserE()" />  
+            <input type = "button" class = "styled"     id = "buttonLoadMapBr"       value = "Load Map from Browser"   onclick="MapsEditor.loadFromBrowserE()" /> 
+            <input type = "button" class = "styled_res" id = "buttonResetMap"        value = "Reset Map"               onclick="MapsEditor.resetMapInBrowserE()" /> 
+            <input type = "button" class = "styled_off" id = "buttonSaveMapServ"     value = "Save Map in Server"      onclick="MapsEditor.saveInServerE()" />    
+            <input type = "button" class = "styled_off" id = "buttonLoadMapServ"     value = "Load Map from Server"    onclick="MapsEditor.loadFromServerE()" /> <br>
             <input type = "text"                        id = "st_map_save_in_server" value = "Размер записанной карты" name = "st_map_save_in_server"> 
             <input type = "text"                        id = "nameUserMap"                name = "nameUserMap" 
             required size = "50"      placeholder = "enter name map saving in server(имя записываемой карты)" 
@@ -99,15 +99,21 @@
         </canvas>
 
         <!-- Scripts --> 
-        <script src = '_DD_Scripts_js/DD_HTML5_Canvas.js'>         </script> <!-- 1 -->
-        <script src = '_DD_Scripts_js/DD_HTML5_SpritesMaps.js'>    </script> <!-- 2 -->  
-        <script src = '_DD_Scripts_js/DD_Map.js'>                  </script> <!-- 3 -->  
-        <script src = '_DD_Scripts_js/DD_Resourse.js'>             </script> <!-- 4 -->  
-        <script src = '_DD_Scripts_js/DD_SaveLoadInBrowser.js'>    </script> <!-- 5 -->   
-        <script src = '_DD_Scripts_js/DD_SaveLoadInServer.js'>     </script> <!-- 6 -->
-        <script src = '_DD_Scripts_js/DD_UserInputMouse.js'>       </script> <!-- 7 -->
-        <script src = '_DD_Scripts_js/DD_UserInputKey.js'>         </script> <!-- 8 -->
-        <script src = '_DD_Scripts_js/DD_MapsEditor.js'>           </script> <!-- 9 -->
+        <script src = 'DD_Scripts_js/DD_HTML5_Canvas.js'>         </script> <!-- 1 -->
+        <script src = 'DD_Scripts_js/DD_HTML5_SpritesMaps.js'>    </script> <!-- 2 -->  
+        <script src = 'DD_Scripts_js/DD_Map.js'>                  </script> <!-- 3 -->  
+
+        <script src = 'DD_Scripts_js/DD_SaveInBrowser.js'>        </script> <!-- 4 --> 
+        <script src = 'DD_Scripts_js/DD_LoadFromBrowser.js'>      </script> <!-- 5 --> 
+        <script src = 'DD_Scripts_js/DD_LoadFromScripts.js'>      </script> <!-- 6 --> 
+
+        <script src = 'DD_Scripts_js/DD_SaveInServer.js'>         </script> <!-- 7 -->  
+        <script src = 'DD_Scripts_js/DD_LoadFromServer.js'>       </script> <!-- 8 -->
+
+
+        <script src = 'DD_Scripts_js/DD_UserInputMouse.js'>       </script> <!-- 9 -->
+        <script src = 'DD_Scripts_js/DD_UserInputKey.js'>         </script> <!-- 10 -->
+        <script src = 'DD_Scripts_js/DD_MapsEditor.js'>           </script> <!-- 11 -->
         
         
     </body>
