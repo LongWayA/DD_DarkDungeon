@@ -92,7 +92,7 @@ DD.tick = function() {
  DD.test = function(){
 
   console.log('DD.test');
-  //var dataURL = HTML5_Canvas.Id.toDataURL("image/png");
+  //let dataURL = HTML5_Canvas.Id.toDataURL("image/png");
   //console.log('DD_Client.js: dataURL =' + dataURL);
   
   };

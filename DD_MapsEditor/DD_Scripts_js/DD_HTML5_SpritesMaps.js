@@ -73,7 +73,7 @@ window.SpritesMap = {};
   //============================================================================
   SpritesMap.getHeightSprite = function(_type, _index) {
 
-      var height = SpritesMap.tilesLoad[_type][_index].tile_Image.height;
+      let height = SpritesMap.tilesLoad[_type][_index].tile_Image.height;
       return height;
   };
   //============================================================================
@@ -82,7 +82,7 @@ window.SpritesMap = {};
   //============================================================================
   SpritesMap.getWidthSprite = function(_type, _index) {
 
-      var width = SpritesMap.tilesLoad[_type][_index].tile_Image.width;
+      let width = SpritesMap.tilesLoad[_type][_index].tile_Image.width;
       return width;
   };
   //============================================================================
@@ -91,8 +91,8 @@ window.SpritesMap = {};
   //============================================================================
   SpritesMap.getLeftSprite = function(_type, _index, _middle) {
 
-      var width = SpritesMap.tilesLoad[_type][_index].tile_Image.width;
-      var left = _middle - width/2;
+      let width = SpritesMap.tilesLoad[_type][_index].tile_Image.width;
+      let left = _middle - width/2;
       return left;
   };
   //============================================================================
@@ -105,13 +105,13 @@ window.SpritesMap = {};
     //HTML5_Canvas.context.clearRect(0, 0, HTML5_Canvas.Id.width, HTML5_Canvas.Id.height);
     //console.log(" HTML5_Canvas.Id.width = " + HTML5_Canvas.Id.width + " HTML5_Canvas.Id.height = " +HTML5_Canvas.Id.height);
 
-         var height =SpritesMap.tilesLoad[_type][_index].tile_Image.height;
-         var width = SpritesMap.tilesLoad[_type][_index].tile_Image.width;
+         let height =SpritesMap.tilesLoad[_type][_index].tile_Image.height;
+         let width = SpritesMap.tilesLoad[_type][_index].tile_Image.width;
 
          //console.log(" width = " + width + " height = " + height);
 
-         var top = _bottom - height;
-         var left = _middle - width/2;
+         let top = _bottom - height;
+         let left = _middle - width/2;
          
          HTML5_Canvas.Image.drawImageG(SpritesMap.tilesLoad[_type][_index].tile_Image, left, top);
          //HTML5_Canvas.Image.drawImageG(SpritesMap.spritesSheeva_mk3_img[_type][_index].tile_Image, 100, 100, 100, 100);
@@ -134,11 +134,11 @@ window.SpritesMap = {};
   //============================================================================
   SpritesMap.drawSpriteMirror = function(_type, _index, _middle, _bottom,) {
 
-         var height = SpritesMap.tilesLoad[_type][_index].tile_Image.height;
-         var width = SpritesMap.tilesLoad[_type][_index].tile_Image.width;
-         var top = _bottom - height;
-         var left = _middle - width/2;
-         var right = left + width;
+        let height = SpritesMap.tilesLoad[_type][_index].tile_Image.height;
+        let width = SpritesMap.tilesLoad[_type][_index].tile_Image.width;
+        let top = _bottom - height;
+        let left = _middle - width/2;
+        let right = left + width;
 
          HTML5_Canvas.context.scale(-1, 1);
          HTML5_Canvas.Image.drawImageG(SpritesMap.tilesLoad[_type][_index].tile_Image, -right, top);
@@ -162,12 +162,12 @@ window.SpritesMap = {};
   //============================================================================
   SpritesMap.iniSprite = function(_type,_path){
 
-    var length = SpritesMap.tilesLoad[_type].length
+    let length = SpritesMap.tilesLoad[_type].length
 
     //console.log(" _type = " + _type + " _path = " + _path);
     //console.log(" length = " + length);
 
-        for(var i = 1; i < length; i++ ){
+        for(let i = 1; i < length; i++ ){
           SpritesMap.tilesLoad[_type][i]= new Tile_for_load_Image_C();
           SpritesMap.tilesLoad[_type][i].tile_Image= new Image();
           SpritesMap.tilesLoad[_type][i].tile_Image.src = _path + i + ".png";

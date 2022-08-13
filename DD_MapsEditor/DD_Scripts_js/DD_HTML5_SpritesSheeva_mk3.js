@@ -120,7 +120,7 @@ window.Sprites = {};
   //============================================================================
   Sprites.getHeightSprite = function(_type, _index) {
 
-      var height = Sprites.spritesSheeva_mk3_img[_type][_index].height;
+      let height = Sprites.spritesSheeva_mk3_img[_type][_index].height;
       return height;
   };
   //============================================================================
@@ -129,7 +129,7 @@ window.Sprites = {};
   //============================================================================
   Sprites.getWidthSprite = function(_type, _index) {
 
-      var width = Sprites.spritesSheeva_mk3_img[_type][_index].width;
+      let width = Sprites.spritesSheeva_mk3_img[_type][_index].width;
       return width;
   };
   //============================================================================
@@ -138,8 +138,8 @@ window.Sprites = {};
   //============================================================================
   Sprites.getLeftSprite = function(_type, _index, _middle) {
 
-      var width = Sprites.spritesSheeva_mk3_img[_type][_index].width;
-      var left = _middle - width/2;
+      let width = Sprites.spritesSheeva_mk3_img[_type][_index].width;
+      let left = _middle - width/2;
       return left;
   };
   //============================================================================
@@ -152,13 +152,13 @@ window.Sprites = {};
     //HTML5_Canvas.context.clearRect(0, 0, HTML5_Canvas.Id.width, HTML5_Canvas.Id.height);
     //console.log(" HTML5_Canvas.Id.width = " + HTML5_Canvas.Id.width + " HTML5_Canvas.Id.height = " +HTML5_Canvas.Id.height);
 
-         var height =Sprites.spritesSheeva_mk3_img[_type][_index].height;
-         var width = Sprites.spritesSheeva_mk3_img[_type][_index].width;
+         let height =Sprites.spritesSheeva_mk3_img[_type][_index].height;
+         let width = Sprites.spritesSheeva_mk3_img[_type][_index].width;
 
          //console.log(" width = " + width + " height = " + height);
 
-         var top = _bottom - height;
-         var left = _middle - width/2;
+         let top = _bottom - height;
+         let left = _middle - width/2;
          
          HTML5_Canvas.Image.drawImageG(Sprites.spritesSheeva_mk3_img[_type][_index], left, top);
          //HTML5_Canvas.Image.drawImageG(Sprites.spritesSheeva_mk3_img[_type][_index], 100, 100, 100, 100);
@@ -181,11 +181,11 @@ window.Sprites = {};
   //============================================================================
   Sprites.drawSpriteMirror = function(_type, _index, _middle, _bottom,) {
 
-         var height = Sprites.spritesSheeva_mk3_img[_type][_index].height;
-         var width = Sprites.spritesSheeva_mk3_img[_type][_index].width;
-         var top = _bottom - height;
-         var left = _middle - width/2;
-         var right = left + width;
+         let height = Sprites.spritesSheeva_mk3_img[_type][_index].height;
+         let width = Sprites.spritesSheeva_mk3_img[_type][_index].width;
+         let top = _bottom - height;
+         let left = _middle - width/2;
+         let right = left + width;
 
          HTML5_Canvas.context.scale(-1, 1);
          HTML5_Canvas.Image.drawImageG(Sprites.spritesSheeva_mk3_img[_type][_index], -right, top);
@@ -209,12 +209,12 @@ window.Sprites = {};
   //============================================================================
   Sprites.iniSprite = function(_type,_path){
 
-    var length = Sprites.spritesSheeva_mk3_img[_type].length
+    let length = Sprites.spritesSheeva_mk3_img[_type].length
 
     //console.log(" _type = " + _type + " _path = " + _path);
     //console.log(" length = " + length);
 
-        for(var i = 1; i < length; i++ ){
+        for(let i = 1; i < length; i++ ){
            Sprites.spritesSheeva_mk3_img[_type][i] = new Image();
            Sprites.spritesSheeva_mk3_img[_type][i].src = _path + i + ".png";
            Sprites.spritesSheeva_mk3_path[_type][i] = _path + i + ".png";

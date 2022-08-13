@@ -36,7 +36,7 @@ shadowOffsetY – задание отступа и shadowBlur – задание
 
 ----------------
 
-var text = context.measureText("Hello"); "22px Verdana"
+let text = context.measureText("Hello"); "22px Verdana"
 '15px Verdana' '25px Arial' '20px Comic Sans MS'
 
 ----------------
@@ -149,7 +149,7 @@ HTML5_Canvas.ini_HTML5_Canvas = function(){
 //============================================================================
 HTML5_Canvas.setColor = function(color) {
 
-  var style;
+  let style;
 
   switch(color){
 
