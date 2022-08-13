@@ -11,7 +11,7 @@
     
     <body>
  
-        <h1 class = "w"> <img src="image/DD_Map/monsters/mons_1.png" alt = "g"> DD_MapsEditor (в разработке) <img src="image/DD_Map/monsters/mons_1.png" alt = "g"></h1>
+        <h1 class = "w" > <img src="image/DD_Map/monsters/mons_1.png" alt = "g"> DD_MapsEditor (в разработке) <img src="image/DD_Map/monsters/mons_1.png" alt = "g"></h1>
         <h4 class = "w"> Последнее изменение <time datetime = "2022-08-13">13.08.22</time> </h4>
 
         <a href="http://alphagameset.xyz/" class = "st7" title="Главный сайт со всеми работами "> На главную </a>
@@ -29,7 +29,7 @@
 
             if(window.itIsONLINE){
                     // 1. Создаём новый объект XMLHttpRequest
-                    var xhr = new XMLHttpRequest();
+                    let xhr = new XMLHttpRequest();
 
                     // 2. Конфигурируем его: GET-запрос на URL
                     xhr.open('GET','http://alphagameset.xyz/0_0_SQL_base/CountRequestsGet.php/?name=requests_dd', false);
@@ -73,8 +73,8 @@
                 Click to open List loading maps.(Кликнуть чтобы получить список записанных карт.)
                 Границы окна можно двигать.
             </textarea><br>
-            <input type = "checkbox" name ="drawGrounds" id = "checkbox_drawGrounds" checked >drawGrounds _
-            <input type = "checkbox" name ="drawItems" id = "checkbox_drawItems" checked >drawItems _
+            <input type = "checkbox" name ="drawGrounds"  id = "checkbox_drawGrounds"  checked >drawGrounds _
+            <input type = "checkbox" name ="drawItems"    id = "checkbox_drawItems"    checked >drawItems _
             <input type = "checkbox" name ="drawMonsters" id = "checkbox_drawMonsters" checked >drawMonsters<br>
         </div>
 
@@ -83,12 +83,12 @@
             //document.getElementById("storyLoadingMaps").value = " ";select()readonly
 
             if(! window.itIsONLINE) { 
-                document.getElementById("buttonSaveMapServ").disabled = true;
-                document.getElementById("buttonLoadMapServ").disabled = true;
-                document.getElementById("st_map_save_in_server").disabled = true;
-                document.getElementById("nameUserMap").disabled = true;
+                document.getElementById("buttonSaveMapServ").disabled        = true;
+                document.getElementById("buttonLoadMapServ").disabled        = true;
+                document.getElementById("st_map_save_in_server").disabled    = true;
+                document.getElementById("nameUserMap").disabled              = true;
                 document.getElementById("nameMapLoadingFromServer").disabled = true;
-                document.getElementById("storyLoadingMaps").disabled = true;
+                document.getElementById("storyLoadingMaps").disabled         = true;
             } 
         </script>
 

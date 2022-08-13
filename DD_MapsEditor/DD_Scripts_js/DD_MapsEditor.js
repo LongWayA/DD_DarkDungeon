@@ -69,6 +69,7 @@ MapsEditor.loadFromServerE = function(){
 
 //=============================================================================
 MapsEditor.ini = function(){
+//console.log('MapsEditor.ini');
 
   //----------------------------
   MapsEditor.storyLoadingMapsJ = document.getElementById("storyLoadingMaps");
@@ -81,12 +82,7 @@ MapsEditor.ini = function(){
   MapsEditor.checkbox_drawMonsters = document.getElementById("checkbox_drawMonsters");
   MapsEditor.checkbox_drawMonsters.addEventListener("click", MapsEditor.drawMap_by_checkboxMonsters, false);//click  input
 
-  //console.log('MapsEditor.ini');
   SpritesMap.loadAllSprite();
-
-  
-  //R.UserInputKey.ini();
-
 };
 //=============================================================================
 

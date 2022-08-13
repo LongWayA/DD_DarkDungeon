@@ -14,9 +14,6 @@
    
   */
 
-
-
-
 window.MapFrameDraw = {};
   MapFrameDraw.isOk = " ";//
 
@@ -25,11 +22,11 @@ window.MapFrameDraw = {};
   //============================================================================
   MapFrameDraw.drawMap = function(_left, _top, log = false) {
 
-    let tipeTiles = 1;
-    let G_char_L = " ";
-    let I_char_L = " ";
-    let M_char_L = " ";
-    let imageK = "";
+    let tipeTiles = 1  ;// сюда перезаписываем номер нужного тайла и потом отрисовывается тайл. и так для всех слоев
+    let G_char_L  = " ";// сюда перезаписываем символ нужного тайла для земли
+    let I_char_L  = " ";// сюда перезаписываем символ нужного тайла для предметов
+    let M_char_L  = " ";// сюда перезаписываем символ нужного тайла для монстров
+    let imageK    = " ";// сюда перезаписываем картинку тайла которую хотим нарисовать
 
     //HTML5_Canvas.context.clearRect(_left, _top, HTML5_Canvas.Id.width, HTML5_Canvas.Id.height);
     HTML5_Canvas.context.clearRect(_left, _top, Map.widthMax_px, Map.heightMax_px);
@@ -44,10 +41,6 @@ window.MapFrameDraw = {};
         
         if(log == true)  console.log('m ' + i + ' ' + j + ' G_char_L = ' + G_char_L);
 
-        //console.log("G_char_L = " + G_char_L);
-        //console.log("tipeTiles = " + tipeTiles);
-
-
         imageK = SpritesMap.tilesLoad[SpritesMap.GROUNDS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
 
         if(EditorFrameDraw.checkbox_drawGrounds_checked == true){
@@ -55,7 +48,7 @@ window.MapFrameDraw = {};
           HTML5_Canvas.Image.drawImageG(imageK, i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height);
         }
          // рисуем символ соответствующий тайлу
-         HTML5_Canvas.context.strokeText (Map.MapArrayTile_2d[i][j].G_char, i * Map.tile.width + _left, j * Map.tile.height + _top + 10);//
+         //HTML5_Canvas.context.strokeText (Map.MapArrayTile_2d[i][j].G_char, i * Map.tile.width + _left, j * Map.tile.height + _top + 10);//
 
         //
         HTML5_Canvas.Primitive.drawRect(i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height, 1, 'blue', 0);

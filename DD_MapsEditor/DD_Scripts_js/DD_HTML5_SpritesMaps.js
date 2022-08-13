@@ -59,13 +59,13 @@ window.SpritesMap = {};
   SpritesMap.tilesLoad[SpritesMap.MONSTERS]   = new Array(SpritesMap.MONSTERS_MAX_COUNT);
 
   // коллекции Map (по символу выдает номер тайла в массиве)
-  SpritesMap.GroundsMapChars = new Map();// для GROUNDS
-  SpritesMap.ItemsMapChars = new Map();// для ITEMS
-  SpritesMap.MonstersMapChars = new Map();// для MONSTERS
+  SpritesMap.GroundsMapChars   = new Map();// для GROUNDS
+  SpritesMap.ItemsMapChars     = new Map();// для ITEMS
+  SpritesMap.MonstersMapChars  = new Map();// для MONSTERS
 
   // коллекции Map (по символу выдает имя тайла)
-  SpritesMap.GroundsMapString = new Map();// для GROUNDS
-  SpritesMap.ItemsMapString = new Map();// для ITEMS
+  SpritesMap.GroundsMapString  = new Map();// для GROUNDS
+  SpritesMap.ItemsMapString    = new Map();// для ITEMS
   SpritesMap.MonstersMapString = new Map();// для MONSTERS
 
 
@@ -167,7 +167,7 @@ window.SpritesMap = {};
     //console.log(" _type = " + _type + " _path = " + _path);
     //console.log(" length = " + length);
 
-        for(let i = 1; i < length; i++ ){
+        for(let i = 0; i < length; i++ ){
           SpritesMap.tilesLoad[_type][i]= new Tile_for_load_Image_C();
           SpritesMap.tilesLoad[_type][i].tile_Image= new Image();
           SpritesMap.tilesLoad[_type][i].tile_Image.src = _path + i + ".png";
@@ -184,6 +184,7 @@ window.SpritesMap = {};
 ///////////////////////////////////////////////////////////////////
     //GROUNDS
     // так кодируются тайлы для слоя земли
+    SpritesMap.GROUND_NOTHING  = "-";//0
     SpritesMap.GROUND_STONE    = "a";//1
     SpritesMap.GROUND_WATER    = "b";//2
     SpritesMap.GROUND_EARTH    = "c";//3
@@ -193,6 +194,7 @@ window.SpritesMap = {};
     SpritesMap.GROUND_NUGGETS  = "g";//7
 
     // коллекция по кодирующим символам номера тайлов в массиве  для слоя земли
+    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_NOTHING, 0);
     SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_STONE, 1);
     SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_WATER, 2);
     SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_EARTH, 3);
@@ -202,6 +204,7 @@ window.SpritesMap = {};
     SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_NUGGETS, 7);
 
     //массив по номерам тайлов их кодирующий символ для слоя земли
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][0].tile_char = SpritesMap.GROUND_NOTHING;// пустая область
     SpritesMap.tilesLoad[SpritesMap.GROUNDS][1].tile_char = SpritesMap.GROUND_STONE;  //1_ground_stone    камень
     SpritesMap.tilesLoad[SpritesMap.GROUNDS][2].tile_char = SpritesMap.GROUND_WATER;  //2_ground_water    вода
     SpritesMap.tilesLoad[SpritesMap.GROUNDS][3].tile_char = SpritesMap.GROUND_EARTH;  //3_ground_earth    земля-песок
@@ -211,6 +214,7 @@ window.SpritesMap = {};
     SpritesMap.tilesLoad[SpritesMap.GROUNDS][7].tile_char = SpritesMap.GROUND_NUGGETS;//7_ground_nuggets  земля-золото
 
     // массив по номерам тайлов  имена тайлов для слоя земли
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][0].tile_String = "nothing(пустая область)";  //
     SpritesMap.tilesLoad[SpritesMap.GROUNDS][1].tile_String = "stone(камень)";  //1_ground_stone    камень
     SpritesMap.tilesLoad[SpritesMap.GROUNDS][2].tile_String = "water(вода)";  //2_ground_water    вода
     SpritesMap.tilesLoad[SpritesMap.GROUNDS][3].tile_String = "earth(земля)";  //3_ground_earth    земля-песок
@@ -220,6 +224,7 @@ window.SpritesMap = {};
     SpritesMap.tilesLoad[SpritesMap.GROUNDS][7].tile_String = "nuggets(золото)";//7_ground_nuggets  земля-золото
 
     // коллекция по кодирующим символам  имена тайлов для слоя земли
+    SpritesMap.GroundsMapString.set(SpritesMap.NOTHING, "nothing(пустая область)");
     SpritesMap.GroundsMapString.set(SpritesMap.GROUND_STONE, "stone(камень)");
     SpritesMap.GroundsMapString.set(SpritesMap.GROUND_WATER, "water(вода)");
     SpritesMap.GroundsMapString.set(SpritesMap.GROUND_EARTH, "earth(земля)");
@@ -245,6 +250,7 @@ window.SpritesMap = {};
 ///////////////////////////////////////////////////////////////////
     //ITEMS
     // так кодируются тайлы для слоя предметов
+    SpritesMap.ITEMS_NOTHING     = "-";//0
     SpritesMap.ITEMS_RING        = "a";//1
     SpritesMap.ITEMS_SWORD_1     = "b";//2
     SpritesMap.ITEMS_SWORD_2     = "c";//3
@@ -266,6 +272,7 @@ window.SpritesMap = {};
     SpritesMap.ITEMS_DOOR        = "s";//19
 
     // коллекция по кодирующим символам номера тайлов в массиве  для слоя предметов
+    SpritesMap.ItemsMapChars.set(SpritesMap.ITEMS_NOTHING,  0);
     SpritesMap.ItemsMapChars.set(SpritesMap.ITEMS_RING,     1);
     SpritesMap.ItemsMapChars.set(SpritesMap.ITEMS_SWORD_1,  2);
     SpritesMap.ItemsMapChars.set(SpritesMap.ITEMS_SWORD_2,  3);
@@ -287,6 +294,7 @@ window.SpritesMap = {};
     SpritesMap.ItemsMapChars.set(SpritesMap.ITEMS_DOOR,     19);
 
     //массив по номерам тайлов их кодирующий символ для слоя предметов
+    SpritesMap.tilesLoad[SpritesMap.ITEMS][0].tile_char  = SpritesMap.ITEMS_NOTHING;  // пустая область
     SpritesMap.tilesLoad[SpritesMap.ITEMS][1].tile_char  = SpritesMap.ITEMS_RING;  //1-1_item_ring    кольцо
     SpritesMap.tilesLoad[SpritesMap.ITEMS][2].tile_char  = SpritesMap.ITEMS_SWORD_1;  //2-2_item_sword   первый меч
     SpritesMap.tilesLoad[SpritesMap.ITEMS][3].tile_char  = SpritesMap.ITEMS_SWORD_2;  //3-2_item_sword2  второй меч
@@ -308,6 +316,7 @@ window.SpritesMap = {};
     SpritesMap.tilesLoad[SpritesMap.ITEMS][19].tile_char = SpritesMap.ITEMS_DOOR;  //19-7_item_door    дверь
 
     //массив по номерам тайлов их название для слоя предметов
+    SpritesMap.tilesLoad[SpritesMap.ITEMS][0].tile_String  = "nothing(пустая область)";  //nothing(пустая область)
     SpritesMap.tilesLoad[SpritesMap.ITEMS][1].tile_String  = "ring(кольцо)";  //1-1_item_ring    кольцо
     SpritesMap.tilesLoad[SpritesMap.ITEMS][2].tile_String  = "sword(первый меч)";  //2-2_item_sword   первый меч
     SpritesMap.tilesLoad[SpritesMap.ITEMS][3].tile_String  = "sword2(второй меч)";  //3-2_item_sword2  второй меч
@@ -329,6 +338,7 @@ window.SpritesMap = {};
     SpritesMap.tilesLoad[SpritesMap.ITEMS][19].tile_String = "door(дверь)";  //19-7_item_door    дверь
 
     // коллекция по именам тайлов для слоя предметов
+    SpritesMap.ItemsMapString.set(SpritesMap.ITEMS_NOTHING,  "nothing(пустая область)");
     SpritesMap.ItemsMapString.set(SpritesMap.ITEMS_RING,     "ring(кольцо)");
     SpritesMap.ItemsMapString.set(SpritesMap.ITEMS_SWORD_1,  "sword(первый меч)");
     SpritesMap.ItemsMapString.set(SpritesMap.ITEMS_SWORD_2,  "sword2(второй меч)");
@@ -364,6 +374,7 @@ window.SpritesMap = {};
 ///////////////////////////////////////////////////////////////////
     //MONSTERS
     // так кодируются тайлы для слоя монстров
+    SpritesMap.MONSTERS_NOTHING  = "-";//0
     SpritesMap.MONSTERS_GHOST    = "a";//1
     SpritesMap.MONSTERS_DRAGON   = "b";//2
     SpritesMap.MONSTERS_GOBLIN   = "c";//3
@@ -380,6 +391,7 @@ window.SpritesMap = {};
     SpritesMap.MONSTERS_TITAN    = "n";//14
 
     // коллекция по кодирующим символам номера тайлов в массиве  для слоя монстров
+    SpritesMap.MonstersMapChars.set(SpritesMap.MONSTERS_NOTHING,  0 );
     SpritesMap.MonstersMapChars.set(SpritesMap.MONSTERS_GHOST,    1 );
     SpritesMap.MonstersMapChars.set(SpritesMap.MONSTERS_DRAGON,   2 );
     SpritesMap.MonstersMapChars.set(SpritesMap.MONSTERS_GOBLIN,   3 );
@@ -396,6 +408,7 @@ window.SpritesMap = {};
     SpritesMap.MonstersMapChars.set(SpritesMap.MONSTERS_TITAN,    14);
 
     //массив по номерам тайлов их кодирующий символ для слоя монстров
+    SpritesMap.tilesLoad[SpritesMap.MONSTERS][0].tile_char  = SpritesMap.MONSTERS_NOTHING;  //nothing(пустая область)
     SpritesMap.tilesLoad[SpritesMap.MONSTERS][1].tile_char  = SpritesMap.MONSTERS_GHOST;    //1_monster_ghost     привидение
     SpritesMap.tilesLoad[SpritesMap.MONSTERS][2].tile_char  = SpritesMap.MONSTERS_DRAGON;   //2_monster_dragon    дракон
     SpritesMap.tilesLoad[SpritesMap.MONSTERS][3].tile_char  = SpritesMap.MONSTERS_GOBLIN;   //3_monster_goblin    гоблин
@@ -417,6 +430,7 @@ window.SpritesMap = {};
     //this.tile_String = " " ;//содержит название картинки
 
     //массив по номерам тайлов их название для слоя монстров
+    SpritesMap.tilesLoad[SpritesMap.MONSTERS][0].tile_String  = "nothing(пустая область)";    //nothing(пустая область)
     SpritesMap.tilesLoad[SpritesMap.MONSTERS][1].tile_String  = "ghost(привидение)";    //1_monster_ghost     привидение
     SpritesMap.tilesLoad[SpritesMap.MONSTERS][2].tile_String  = "dragon(дракон)";   //2_monster_dragon    дракон
     SpritesMap.tilesLoad[SpritesMap.MONSTERS][3].tile_String  = "goblin(гоблин)";   //3_monster_goblin    гоблин
@@ -434,6 +448,7 @@ window.SpritesMap = {};
 
 
  // коллекция по именам тайлов для слоя монстров
+ SpritesMap.MonstersMapString.set(SpritesMap.MONSTERS_NOTHING,"nothing(пустая область)");
  SpritesMap.MonstersMapString.set(SpritesMap.MONSTERS_GHOST,"ghost(привидение)");
  SpritesMap.MonstersMapString.set(SpritesMap.MONSTERS_DRAGON,"dragon(дракон)");
  SpritesMap.MonstersMapString.set(SpritesMap.MONSTERS_GOBLIN,"goblin(гоблин)");

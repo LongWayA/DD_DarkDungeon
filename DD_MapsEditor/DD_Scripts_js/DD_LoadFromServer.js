@@ -84,7 +84,7 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
     // заполним FormData данными из формы
     let formData = new FormData();
     let nameUserMap = document.getElementById('nameMapLoadingFromServer');
-    let nameUserMapValue = "testItems_165996122574092100.map";
+    let nameUserMapValue = "TEST_166039968012318800.map";
     
     if(nameUserMap.value != "") {
       nameUserMapValue = nameUserMap.value;

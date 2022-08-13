@@ -47,12 +47,12 @@ window.TilesFrameDraw = {};
 /////////////////////////////////////////////////////////////////
     
     // отображаем файлы уровня земля
-    for (let j = 1; j < SpritesMap.GROUNDS_MAX_COUNT; j++) {
+    for (let j = 0; j < SpritesMap.GROUNDS_MAX_COUNT; j++) {
       
       // выбираем очередной тайл для изображения
       imageK = SpritesMap.tilesLoad[SpritesMap.GROUNDS][j].tile_Image;
 
-      j_1 = j-1;// что бы первая координата была 0 а не с добавкой размера тайла. Записал через черточку для заметности
+      j_1 = j;// что бы первая координата была 0 а не с добавкой размера тайла. Записал через черточку для заметности
 
       //
       HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + TilesFrameDraw.drawSelectTilesG_X0, TilesFrameDraw.drawSelectTilesG_Y0, Map.tile.width, Map.tile.height);
@@ -73,12 +73,12 @@ window.TilesFrameDraw = {};
     //console.log("Map.drawSelectTilesI_Y0 =" + Map.drawSelectTilesI_Y0);
 
     // отображаем файлы уровня предметы
-    for (let j = 1; j < SpritesMap.ITEMS_MAX_COUNT; j++) {
+    for (let j = 0; j < SpritesMap.ITEMS_MAX_COUNT; j++) {
 
       // выбираем очередной тайл для изображения
       imageK = SpritesMap.tilesLoad[SpritesMap.ITEMS][j].tile_Image;
 
-      j_1 = j-1;// что бы первая координата была 0 а не с добавкой размера тайла. Записал через черточку для заметности
+      j_1 = j;// что бы первая координата была 0 а не с добавкой размера тайла. Записал через черточку для заметности
 
       //
       HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + TilesFrameDraw.drawSelectTilesI_X0, TilesFrameDraw.drawSelectTilesI_Y0, Map.tile.width, Map.tile.height);
@@ -96,11 +96,11 @@ window.TilesFrameDraw = {};
     
     //console.log("Map.drawSelectTilesM_Y0 =" + Map.drawSelectTilesM_Y0);
 
-    for (let j = 1; j < SpritesMap.MONSTERS_MAX_COUNT; j++) {
+    for (let j = 0; j < SpritesMap.MONSTERS_MAX_COUNT; j++) {
       
       imageK = SpritesMap.tilesLoad[SpritesMap.MONSTERS][j].tile_Image;
 
-      j_1 = j-1;
+      j_1 = j;
 
       HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + TilesFrameDraw.drawSelectTilesM_X0, TilesFrameDraw.drawSelectTilesM_Y0, Map.tile.width, Map.tile.height);
 

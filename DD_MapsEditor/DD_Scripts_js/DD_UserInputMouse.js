@@ -174,13 +174,14 @@ UserInputMouse.clikMapGetTile = function(_X, _Y, _layer) {
     // Map.drawMap(0,0);
     // Map.drawSelectTiles(0);
      let maxCount = 0;
-     let X0_dro = 1; 
+     let X0_dro = 1; //
      let Y0_dro = 1;
      let typeLayer ="";
      let trueLayer = false;
      X0_dro =  TilesFrameDraw.drawSelectTilesG_X0; 
 
-     let clikMapGet_X = Math.ceil( (_X+X0_dro) / Map.tile.width);// округление до наибольшего целого
+     //let clikMapGet_X = Math.ceil( (_X+X0_dro) / Map.tile.width);// округление до наибольшего целого
+     let clikMapGet_X = Math.ceil( (_X) / Map.tile.width);// округление до наибольшего целого
 
      if (_layer == "GROUND"){
           //console.log("DD_UserInputMouse.js: _layer == GROUND ");
@@ -216,7 +217,7 @@ UserInputMouse.clikMapGetTile = function(_X, _Y, _layer) {
          // console.log("DD_UserInputMouse.js:clikMapGet_X = " + clikMapGet_X); 
          // console.log("DD_UserInputMouse.js:Map.tile.width = " + Map.tile.width);
 
-          if (clikMapGet_X < maxCount) {
+          if (clikMapGet_X < maxCount + 1) {
                     
                EditorFrameDraw.drowFrameTilesP();
                UserInputMouse.selectedLayer = _layer;
@@ -225,8 +226,8 @@ UserInputMouse.clikMapGetTile = function(_X, _Y, _layer) {
 
                HTML5_Canvas.Primitive.drawRect(j * Map.tile.width +X0_dro, Y0_dro, Map.tile.width, Map.tile.height, 2, 'red', 0);
 
-               UserInputMouse.clikMapGetChar = SpritesMap.tilesLoad[typeLayer][clikMapGet_X].tile_char;
-
+               UserInputMouse.clikMapGetChar = SpritesMap.tilesLoad[typeLayer][j].tile_char;
+               //console.log("DD_UserInputMouse.js:clikMapGet_X = " + clikMapGet_X);
                //console.log("DD_UserInputMouse.js:j = " + j );
                //console.log("DD_UserInputMouse.js:j * Map.tile.width +X0_dro = " + j * (Map.tile.width + X0_dro));
 
