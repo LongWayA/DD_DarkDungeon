@@ -81,8 +81,6 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
 // console.log( "DD_LoadFromServer.js: LoadFromServer.loadFromServer ");
 //LoadFromServer.storyLoadingMapsJ.focus();
 
-
-
     // заполним FormData данными из формы
     let formData = new FormData();
     let nameUserMap = document.getElementById('nameMapLoadingFromServer');
@@ -133,7 +131,6 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
 // 
  //=============================================================================
  LoadFromServer.loadListMapsFromServer = function() {
-
 
     // заполним FormData данными из формы
     let formData = new FormData();

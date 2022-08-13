@@ -48,14 +48,20 @@ window.UserInputKey = {};
                                         // в другой конец арены,
                                         // применяется против зажима у края
 
- UserInputKey.eventG = 0; // заносится скан код нажатой клавиши
- UserInputKey.eventG_Old = 0; //
- UserInputKey.eventG_OneDown = 0; //
- UserInputKey.event_key = 0; //
-  //alert("!");
- //UserInputKey.i = 0;
- //UserInputKey.i2 = 0;
 
+     
+//=============================================================================
+UserInputKey.ini_UserInputKey = function(){ 
+
+          UserInputKey.eventG = 0; // заносится скан код нажатой клавиши
+          UserInputKey.eventG_Old = 0; //
+          UserInputKey.eventG_OneDown = 0; //
+          UserInputKey.event_key = 0; //
+          //alert("!");
+          //UserInputKey.i = 0;
+          //UserInputKey.i2 = 0;
+}
+//=============================================================================
 
 // во время нажатия клавиши вызывается эта функция
 // на нажатие реагируем один раз. один раз записываем какую кнопку нажали
@@ -230,6 +236,7 @@ UserInputKey.tick = function(_CommandToFighter_R) {
  };
 //==============================================================================
 
+UserInputKey.ini_UserInputKey();
 
 //==============================================================================
 HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//

@@ -26,6 +26,8 @@ LoadFromScripts.resetMapInBrowser = function() {
 
   //console.log( "DD_LoadFromScripts.js: LoadFromScripts.resetMapInBrowser ");
 
+  LoadFromScripts.ini_ResetMapString();
+
   let saveGrounds  = LoadFromScripts.resetGrounds;
   let saveItems    = LoadFromScripts.resetItems;
   let saveMonsters = LoadFromScripts.resetMonsters;
@@ -64,6 +66,8 @@ LoadFromScripts.resetMapInBrowser = function() {
 
   // console.log( "DD_SaveLoadInBrowser.js: SaveLoadBrowser.LoadInBrowser ");
  
+    LoadFromScripts.ini_DefoltMapString();
+
    let saveGrounds  = LoadFromScripts.savedGrounds;
    let saveItems    = LoadFromScripts.savedItems;
    let saveMonsters = LoadFromScripts.savedMonsters;
@@ -83,6 +87,7 @@ LoadFromScripts.resetMapInBrowser = function() {
      }
      pozChar = pozChar + 1;
    }
+
    EditorFrameDraw.drowFrameMap();
  
    //console.log(saveGrounds);
@@ -96,7 +101,8 @@ LoadFromScripts.resetMapInBrowser = function() {
  };
  //=============================================================================
  
-
+//=============================================================================
+LoadFromScripts.ini_DefoltMapString = function(){
 
 //************************************************
 LoadFromScripts.savedGrounds  = 
@@ -140,6 +146,12 @@ bnnnnnnnnnnnnnnnnnnnnnnb
 bbbbbbbbbbbbbbbbbbbbbbbb`;
 //************************************************
 
+}
+//=============================================================================
+
+
+//=============================================================================
+LoadFromScripts.ini_ResetMapString = function(){
 
 //************************************************
 LoadFromScripts.resetGrounds  = 
@@ -182,7 +194,8 @@ mmmmmmmmmmmmmmmmmmmmmmmm
 mmmmmmmmmmmmmmmmmmmmmmmm
 mmmmmmmmmmmmmmmmmmmmmmmm`;
 //************************************************
-
+}
+//=============================================================================
 
 
 

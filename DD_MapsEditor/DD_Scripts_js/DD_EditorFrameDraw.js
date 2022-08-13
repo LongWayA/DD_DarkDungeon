@@ -21,9 +21,13 @@ window.EditorFrameDraw = {};
   EditorFrameDraw.isOk = " ";//
   EditorFrameDraw.NAME = "EditorFrameDraw";//
 
-  EditorFrameDraw.checkbox_drawGrounds_checked  = true;
-  EditorFrameDraw.checkbox_drawItems_checked    = true;
-  EditorFrameDraw.checkbox_drawMonsters_checked = true;
+  //=============================================================================
+  EditorFrameDraw.ini_EditorFrameDraw = function(){
+    EditorFrameDraw.checkbox_drawGrounds_checked  = true;
+    EditorFrameDraw.checkbox_drawItems_checked    = true;
+    EditorFrameDraw.checkbox_drawMonsters_checked = true;
+  }
+  //=============================================================================
 
 
  //=============================================================================
@@ -51,6 +55,7 @@ window.EditorFrameDraw = {};
 };
 //=============================================================================
 
+EditorFrameDraw.ini_EditorFrameDraw();
 
  //=============================================================================
  HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//

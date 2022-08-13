@@ -115,32 +115,36 @@ strokeStyle = color
   HTML5_Canvas.NAME = "HTML5_Canvas";//
 
 //------------------------------------------------------------------------------------------------------------------
+//=============================================================================
+HTML5_Canvas.ini_HTML5_Canvas = function(){
 
-  // работаем с конвой HTML5
-  HTML5_Canvas.load = 0;//
+      // работаем с конвой HTML5
+      HTML5_Canvas.load = 0;//
 
-  // "2d" создаем объекта CanvasRenderingContext2D,
-  //  представляющий двумерный контекст.
-  HTML5_Canvas.Id = document.getElementById('game-canvas');
-  HTML5_Canvas.context = HTML5_Canvas.Id.getContext('2d');
+      // "2d" создаем объекта CanvasRenderingContext2D,
+      //  представляющий двумерный контекст.
+      HTML5_Canvas.Id = document.getElementById('game-canvas');
+      HTML5_Canvas.context = HTML5_Canvas.Id.getContext('2d');
 
-  // определяем текст для тестового выода информации на экран, а также
-  // когда надо напечатать до того как мы инициализровали текстовый объект
-  HTML5_Canvas.context.fillStyle = '#0000ff';
-  HTML5_Canvas.context.strokeStyle = '#0000ff';
-  HTML5_Canvas.context.font = 'italic 30pt Arial';
-  HTML5_Canvas.context.lineWidth = 1;
+      // определяем текст для тестового выода информации на экран, а также
+      // когда надо напечатать до того как мы инициализровали текстовый объект
+      HTML5_Canvas.context.fillStyle = '#0000ff';
+      HTML5_Canvas.context.strokeStyle = '#0000ff';
+      HTML5_Canvas.context.font = 'italic 30pt Arial';
+      HTML5_Canvas.context.lineWidth = 1;
 
-  // пишем текст до загрузки изображений. потом он закрывается картинкой
-  HTML5_Canvas.context.strokeText ('Привет мой друг! Начнем помаленьку.', 10, 80);//была надпись LOADING RESOURCES
-  HTML5_Canvas.context.strokeText ('Hello my friend! I will start small :)', 10, 130);//была надпись LOADING RESOURCES
+      // пишем текст до загрузки изображений. потом он закрывается картинкой
+      HTML5_Canvas.context.strokeText ('Привет мой друг! Начнем помаленьку.', 10, 80);//была надпись LOADING RESOURCES
+      HTML5_Canvas.context.strokeText ('Hello my friend! I will start small :)', 10, 130);//была надпись LOADING RESOURCES
 
-  // шрифт для тестовой печати на экране
-  HTML5_Canvas.context.font = 'italic 15pt Arial';
+      // шрифт для тестовой печати на экране
+      HTML5_Canvas.context.font = 'italic 15pt Arial';
 
-  //HTML5_Canvas.context.fillText ('LOAD REC', 10, 10);
-  //HTML5_Canvas.context.fillRect( 100, 100, 100, 100);
-  //HTML5_Canvas.context.strokeRect( 10, 10, 100, 100);
+      //HTML5_Canvas.context.fillText ('LOAD REC', 10, 10);
+      //HTML5_Canvas.context.fillRect( 100, 100, 100, 100);
+      //HTML5_Canvas.context.strokeRect( 10, 10, 100, 100);
+}
+//=============================================================================
 
 //============================================================================
 HTML5_Canvas.setColor = function(color) {
@@ -286,7 +290,7 @@ HTML5_Canvas.Image.drawImageG = function(_image, _left, _top, _width = 0, _heigh
       //============================================================================
 
 
-
+      HTML5_Canvas.ini_HTML5_Canvas();
 
  // сообщаем что модуль был прочитан до конца
   //============================================================================

@@ -26,45 +26,50 @@ window.UserInputMouse = {};
 
  UserInputMouse.NAME = "UserInputMouse";//
 
+//=============================================================================
+UserInputMouse.ini_UserInputMouse = function(){
 
-//==============================================================================     
-// Add the event listeners for mousedown, mousemove, and mouseup
-HTML5_Canvas.Id.addEventListener('mousedown', (event) => {
-     //console.log("DD_UserInputMouse.js: mousedown");
+     //-----------------------------------------------------------------------------     
+     // Add the event listeners for mousedown, mousemove, and mouseup
+     HTML5_Canvas.Id.addEventListener('mousedown', (event) => {
+          //console.log("DD_UserInputMouse.js: mousedown");
 
-     let xxx = 350;
-     let yyy = 710
-     HTML5_Canvas.context.clearRect(xxx, yyy-20, 300, 30);
-     HTML5_Canvas.context.strokeText ("mousedown: X=" + event.offsetX, xxx, yyy);
-     HTML5_Canvas.context.strokeText ("Y=" + event.offsetY, xxx + 200, yyy);
+          let xxx = 350;
+          let yyy = 710
+          HTML5_Canvas.context.clearRect(xxx, yyy-20, 300, 30);
+          HTML5_Canvas.context.strokeText ("mousedown: X=" + event.offsetX, xxx, yyy);
+          HTML5_Canvas.context.strokeText ("Y=" + event.offsetY, xxx + 200, yyy);
 
-     UserInputMouse.clik(event.offsetX, event.offsetY);
+          UserInputMouse.clik(event.offsetX, event.offsetY);
 
-});
-//==============================================================================
+     });
+     //----------------------------------------------------------------------------- 
 
-//==============================================================================
-HTML5_Canvas.Id.addEventListener('mousemove', (event) => {
-     //console.log("DD_UserInputMouse.js: mousemove");
-     let xxx = 10;
-     let yyy = 710
-     HTML5_Canvas.context.clearRect(xxx, yyy-20, 300, 30);
-     HTML5_Canvas.context.strokeText ("mousemove: X=" + event.offsetX, xxx, yyy);
-     HTML5_Canvas.context.strokeText ("Y=" + event.offsetY, xxx + 200, yyy);
-     //HTML5_Canvas.Primitive.drawRect(xxx, yyy, 100, 10, 1, 'blue', 0);
-});
-//==============================================================================
+     //----------------------------------------------------------------------------- 
+     HTML5_Canvas.Id.addEventListener('mousemove', (event) => {
+          //console.log("DD_UserInputMouse.js: mousemove");
+          let xxx = 10;
+          let yyy = 710
+          HTML5_Canvas.context.clearRect(xxx, yyy-20, 300, 30);
+          HTML5_Canvas.context.strokeText ("mousemove: X=" + event.offsetX, xxx, yyy);
+          HTML5_Canvas.context.strokeText ("Y=" + event.offsetY, xxx + 200, yyy);
+          //HTML5_Canvas.Primitive.drawRect(xxx, yyy, 100, 10, 1, 'blue', 0);
+     });
+     //----------------------------------------------------------------------------- 
 
-//==============================================================================
-window.addEventListener('mouseup', (event) => {
-     //console.log("_DD_UserInputMouse.js: mouseup");
-     let xxx = 700;
-     let yyy = 710
-     HTML5_Canvas.context.clearRect(xxx, yyy-20, 300, 30);
-     HTML5_Canvas.context.strokeText ("mouseup: X=" + event.offsetX, xxx, yyy);
-     HTML5_Canvas.context.strokeText ("Y=" + event.offsetY, xxx + 200, yyy);
-});
-//==============================================================================
+     //----------------------------------------------------------------------------- 
+     window.addEventListener('mouseup', (event) => {
+          //console.log("_DD_UserInputMouse.js: mouseup");
+          let xxx = 700;
+          let yyy = 710
+          HTML5_Canvas.context.clearRect(xxx, yyy-20, 300, 30);
+          HTML5_Canvas.context.strokeText ("mouseup: X=" + event.offsetX, xxx, yyy);
+          HTML5_Canvas.context.strokeText ("Y=" + event.offsetY, xxx + 200, yyy);
+     });
+     //----------------------------------------------------------------------------- 
+
+}
+//=============================================================================
 
 //
 //==============================================================================
@@ -232,6 +237,9 @@ UserInputMouse.clikMapGetTile = function(_X, _Y, _layer) {
      }
 }
 //==============================================================================
+
+UserInputMouse.ini_UserInputMouse();
+
 
 //==============================================================================
 HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//

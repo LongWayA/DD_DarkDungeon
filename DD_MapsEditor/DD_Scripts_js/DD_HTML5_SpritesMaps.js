@@ -179,21 +179,6 @@ window.SpritesMap = {};
 
   //инициализируем массивы с картинками
   //============================================================================
-  SpritesMap.loadAllSprite = function() {
-      //SpritesMap.iniSprite(SpritesMap.REZERV,"");
-      SpritesMap.iniSprite(SpritesMap.ADVENTURES,"image/DD_Map/adventures/advans_");
-      SpritesMap.iniSprite(SpritesMap.GROUNDS,"image/DD_Map/grounds/gr_");
-      SpritesMap.iniSprite(SpritesMap.ITEMS,"image/DD_Map/items/it_");
-      SpritesMap.iniSprite(SpritesMap.MONSTERS,"image/DD_Map/monsters/mons_");
-
-      
-  };
-  //============================================================================
-
-  
-
-//инициализируем массивы с картинками
-  //============================================================================
   SpritesMap.ini_tiles_char = function() {
 
 ///////////////////////////////////////////////////////////////////
@@ -480,6 +465,18 @@ console.log("DD_HTML5_SpritesMaps.js:SpritesMap.MonstersMapString.get(nameTilesI
 };
 //============================================================================
 
+//инициализируем массивы с картинками
+  //============================================================================
+  SpritesMap.loadAllSprite = function() {
+    //SpritesMap.iniSprite(SpritesMap.REZERV,"");
+    SpritesMap.iniSprite(SpritesMap.ADVENTURES,"image/DD_Map/adventures/advans_");
+    SpritesMap.iniSprite(SpritesMap.GROUNDS,"image/DD_Map/grounds/gr_");
+    SpritesMap.iniSprite(SpritesMap.ITEMS,"image/DD_Map/items/it_");
+    SpritesMap.iniSprite(SpritesMap.MONSTERS,"image/DD_Map/monsters/mons_");
+
+    SpritesMap.ini_tiles_char();
+};
+//============================================================================
 
 //============================================================================
 HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
