@@ -1,12 +1,10 @@
 "use strict";
  // Copyright (c) 2022, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified -06.08.2022-
+ // Last modified -06.08.2022-14.08.2022-
  //
 
   /*
    НАЗНАЧЕНИЕ
-   
-
 
    ИСПОЛЬЗУЕТ МОДУЛИ
 
@@ -24,53 +22,98 @@ LoadFromServer.OKresponse = "";
 //
 LoadFromServer.mapStrigToDraw = function(mapOneString) {
         
-  if(mapOneString !== ""){
+    let saveGrounds  = "";
+    let saveItems    = "";
+    let saveMonsters = "";
+    let saveMapName = "";
 
-      let pozChar = mapOneString.length;
+    if( (mapOneString !== "") && (mapOneString.length > 500) ) {//787
 
-      // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-      for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-          pozChar = pozChar - 2; 
-          for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-              pozChar = pozChar - 1;
-              Map.MapArrayTile_2d[i][j].M_char = mapOneString[pozChar];
-          }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-      }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-
-  //////////////////////////////////////////////////////////// 
-  pozChar = pozChar - 1;
-  
-      // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-      for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-          pozChar = pozChar - 2; 
-          for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-              pozChar = pozChar - 1;
-              Map.MapArrayTile_2d[i][j].I_char = mapOneString[pozChar];
-          }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-      }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-
-  ////////////////////////////////////////////////////////////    
-  pozChar = pozChar - 1;
-  
-      // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-      for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-          pozChar = pozChar - 2; 
-          for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-              pozChar = pozChar - 1;
- 
-              //  if( j > Map.heightMaxTilesCount - 3) {
-              //console.log(' i = ' + i + ' j = ' + j);
-              // console.log(i + ' ' + j + ' mapOneString[' + pozChar +'] = ' + mapOneString[pozChar]);
-              //}//if( j > Map.heightMaxTilesCount - 3) {
-
-              Map.MapArrayTile_2d[i][j].G_char = mapOneString[pozChar];
-  
-          }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
-      }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
-
-        EditorFrameDraw.drowFrameMap(0,0,false);        
+        let pozCharMax = mapOneString.length;
+        let pozChar = 0;
+        // console.log(' pozCharMax = ' + pozCharMax);
+        // console.log(' mapOneString = ' + mapOneString);
         
-  }//if(mapOneString !== ""){
+        //  console.log(' >Grounds '  + '\n');        
+        // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
+        for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
+            for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
+ 
+                //Map.MapArrayTile_2d[i][j].G_char = mapOneString[pozChar];
+                //console.log('g_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
+                saveGrounds = saveGrounds + mapOneString[pozChar];
+                pozChar = pozChar + 1;
+            }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+ 
+            //console.log('**g_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
+            saveGrounds = saveGrounds + mapOneString[pozChar];
+            pozChar = pozChar + 1;
+        }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {        
+
+//////////////////////////////////////////////////////////// 
+  
+        // console.log('g->i_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
+        pozChar = pozChar + 1;
+  
+        // console.log(' >Items '  + '\n');
+        // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
+        for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
+            for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
+                //Map.MapArrayTile_2d[i][j].I_char = mapOneString[pozChar];
+                //console.log('i_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
+                saveItems = saveItems + mapOneString[pozChar];
+                pozChar = pozChar + 1;
+            }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+                     
+            //console.log('**i_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
+            saveItems = saveItems + mapOneString[pozChar];
+            pozChar = pozChar + 1;
+        }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
+
+////////////////////////////////////////////////////////////
+  
+        // console.log('i->m_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
+        pozChar = pozChar + 1;
+   
+        //  console.log(' >Monsters '  + '\n');
+        // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
+        for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
+            for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
+ 
+                //Map.MapArrayTile_2d[i][j].M_char = mapOneString[pozChar];
+                // console.log('m_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
+                saveMonsters = saveMonsters + mapOneString[pozChar];
+                // console.log(' saveMonsters = ' + saveMonsters + '\n');
+                pozChar = pozChar + 1;
+              
+            }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+          
+            // console.log('**m_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
+            saveMonsters = saveMonsters + mapOneString[pozChar];
+            pozChar = pozChar + 1;
+          
+        }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
+  
+/////////////////////////////////////////////////////////////////////////
+
+        //console.log('m->NAME mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
+        pozChar = pozChar + 1;
+    
+        for ( let k =  pozChar; k < pozCharMax; k++) {
+            //console.log('n_mapOneString[' + k + ']= ' + mapOneString[k] + '\n');
+            saveMapName = saveMapName + mapOneString[k];
+        }
+
+        //console.log(' saveMonsters = ' + saveMonsters + '\n');
+        //console.log(' saveItems = ' + saveItems + '\n');
+        //console.log(' saveGrounds = ' + saveGrounds + '\n');
+        //console.log(' saveMapName = ' + saveMapName + '\n');
+    
+        Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
+
+        EditorFrameDraw.drowFrameMap();        
+        //MapFrameDraw.drawMap(0,0,true);    
+    }//if(mapOneString !== ""){
 }//LoadFromServer.mapStrigToDraw = function(mapOneString) {
 //=============================================================================
 
@@ -84,7 +127,7 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
     // заполним FormData данными из формы
     let formData = new FormData();
     let nameUserMap = document.getElementById('nameMapLoadingFromServer');
-    let nameUserMapValue = "TEST_166039968012318800.map";
+    let nameUserMapValue = "TEST_1_166045432241485100.map";
     
     if(nameUserMap.value != "") {
       nameUserMapValue = nameUserMap.value;

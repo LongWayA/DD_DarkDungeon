@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2022, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified -1.08.2022-12.08.2022-
+// Last modified -1.08.2022-14.08.2022-
 //
 
 
@@ -33,6 +33,9 @@ window.Map = {};
 
   Map.tile = {};// объект описывающий один общий тайл карты с общими для всех тайлов свойствами
 
+  Map.stringMap = {};// карта в виде трех строк
+  
+
   Map.tile.SIZE = 50;// px это размер тайла
   
 //=============================================================================
@@ -40,6 +43,10 @@ window.Map = {};
       Map.tile.width = Map.tile.SIZE;// px предполагаем, что он квадратный
       Map.tile.height = Map.tile.SIZE;// px
     
+      Map.stringMap.saveGrounds  = "";
+      Map.stringMap.saveItems    = "";
+      Map.stringMap.saveMonsters = "";
+
       Map.widthMax_px = 1200;// это размеры тайловой карты
       Map.heightMax_px = 500;
 
@@ -70,10 +77,63 @@ window.Map = {};
     for (let j = 0; j < Map.heightMaxTilesCount; j++) {
       Map.MapArrayTile_2d[i][j] = new Tile_for_Map_C();
       Map.MapArrayTile_2d[i][j].G_char ="a";//
-      Map.MapArrayTile_2d[i][j].I_char ="c";//-
-      Map.MapArrayTile_2d[i][j].M_char ="a";//-
+      Map.MapArrayTile_2d[i][j].I_char ="b";//-
+      Map.MapArrayTile_2d[i][j].M_char ="c";//-
     }
   }
+};
+//=============================================================================
+
+//=============================================================================
+Map.loadMapArrayTile = function(saveGrounds_, saveItems_, saveMonsters_) {
+
+  //console.log( "DD_LoadFromBrowser.js: LoadFromBrowser.LoadInBrowser ");
+  //console.log(saveGrounds_);
+  //console.log(saveItems_); 
+  //console.log(saveMonsters_);
+
+  let pozChar = 0;
+
+  // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
+  
+  for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
+    for ( let i = 0; i < Map.widthMaxTilesCount; i++) {     
+      Map.MapArrayTile_2d[i][j].G_char = saveGrounds_[pozChar];
+      Map.MapArrayTile_2d[i][j].I_char = saveItems_[pozChar];
+      Map.MapArrayTile_2d[i][j].M_char = saveMonsters_[pozChar];
+      pozChar = pozChar + 1;
+    }
+    pozChar = pozChar + 1;
+  }
+
+  
+};
+//=============================================================================
+
+//=============================================================================
+Map.saveMapArrayTile = function() {
+
+  //console.log( "DD_SaveInBrowser.js: SaveInBrowser.SaveInBrowser ");
+  let saveGrounds  = "";
+  let saveItems    = "";
+  let saveMonsters = "";
+
+  // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
+  
+  for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
+    for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
+      saveGrounds = saveGrounds + Map.MapArrayTile_2d[i][j].G_char;
+      saveItems = saveItems + Map.MapArrayTile_2d[i][j].I_char;
+      saveMonsters = saveMonsters + Map.MapArrayTile_2d[i][j].M_char;
+    }
+    saveGrounds  = saveGrounds  + '!';//\n Default
+    saveItems    = saveItems    + '!';//\n
+    saveMonsters = saveMonsters + '!';//\n
+  }
+
+  Map.stringMap.saveGrounds  = saveGrounds;
+  Map.stringMap.saveItems    = saveItems;
+  Map.stringMap.saveMonsters = saveMonsters;
 };
 //=============================================================================
 

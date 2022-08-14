@@ -32,27 +32,9 @@ LoadFromBrowser.OKresponse = "";
   let saveItems    = localStorage.ITEMS;
   let saveMonsters = localStorage.MONSTERS;
 
-  let pozChar = 0;
+  Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
 
-  // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-  
-  for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
-    
-    for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
-      
-      Map.MapArrayTile_2d[i][j].G_char = saveGrounds[pozChar];
-      Map.MapArrayTile_2d[i][j].I_char = saveItems[pozChar];
-      Map.MapArrayTile_2d[i][j].M_char = saveMonsters[pozChar];
-      pozChar = pozChar + 1;
-    }
-    pozChar = pozChar + 1;
-  }
   EditorFrameDraw.drowFrameMap();;
-
-  //console.log(saveGrounds);
-  //console.log(saveItems); 
-  //console.log(saveMonsters);
-  
 
   // удалить ключ
   // delete localStorage.test;

@@ -25,30 +25,11 @@ SaveInBrowser.OKresponse = "";
  //=============================================================================
  SaveInBrowser.saveInBrowser = function() {
 
-  //console.log( "DD_SaveInBrowser.js: SaveInBrowser.SaveInBrowser ");
-  let saveGrounds  = "";
-  let saveItems    = "";
-  let saveMonsters = "";
+  Map.saveMapArrayTile();
 
-  // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-  
-  for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
-    for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
-      saveGrounds = saveGrounds + Map.MapArrayTile_2d[i][j].G_char;
-      saveItems = saveItems + Map.MapArrayTile_2d[i][j].I_char;
-      saveMonsters = saveMonsters + Map.MapArrayTile_2d[i][j].M_char;
-    }
-    saveGrounds  = saveGrounds  + "\n";
-    saveItems    = saveItems    + "\n";
-    saveMonsters = saveMonsters + "\n";
-  }
-
-  //console.log(saveGrounds);
-  //console.log(saveItems); 
-  //console.log(saveMonsters);
-  localStorage.GROUND = saveGrounds;
-  localStorage.ITEMS = saveItems;
-  localStorage.MONSTERS = saveMonsters;
+  localStorage.GROUND   = Map.stringMap.saveGrounds;
+  localStorage.ITEMS    = Map.stringMap.saveItems;
+  localStorage.MONSTERS = Map.stringMap.saveMonsters;
 
   // удалить ключ
   // delete localStorage.test;

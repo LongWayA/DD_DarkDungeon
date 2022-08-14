@@ -26,37 +26,14 @@ LoadFromScripts.resetMapInBrowser = function() {
 
   //console.log( "DD_LoadFromScripts.js: LoadFromScripts.resetMapInBrowser ");
 
-  LoadFromScripts.ini_ResetMapString();
+  LoadFromScripts.ini_ResetMapString_();
 
   let saveGrounds  = LoadFromScripts.resetGrounds;
   let saveItems    = LoadFromScripts.resetItems;
   let saveMonsters = LoadFromScripts.resetMonsters;
 
-  let pozChar = 0;
-
-  // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-  
-  for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
-    
-    for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
-      
-      Map.MapArrayTile_2d[i][j].G_char = saveGrounds[pozChar];
-      Map.MapArrayTile_2d[i][j].I_char = saveItems[pozChar];
-      Map.MapArrayTile_2d[i][j].M_char = saveMonsters[pozChar];
-      pozChar = pozChar + 1;
-    }
-    pozChar = pozChar + 1;
-  }
-  EditorFrameDraw.drowFrameMap();;
-
-  //console.log(saveGrounds);
-  //console.log(saveItems); 
-  //console.log(saveMonsters);
-  
-
-  // удалить ключ
-  // delete localStorage.test;
-
+  Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
+  EditorFrameDraw.drowFrameMap();
 };
 //=============================================================================
 
@@ -72,32 +49,9 @@ LoadFromScripts.resetMapInBrowser = function() {
    let saveItems    = LoadFromScripts.savedItems;
    let saveMonsters = LoadFromScripts.savedMonsters;
  
-   let pozChar = 0;
- 
-   // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-   
-   for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
-     
-     for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
-       
-       Map.MapArrayTile_2d[i][j].G_char = saveGrounds[pozChar];
-       Map.MapArrayTile_2d[i][j].I_char = saveItems[pozChar];
-       Map.MapArrayTile_2d[i][j].M_char = saveMonsters[pozChar];
-       pozChar = pozChar + 1;
-     }
-     pozChar = pozChar + 1;
-   }
-
+   Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
    EditorFrameDraw.drowFrameMap();
- 
-   //console.log(saveGrounds);
-   //console.log(saveItems); 
-   //console.log(saveMonsters);
-   
- 
-   // удалить ключ
-   // delete localStorage.test;
- 
+
  };
  //=============================================================================
  
@@ -198,6 +152,54 @@ mmmmmmmmmmmmmmmmmmmmmmmm`;
 //=============================================================================
 
 
+//=============================================================================
+LoadFromScripts.ini_ResetMapString_ = function(){
+
+//************************************************
+LoadFromScripts.resetGrounds  = 
+`------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------`;
+//************************************************
+
+//************************************************
+LoadFromScripts.resetItems    = 
+`------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------`;
+//************************************************
+
+//************************************************
+LoadFromScripts.resetMonsters = 
+`------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------`;
+//************************************************
+  }
+  //=============================================================================
+  
+  
 
  //=============================================================================
  HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
