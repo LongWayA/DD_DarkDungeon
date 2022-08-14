@@ -184,66 +184,55 @@ window.SpritesMap = {};
 ///////////////////////////////////////////////////////////////////
     //GROUNDS
     // так кодируются тайлы для слоя земли
-    SpritesMap.GROUND_NOTHING  = "-";//0
-    SpritesMap.GROUND_STONE    = "a";//1
-    SpritesMap.GROUND_WATER    = "b";//2
-    SpritesMap.GROUND_EARTH    = "c";//3
-    SpritesMap.GROUND_WOID     = "d";//4
-    SpritesMap.GROUND_DOUN     = "e";//5
-    SpritesMap.GROUND_UP       = "f";//6
-    SpritesMap.GROUND_NUGGETS  = "g";//7
+    SpritesMap.GROUND_NOTHING        = "-";//0 пустая область
+    SpritesMap.GROUND_STONE          = "a";//1 непробиваемый камень
+    SpritesMap.GROUND_SEND           = "b";//2 копаемый песок
+    SpritesMap.GROUND_FLOOR          = "c";//3 проходимый пол
+    SpritesMap.GROUND_WALL           = "d";//4 стена подземелья
+    SpritesMap.GROUND_WALL_FORTIFED  = "e";//5 укрепленная стена подземелья 
+    SpritesMap.GROUND_VEIN_GOLD      = "f";//6 золотая жила
+    SpritesMap.GROUND_VEIN_GEM       = "g";//7 драгоценный камень жила
 
-    // коллекция по кодирующим символам номера тайлов в массиве  для слоя земли
-    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_NOTHING, 0);
-    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_STONE, 1);
-    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_WATER, 2);
-    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_EARTH, 3);
-    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_WOID, 4);
-    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_DOUN , 5);
-    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_UP, 6);
-    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_NUGGETS, 7);
+    // коллекция. по кодирующим символам номера тайлов в массиве  для слоя земли (GROUND_NOTHING -> 0)
+    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_NOTHING, 0); // пустая область
+    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_STONE, 1);   // непробиваемый камень
+    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_SEND, 2);    // копаемый песок
+    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_FLOOR, 3);   // проходимый пол
+    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_WALL, 4);    // стена подземелья
+    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_WALL_FORTIFED , 5);// укрепленная стена подземелья
+    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_VEIN_GOLD, 6);// золотая жила
+    SpritesMap.GroundsMapChars.set(SpritesMap.GROUND_VEIN_GEM, 7); // драгоценный камень жила
 
     //массив по номерам тайлов их кодирующий символ для слоя земли
     SpritesMap.tilesLoad[SpritesMap.GROUNDS][0].tile_char = SpritesMap.GROUND_NOTHING;// пустая область
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][1].tile_char = SpritesMap.GROUND_STONE;  //1_ground_stone    камень
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][2].tile_char = SpritesMap.GROUND_WATER;  //2_ground_water    вода
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][3].tile_char = SpritesMap.GROUND_EARTH;  //3_ground_earth    земля-песок
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][4].tile_char = SpritesMap.GROUND_WOID ;  //4_ground_woid     пустота небо
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][5].tile_char = SpritesMap.GROUND_DOUN ;  //5_ground_down     вход в подемелье
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][6].tile_char = SpritesMap.GROUND_UP;     //6_ground_up       выход из подземелья
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][7].tile_char = SpritesMap.GROUND_NUGGETS;//7_ground_nuggets  земля-золото
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][1].tile_char = SpritesMap.GROUND_STONE;  // непробиваемый камень
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][2].tile_char = SpritesMap.GROUND_SEND;   // копаемый песок
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][3].tile_char = SpritesMap.GROUND_FLOOR;  // проходимый пол
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][4].tile_char = SpritesMap.GROUND_WALL ;  //стена подземелья
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][5].tile_char = SpritesMap.GROUND_WALL_FORTIFED ; // укрепленная стена подземелья
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][6].tile_char = SpritesMap.GROUND_VEIN_GOLD;//золотая жила
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][7].tile_char = SpritesMap.GROUND_VEIN_GEM; //драгоценный камень жила
 
     // массив по номерам тайлов  имена тайлов для слоя земли
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][0].tile_String = "nothing(пустая область)";  //
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][1].tile_String = "stone(камень)";  //1_ground_stone    камень
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][2].tile_String = "water(вода)";  //2_ground_water    вода
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][3].tile_String = "earth(земля)";  //3_ground_earth    земля-песок
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][4].tile_String = "woid(небо)" ;  //4_ground_woid     пустота небо
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][5].tile_String = "down(спус вниз)" ;  //5_ground_down     вход в подемелье
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][6].tile_String = "up(подъем наверх)";     //6_ground_up       выход из подземелья
-    SpritesMap.tilesLoad[SpritesMap.GROUNDS][7].tile_String = "nuggets(золото)";//7_ground_nuggets  земля-золото
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][0].tile_String = "nothing(пустая область)"; // пустая область
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][1].tile_String = "stone(камень)";           // непробиваемый камень
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][2].tile_String = "sand(копаемый песок)";    // копаемый песок
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][3].tile_String = "floor(проходимый пол)";   // проходимый пол
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][4].tile_String = "wall(стена подземелья) "; // стена подземелья
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][5].tile_String = "fortified wall(укрепленная стена подземелья) " ; //укрепленная стена подземелья
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][6].tile_String = "gold vein(золотая жила)"; //золотая жила
+    SpritesMap.tilesLoad[SpritesMap.GROUNDS][7].tile_String = "gem vein(драгоценный камень жила)";//драгоценный камень жила
 
     // коллекция по кодирующим символам  имена тайлов для слоя земли
-    SpritesMap.GroundsMapString.set(SpritesMap.NOTHING, "nothing(пустая область)");
-    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_STONE, "stone(камень)");
-    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_WATER, "water(вода)");
-    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_EARTH, "earth(земля)");
-    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_WOID, "woid(небо)");
-    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_DOUN , "down(спус вниз)");
-    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_UP, "up(подъем наверх)");
-    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_NUGGETS, "nuggets(золото)");
+    SpritesMap.GroundsMapString.set(SpritesMap.NOTHING, "nothing(пустая область)");    // пустая область
+    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_STONE, "stone(камень)");         // непробиваемый камень
+    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_SEND, "sand(копаемый песок)");   // копаемый песок
+    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_FLOOR, "floor(проходимый пол)"); // проходимый пол
+    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_WALL, "wall(стена подземелья) ");// стена подземелья
+    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_WALL_FORTIFED , "fortified wall(укрепленная стена подземелья) ");//укрепленная стена подземелья
+    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_VEIN_GOLD, "gold vein(золотая жила)");//золотая жила
+    SpritesMap.GroundsMapString.set(SpritesMap.GROUND_VEIN_GEM, "gem vein(драгоценный камень жила)");//драгоценный камень жила
 
-
-    //тестовый вывод
-    /*
-    let nameTilesG = SpritesMap.GROUND_WATER;
-    console.log("GROUNDS");//
-    console.log("DD_HTML5_SpritesMaps.js:SpritesMap.GROUND_STONE= " + nameTilesG);// "a"
-    console.log("DD_HTML5_SpritesMaps.js:SpritesMap.GroundsMapChars.get(nameTiles)= " + SpritesMap.GroundsMapChars.get(nameTilesG));// 1
-    console.log("DD_HTML5_SpritesMaps.js:SpritesMap.tilesLoad[SpritesMap.GROUNDS][SpritesMap.GroundsMapChars.get(nameTiles)]= " 
-    + SpritesMap.tilesLoad[SpritesMap.GROUNDS][SpritesMap.GroundsMapChars.get(nameTilesG)]);// "a"
-    console.log("DD_HTML5_SpritesMaps.js:SpritesMap.GroundsMapString.get(nameTiles)= " + SpritesMap.GroundsMapString.get(nameTilesG));// stone (камень)
-    */
     
 ///////////////////////////////////////////////////////////////////
 
@@ -485,7 +474,7 @@ console.log("DD_HTML5_SpritesMaps.js:SpritesMap.MonstersMapString.get(nameTilesI
   SpritesMap.loadAllSprite = function() {
     //SpritesMap.iniSprite(SpritesMap.REZERV,"");
     SpritesMap.iniSprite(SpritesMap.ADVENTURES,"image/DD_Map/adventures/advans_");
-    SpritesMap.iniSprite(SpritesMap.GROUNDS,"image/DD_Map/grounds/gr_");
+    SpritesMap.iniSprite(SpritesMap.GROUNDS,"image_DD_Map/grounds/gr_");
     SpritesMap.iniSprite(SpritesMap.ITEMS,"image/DD_Map/items/it_");
     SpritesMap.iniSprite(SpritesMap.MONSTERS,"image/DD_Map/monsters/mons_");
 

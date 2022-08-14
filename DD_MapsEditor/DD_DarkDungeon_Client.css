@@ -7,6 +7,11 @@ textarea {
 }
 */
 
+body{
+  /*background-color: rgb(240, 236, 243);*/
+  background-color: rgb(215, 215, 223);
+}
+
 h1.st1 {
   background-color: white;
   color: red;

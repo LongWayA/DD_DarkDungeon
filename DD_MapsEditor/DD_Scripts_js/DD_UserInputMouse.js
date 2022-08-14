@@ -35,7 +35,7 @@ UserInputMouse.ini_UserInputMouse = function(){
           //console.log("DD_UserInputMouse.js: mousedown");
 
           let xxx = 350;
-          let yyy = 710
+          let yyy = 710;
           HTML5_Canvas.context.clearRect(xxx, yyy-20, 300, 30);
           HTML5_Canvas.context.strokeText ("mousedown: X=" + event.offsetX, xxx, yyy);
           HTML5_Canvas.context.strokeText ("Y=" + event.offsetY, xxx + 200, yyy);
@@ -49,7 +49,7 @@ UserInputMouse.ini_UserInputMouse = function(){
      HTML5_Canvas.Id.addEventListener('mousemove', (event) => {
           //console.log("DD_UserInputMouse.js: mousemove");
           let xxx = 10;
-          let yyy = 710
+          let yyy = 710;
           HTML5_Canvas.context.clearRect(xxx, yyy-20, 300, 30);
           HTML5_Canvas.context.strokeText ("mousemove: X=" + event.offsetX, xxx, yyy);
           HTML5_Canvas.context.strokeText ("Y=" + event.offsetY, xxx + 200, yyy);
@@ -61,7 +61,7 @@ UserInputMouse.ini_UserInputMouse = function(){
      window.addEventListener('mouseup', (event) => {
           //console.log("_DD_UserInputMouse.js: mouseup");
           let xxx = 700;
-          let yyy = 710
+          let yyy = 710;
           HTML5_Canvas.context.clearRect(xxx, yyy-20, 300, 30);
           HTML5_Canvas.context.strokeText ("mouseup: X=" + event.offsetX, xxx, yyy);
           HTML5_Canvas.context.strokeText ("Y=" + event.offsetY, xxx + 200, yyy);
@@ -128,6 +128,11 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                //console.log("DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetChar = " + UserInputMouse.clikMapGetChar);
 
                Map.MapArrayTile_2d[x-1][y-1].G_char = UserInputMouse.clikMapGetChar;
+               if( Map.MapArrayTile_2d[x-1][y-1].G_char != SpritesMap.GROUND_FLOOR ) {
+                    Map.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap.ITEMS_NOTHING;
+                    Map.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap.MONSTERS_NOTHING
+               }
+
                EditorFrameDraw.drowFrameMap();;
 
           }
@@ -141,9 +146,34 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                //console.log("DD_UserInputMouse.js:clikMapSetTile  y = " + y);
                //console.log("DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetChar = " + UserInputMouse.clikMapGetChar);
 
-               Map.MapArrayTile_2d[x-1][y-1].I_char = UserInputMouse.clikMapGetChar;
-               EditorFrameDraw.drowFrameMap();;
+               //---------------------------------------------------------------------------
+               if( Map.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap.GROUND_FLOOR ) {
 
+                    if(Map.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap.MONSTERS_NOTHING){
+
+                         Map.MapArrayTile_2d[x-1][y-1].I_char = UserInputMouse.clikMapGetChar;
+                         EditorFrameDraw.drowFrameMap();
+                    } else {
+                              Map.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap.ITEMS_NOTHING;
+                              let x2 = _X + 10;
+                              let y2 = _Y;
+                              EditorFrameDraw.drowFrameMap();
+                              HTML5_Canvas.context.clearRect(x2, y2-20, 210, 25);
+                              HTML5_Canvas.context.strokeText ("ЗАНЯТО МОНСТРОМ", x2, y2);
+                    }//if(Map.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap.MONSTERS_NOTHING){
+          
+
+
+               } else {
+                    Map.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap.ITEMS_NOTHING;
+                    let x2 = _X + 10;
+                    let y2 = _Y;
+                    EditorFrameDraw.drowFrameMap();
+                    HTML5_Canvas.context.clearRect(x2, y2-20, 360, 25);
+                    HTML5_Canvas.context.strokeText ("НЕТ СВОБОДНОГО ПРОСТРАНСТВА", x2, y2);
+  
+               }//if( Map.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap.GROUND_FLOOR ) {
+               //---------------------------------------------------------------------------
           }
      } else if( UserInputMouse.selectedLayer == "MONSTER" ){
           if( UserInputMouse.clikMapGetChar != " " ){
@@ -156,7 +186,34 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                //console.log("DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetChar = " + UserInputMouse.clikMapGetChar);
 
                Map.MapArrayTile_2d[x-1][y-1].M_char = UserInputMouse.clikMapGetChar;
-               EditorFrameDraw.drowFrameMap();;
+               EditorFrameDraw.drowFrameMap();
+
+                             //---------------------------------------------------------------------------
+                             if( Map.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap.GROUND_FLOOR ) {
+
+                              if(Map.MapArrayTile_2d[x-1][y-1].I_char == SpritesMap.ITEMS_NOTHING){
+          
+                                   Map.MapArrayTile_2d[x-1][y-1].M_char = UserInputMouse.clikMapGetChar;
+                                   EditorFrameDraw.drowFrameMap();
+                              } else {
+                                        Map.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap.MONSTERS_NOTHING;
+                                        let x2 = _X + 10;
+                                        let y2 = _Y;
+                                        EditorFrameDraw.drowFrameMap();
+                                        HTML5_Canvas.context.clearRect(x2, y2-20, 220, 25);
+                                        HTML5_Canvas.context.strokeText ("ЗАНЯТО ПРЕДМЕТОМ", x2, y2);
+                              }//if(Map.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap.MONSTERS_NOTHING){
+                    
+                         } else {
+                              Map.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap.MONSTERS_NOTHING;
+                              let x2 = _X + 10;
+                              let y2 = _Y;
+                              EditorFrameDraw.drowFrameMap();
+                              HTML5_Canvas.context.clearRect(x2, y2-20, 360, 25);
+                              HTML5_Canvas.context.strokeText ("НЕТ СВОБОДНОГО ПРОСТРАНСТВА", x2, y2);
+            
+                         }//if( Map.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap.GROUND_FLOOR ) {
+                         //---------------------------------------------------------------------------
 
           }
      }
