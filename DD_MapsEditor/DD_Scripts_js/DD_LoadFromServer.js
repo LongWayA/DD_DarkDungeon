@@ -111,7 +111,7 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
     
         Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
 
-        EditorFrameDraw.drowFrameMap();        
+        EditorFrameDraw.drowFrame();       
         //MapFrameDraw.drawMap(0,0,true);    
     }//if(mapOneString !== ""){
 }//LoadFromServer.mapStrigToDraw = function(mapOneString) {

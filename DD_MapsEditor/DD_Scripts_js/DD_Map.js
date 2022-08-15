@@ -47,8 +47,8 @@ window.Map = {};
       Map.stringMap.saveItems    = "";
       Map.stringMap.saveMonsters = "";
 
-      Map.widthMax_px = 1200;// это размеры тайловой карты
-      Map.heightMax_px = 500;
+      Map.widthMax_px = EditorFrames.MapFrame.width;// это размеры тайловой карты
+      Map.heightMax_px = EditorFrames.MapFrame.height;
 
       // количество тайлов вычисляем по размеру тайловой карты и тайла
       Map.widthMaxTilesCount = Map.widthMax_px/Map.tile.width;

@@ -133,7 +133,7 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                     Map.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap.MONSTERS_NOTHING
                }
 
-               EditorFrameDraw.drowFrameMap();;
+               EditorFrameDraw.drowFrame();
 
           }
      } else if( UserInputMouse.selectedLayer == "ITEM" ){
@@ -152,12 +152,12 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                     if(Map.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap.MONSTERS_NOTHING){
 
                          Map.MapArrayTile_2d[x-1][y-1].I_char = UserInputMouse.clikMapGetChar;
-                         EditorFrameDraw.drowFrameMap();
+                         EditorFrameDraw.drowFrame();
                     } else {
                               Map.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap.ITEMS_NOTHING;
                               let x2 = _X + 10;
                               let y2 = _Y;
-                              EditorFrameDraw.drowFrameMap();
+                              EditorFrameDraw.drowFrame();
                               HTML5_Canvas.context.clearRect(x2, y2-20, 210, 25);
                               HTML5_Canvas.context.strokeText ("ЗАНЯТО МОНСТРОМ", x2, y2);
                     }//if(Map.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap.MONSTERS_NOTHING){
@@ -168,7 +168,7 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                     Map.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap.ITEMS_NOTHING;
                     let x2 = _X + 10;
                     let y2 = _Y;
-                    EditorFrameDraw.drowFrameMap();
+                    EditorFrameDraw.drowFrame();
                     HTML5_Canvas.context.clearRect(x2, y2-20, 360, 25);
                     HTML5_Canvas.context.strokeText ("НЕТ СВОБОДНОГО ПРОСТРАНСТВА", x2, y2);
   
@@ -186,7 +186,7 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                //console.log("DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetChar = " + UserInputMouse.clikMapGetChar);
 
                Map.MapArrayTile_2d[x-1][y-1].M_char = UserInputMouse.clikMapGetChar;
-               EditorFrameDraw.drowFrameMap();
+               EditorFrameDraw.drowFrame();
 
                              //---------------------------------------------------------------------------
                              if( Map.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap.GROUND_FLOOR ) {
@@ -194,12 +194,12 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                               if(Map.MapArrayTile_2d[x-1][y-1].I_char == SpritesMap.ITEMS_NOTHING){
           
                                    Map.MapArrayTile_2d[x-1][y-1].M_char = UserInputMouse.clikMapGetChar;
-                                   EditorFrameDraw.drowFrameMap();
+                                   EditorFrameDraw.drowFrame();
                               } else {
                                         Map.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap.MONSTERS_NOTHING;
                                         let x2 = _X + 10;
                                         let y2 = _Y;
-                                        EditorFrameDraw.drowFrameMap();
+                                        EditorFrameDraw.drowFrame();
                                         HTML5_Canvas.context.clearRect(x2, y2-20, 220, 25);
                                         HTML5_Canvas.context.strokeText ("ЗАНЯТО ПРЕДМЕТОМ", x2, y2);
                               }//if(Map.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap.MONSTERS_NOTHING){
@@ -208,7 +208,7 @@ UserInputMouse.clikMapSetTile = function(_X, _Y) {
                               Map.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap.MONSTERS_NOTHING;
                               let x2 = _X + 10;
                               let y2 = _Y;
-                              EditorFrameDraw.drowFrameMap();
+                              EditorFrameDraw.drowFrame();
                               HTML5_Canvas.context.clearRect(x2, y2-20, 360, 25);
                               HTML5_Canvas.context.strokeText ("НЕТ СВОБОДНОГО ПРОСТРАНСТВА", x2, y2);
             
@@ -276,7 +276,7 @@ UserInputMouse.clikMapGetTile = function(_X, _Y, _layer) {
 
           if (clikMapGet_X < maxCount + 1) {
                     
-               EditorFrameDraw.drowFrameTilesP();
+               EditorFrameDraw.drowFrame();
                UserInputMouse.selectedLayer = _layer;
                //
                let j = clikMapGet_X - 1;

@@ -90,9 +90,9 @@ MapsEditor.ini = function(){
  //
  MapsEditor.drawMap_by_checkboxGrounds = function(){
     //console.log('DD_MapsEditor.js:drawMap_by_checkboxGrounds');
-    EditorFrameDraw.checkbox_drawGrounds_checked = MapsEditor.checkbox_drawGrounds.checked;
-    //console.log('DD_MapsEditor.js:MapsEditor.checkbox_drawGrounds_checked =' + MapsEditor.checkbox_drawGrounds_checked);
-    EditorFrameDraw.drowFrameMap();
+    MapFrameDraw.checkbox_drawGrounds_checked = MapsEditor.checkbox_drawGrounds.checked;
+    //console.log('DD_MapsEditor.js:MapFrameDraw.checkbox_drawGrounds_checked =' + MapFrameDraw.checkbox_drawGrounds_checked);
+    EditorFrameDraw.drowFrame();
   };
 //=============================================================================
 
@@ -101,8 +101,8 @@ MapsEditor.ini = function(){
  MapsEditor.drawMap_by_checkboxItems = function(){
 
   //console.log('DD_MapsEditor.js:drawMap_by_checkboxItems');
-  EditorFrameDraw.checkbox_drawItems_checked = MapsEditor.checkbox_drawItems.checked;
-  EditorFrameDraw.drowFrameMap();
+  MapFrameDraw.checkbox_drawItems_checked = MapsEditor.checkbox_drawItems.checked;
+  EditorFrameDraw.drowFrame();
 };
 //=============================================================================
 
@@ -111,8 +111,8 @@ MapsEditor.ini = function(){
  MapsEditor.drawMap_by_checkboxMonsters = function(){
 
   //console.log('DD_MapsEditor.js:drawMap_by_checkboxMonsters');
-  EditorFrameDraw.checkbox_drawMonsters_checked = MapsEditor.checkbox_drawMonsters.checked;
-  EditorFrameDraw.drowFrameMap();
+  MapFrameDraw.checkbox_drawMonsters_checked = MapsEditor.checkbox_drawMonsters.checked;
+  EditorFrameDraw.drowFrame();
 };
 //=============================================================================
 

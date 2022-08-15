@@ -33,7 +33,7 @@ LoadFromScripts.resetMapInBrowser = function() {
   let saveMonsters = LoadFromScripts.resetMonsters;
 
   Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
-  EditorFrameDraw.drowFrameMap();
+  EditorFrameDraw.drowFrame();
 };
 //=============================================================================
 
@@ -50,7 +50,7 @@ LoadFromScripts.resetMapInBrowser = function() {
    let saveMonsters = LoadFromScripts.savedMonsters;
  
    Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
-   EditorFrameDraw.drowFrameMap();
+   EditorFrameDraw.drowFrame();
 
  };
  //=============================================================================

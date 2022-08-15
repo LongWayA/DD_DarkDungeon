@@ -34,7 +34,7 @@ LoadFromBrowser.OKresponse = "";
 
   Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
 
-  EditorFrameDraw.drowFrameMap();;
+  EditorFrameDraw.drowFrame();
 
   // удалить ключ
   // delete localStorage.test;
