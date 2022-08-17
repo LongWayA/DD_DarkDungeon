@@ -28,11 +28,13 @@ window.EditorFrameDraw = {};
  // 
   EditorFrameDraw.drowFrame = function() {
     
-    MapFrameDraw.drawMap(0,0);
+    MapFrameDraw.drawMap(EditorFrames.MapFrame.X0,EditorFrames.MapFrame.Y0);
     TilesFrameDraw.drawSelectTiles(0);
 
     EditorFrames.drowEditorFrame();
     EditorFrames.drowMapFrame();
+    EditorFrames.drowTilesPanelFrame();
+    EditorFrames.drowPrintFrameFrame();
 
     //console.log('DD_EditorFrameDraw.js: EditorFrameDraw.drowFrame');
   };

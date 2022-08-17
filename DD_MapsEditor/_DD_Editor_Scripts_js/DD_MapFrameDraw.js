@@ -28,7 +28,7 @@ window.MapFrameDraw = {};
   //=============================================================================
 
   //============================================================================
-  MapFrameDraw.drawMap = function(_left, _top, log = false) {
+  MapFrameDraw.drawMap = function(_X0, _Y0, log = false) {
 
     let tipeTiles = 1  ;// сюда перезаписываем номер нужного тайла и потом отрисовывается тайл. и так для всех слоев
     let G_char_L  = " ";// сюда перезаписываем символ нужного тайла для земли
@@ -36,8 +36,8 @@ window.MapFrameDraw = {};
     let M_char_L  = " ";// сюда перезаписываем символ нужного тайла для монстров
     let imageK    = " ";// сюда перезаписываем картинку тайла которую хотим нарисовать
 
-    //HTML5_Canvas.context.clearRect(_left, _top, HTML5_Canvas.Id.width, HTML5_Canvas.Id.height);
-    HTML5_Canvas.context.clearRect(_left, _top, Map.widthMax_px, Map.heightMax_px);
+    //HTML5_Canvas.context.clearRect(_X0, _Y0, HTML5_Canvas.Id.width, HTML5_Canvas.Id.height);
+    HTML5_Canvas.context.clearRect(_X0, _Y0, Map.widthMax_px, Map.heightMax_px);
     
     for (let j = 0; j < Map.heightMaxTilesCount; j++) {
       for ( let i = 0; i < Map.widthMaxTilesCount; i++) { 
@@ -53,13 +53,13 @@ window.MapFrameDraw = {};
 
         if(MapFrameDraw.checkbox_drawGrounds_checked == true){
           // рисуем тайл на экране в заданном месте и заданного размера
-          HTML5_Canvas.Image.drawImageG(imageK, i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height);
+          HTML5_Canvas.Image.drawImageG(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
         }
          // рисуем символ соответствующий тайлу
-         //HTML5_Canvas.context.strokeText (Map.MapArrayTile_2d[i][j].G_char, i * Map.tile.width + _left, j * Map.tile.height + _top + 10);//
+         //HTML5_Canvas.context.strokeText (Map.MapArrayTile_2d[i][j].G_char, i * Map.tile.width + _X0, j * Map.tile.height + _Y0 + 10);//
 
         //
-        HTML5_Canvas.Primitive.drawRect(i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height, 1, 'blue', 0);
+        HTML5_Canvas.Primitive.drawRect(i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height, 1, 'blue', 0);
 
         
         //--------------------------------------------------------------------------------------
@@ -67,6 +67,7 @@ window.MapFrameDraw = {};
        //ITEMS--------------------------------------------------------------------------------------
         // смотрим тип тайла записанный в массиве тайлов(Map.MapArrayTile_2d) который мы рисуем
         I_char_L = Map.MapArrayTile_2d[i][j].I_char;// находим символ нужного тайла
+
         if(log == true)  console.log('m ' + i + ' ' + j + ' I_char_L = ' + I_char_L);       
         
         if(I_char_L != "-"){
@@ -76,7 +77,7 @@ window.MapFrameDraw = {};
           
           if(MapFrameDraw.checkbox_drawItems_checked == true){
             // рисуем тайл на экране в заданном месте и заданного размера
-            HTML5_Canvas.Image.drawImageG(imageK, i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height);
+            HTML5_Canvas.Image.drawImageG(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
           }
         }
         //--------------------------------------------------------------------------------------
@@ -84,7 +85,9 @@ window.MapFrameDraw = {};
        //MONSTERS--------------------------------------------------------------------------------------
         // смотрим тип тайла записанный в массиве тайлов(Map.MapArrayTile_2d) который мы рисуем
         M_char_L = Map.MapArrayTile_2d[i][j].M_char;// находим символ нужного тайла
+
         if(log == true)  console.log('m ' + i + ' ' + j + ' M_char_L = ' + M_char_L);              
+        
         if(M_char_L != "-"){       
           tipeTiles = SpritesMap.MonstersMapChars.get(M_char_L);// по символу находим номер нужного тайла
 
@@ -92,15 +95,15 @@ window.MapFrameDraw = {};
 
           if(MapFrameDraw.checkbox_drawMonsters_checked == true){
             // рисуем тайл на экране в заданном месте и заданного размера
-            HTML5_Canvas.Image.drawImageG(imageK, i * Map.tile.width + _left, j * Map.tile.height + _top, Map.tile.width, Map.tile.height);
+            HTML5_Canvas.Image.drawImageG(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
           }
         }
         //-------------------------------------------------------------------------------------- 
 
       }
     }
-    HTML5_Canvas.Primitive.drawRect(_left, _top, Map.widthMax_px,Map.heightMax_px, 1, 'blue', 0);
-    //HTML5_Canvas.context.clearRect(_left, _top, Map.widthMax_px, Map.heightMax_px);
+    //HTML5_Canvas.Primitive.drawRect(_X0, _Y0, Map.widthMax_px,Map.heightMax_px, 1, 'blue', 0);
+    //HTML5_Canvas.context.clearRect(_X0, _Y0, Map.widthMax_px, Map.heightMax_px);
 
   };
   //============================================================================

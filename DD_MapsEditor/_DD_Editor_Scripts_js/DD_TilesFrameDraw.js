@@ -30,13 +30,12 @@ window.TilesFrameDraw = {};
   TilesFrameDraw.drawSelectTiles = function(_left) {
 
     let imageK ="";
+   
+    HTML5_Canvas.context.clearRect( EditorFrames.tilesPanelFrame_Ground_X0 ,
+      EditorFrames.tilesPanelFrame_Ground_Y0,(SpritesMap.GROUNDS_MAX_COUNT-1) * Map.tile.width, Map.tile.height);
 
-    TilesFrameDraw.drawSelectTilesG_X0 = _left;                // задаем горизонтальное расстояние для тайлов слоя граунд
-    TilesFrameDraw.drawSelectTilesG_Y0 = Map.heightMax_px + 10;// задаем вертикальное расстояние для тайлов слоя граунд
-    TilesFrameDraw.drawSelectTilesG_Y_Max = TilesFrameDraw.drawSelectTilesG_Y0 + Map.tile.height;// задаем вертикальное расстояние для тайлов слоя граунд
-
-    HTML5_Canvas.context.clearRect(TilesFrameDraw.drawSelectTilesG_X0 ,TilesFrameDraw.drawSelectTilesG_Y0,(SpritesMap.GROUNDS_MAX_COUNT-1) * Map.tile.width, Map.tile.height);
-    HTML5_Canvas.Primitive.drawRect(TilesFrameDraw.drawSelectTilesG_X0 ,TilesFrameDraw.drawSelectTilesG_Y0,(SpritesMap.GROUNDS_MAX_COUNT-1) * Map.tile.width, Map.tile.height, 1, 'green', 0);
+    HTML5_Canvas.Primitive.drawRect( EditorFrames.tilesPanelFrame_Ground_X0 ,
+      EditorFrames.tilesPanelFrame_Ground_Y0,(SpritesMap.GROUNDS_MAX_COUNT-1) * Map.tile.width, Map.tile.height, 1, 'green', 0);
     
 
     //console.log("DD_Map.js: TilesFrameDraw.drawSelectTilesG_X0 = " + TilesFrameDraw.drawSelectTilesG_X0);
@@ -55,7 +54,8 @@ window.TilesFrameDraw = {};
       j_1 = j;// что бы первая координата была 0 а не с добавкой размера тайла. Записал через черточку для заметности
 
       //
-      HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + TilesFrameDraw.drawSelectTilesG_X0, TilesFrameDraw.drawSelectTilesG_Y0, Map.tile.width, Map.tile.height);
+      HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + EditorFrames.tilesPanelFrame_Ground_X0, 
+        EditorFrames.tilesPanelFrame_Ground_Y0, Map.tile.width, Map.tile.height);
 
       //
       //HTML5_Canvas.context.strokeText (SpritesMap.tilesLoad[SpritesMap.GROUNDS][j].tile_char, j_1 * Map.tile.width + Map.drawSelectTilesG_X0, Map.drawSelectTilesG_Y0 +10);//
@@ -65,11 +65,7 @@ window.TilesFrameDraw = {};
     }
 
 /////////////////////////////////////////////////////////////////
-
-    TilesFrameDraw.drawSelectTilesI_X0 = _left;                // задаем горизонтальное расстояние для тайлов слоя предметы
-    TilesFrameDraw.drawSelectTilesI_Y0 = TilesFrameDraw.drawSelectTilesG_Y0 + Map.tile.height + 10;// задаем вертикальное расстояние для тайлов слоя предметы
-    TilesFrameDraw.drawSelectTilesI_Y_Max = TilesFrameDraw.drawSelectTilesI_Y0 + Map.tile.height;// задаем вертикальное расстояние для тайлов слоя предметы
-
+     
     //console.log("Map.drawSelectTilesI_Y0 =" + Map.drawSelectTilesI_Y0);
 
     // отображаем файлы уровня предметы
@@ -81,19 +77,18 @@ window.TilesFrameDraw = {};
       j_1 = j;// что бы первая координата была 0 а не с добавкой размера тайла. Записал через черточку для заметности
 
       //
-      HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + TilesFrameDraw.drawSelectTilesI_X0, TilesFrameDraw.drawSelectTilesI_Y0, Map.tile.width, Map.tile.height);
+      HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + EditorFrames.tilesPanelFrame_Item_X0, 
+        EditorFrames.tilesPanelFrame_Item_Y0, Map.tile.width, Map.tile.height);
 
 
       //HTML5_Canvas.context.strokeText (SpritesMap.tilesLoad[SpritesMap.ITEMS][j].tile_char, j_1 * Map.tile.width + Map.drawSelectTilesI_X0, Map.drawSelectTilesI_Y0 +10);//
       //
-      HTML5_Canvas.Primitive.drawRect(j_1 * Map.tile.width + TilesFrameDraw.drawSelectTilesI_X0, TilesFrameDraw.drawSelectTilesI_Y0, Map.tile.width, Map.tile.height, 1, 'blue', 0);
+      HTML5_Canvas.Primitive.drawRect(j_1 * Map.tile.width + EditorFrames.tilesPanelFrame_Item_X0, 
+        EditorFrames.tilesPanelFrame_Item_Y0, Map.tile.width, Map.tile.height, 1, 'blue', 0);
     }
 
 /////////////////////////////////////////////////////////////////
-    TilesFrameDraw.drawSelectTilesM_X0 = _left;                // задаем горизонтальное расстояние для тайлов слоя монстры
-    TilesFrameDraw.drawSelectTilesM_Y0 = TilesFrameDraw.drawSelectTilesI_Y0 + Map.tile.height + 10;// задаем вертикальное расстояние для тайлов слоя монстры
-    TilesFrameDraw.drawSelectTilesM_Y_Max = TilesFrameDraw.drawSelectTilesM_Y0 + Map.tile.height;
-    
+   
     //console.log("Map.drawSelectTilesM_Y0 =" + Map.drawSelectTilesM_Y0);
 
     for (let j = 0; j < SpritesMap.MONSTERS_MAX_COUNT; j++) {
@@ -102,13 +97,14 @@ window.TilesFrameDraw = {};
 
       j_1 = j;
 
-      HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + TilesFrameDraw.drawSelectTilesM_X0, TilesFrameDraw.drawSelectTilesM_Y0, Map.tile.width, Map.tile.height);
+      HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + EditorFrames.tilesPanelFrame_Monster_X0, 
+        EditorFrames.tilesPanelFrame_Monster_Y0, Map.tile.width, Map.tile.height);
 
 
       //HTML5_Canvas.context.strokeText (SpritesMap.tilesLoad[SpritesMap.MONSTERS][j].tile_char, j_1 * Map.tile.width + Map.drawSelectTilesM_X0, Map.drawSelectTilesM_Y0 +10);//
-      HTML5_Canvas.Primitive.drawRect(j_1 * Map.tile.width + TilesFrameDraw.drawSelectTilesM_X0, TilesFrameDraw.drawSelectTilesM_Y0, Map.tile.width, Map.tile.height, 1, 'blue', 0);
-      //
-      HTML5_Canvas.Primitive.drawRect(j_1 * Map.tile.width + TilesFrameDraw.drawSelectTilesM_X0, TilesFrameDraw.drawSelectTilesM_Y0, Map.tile.width, Map.tile.height, 1, 'blue', 0);
+      HTML5_Canvas.Primitive.drawRect(j_1 * Map.tile.width + EditorFrames.tilesPanelFrame_Monster_X0, 
+        EditorFrames.tilesPanelFrame_Monster_Y0, Map.tile.width, Map.tile.height, 1, 'blue', 0);
+      
     }
 /////////////////////////////////////////////////////////////////
 

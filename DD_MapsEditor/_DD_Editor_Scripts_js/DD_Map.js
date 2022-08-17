@@ -36,13 +36,14 @@ window.Map = {};
   Map.stringMap = {};// карта в виде трех строк
   
 
-  Map.tile.SIZE = 50;// px это размер тайла
+  
   
 //=============================================================================
   Map.ini_Map = function(){
-      Map.tile.width = Map.tile.SIZE;// px предполагаем, что он квадратный
-      Map.tile.height = Map.tile.SIZE;// px
     
+      Map.tile.width  = EditorFrames.MapFrameTile_SIZE_WIDTH  = 50;// px это размер тайла по горизонтали
+      Map.tile.height = EditorFrames.MapFrameTile_SIZE_HEIGHT = 50;// px это размер тайла по вертикали
+      
       Map.stringMap.saveGrounds  = "";
       Map.stringMap.saveItems    = "";
       Map.stringMap.saveMonsters = "";
