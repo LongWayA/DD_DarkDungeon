@@ -276,18 +276,33 @@ HTML5_Canvas.Primitive.NAME = "HTML5_Canvas.PrimitiveHTML5_Canvas.Primitive";//
 HTML5_Canvas.Image = {};
 HTML5_Canvas.Image.NAME = "HTML5_Canvas.Image";//
 
+HTML5_Canvas.Image.DRAW_MIRROR = true;//
+
 //============================================================================
-HTML5_Canvas.Image.drawImageG = function(_image, _left, _top, _width = 0, _height = 0) {
+HTML5_Canvas.Image.drawImage = function(_image, _left, _top, _width = 0, _height = 0, mirror = !HTML5_Canvas.Image.DRAW_MIRROR) {
+
+    //console.log('NOT M DD_HTML5_Canvas.js: _left = ' + _left + ' _top = ' +_top);
 
     if ((_width == 0) || (_height == 0)){     
           HTML5_Canvas.context.drawImage(_image, _left, _top);
           //console.log('drawImage(_image, _left, _top);');
     }else{
-          HTML5_Canvas.context.drawImage(_image, _left, _top, _width, _height);
-          //console.log('drawImage(_image, _left, _top, _width, _height);');
+
+      if (mirror == HTML5_Canvas.Image.DRAW_MIRROR){
+        _left = _left + _width;
+        _left = -_left;
+        HTML5_Canvas.context.scale(-1, 1);
+      }
+
+      HTML5_Canvas.context.drawImage(_image, _left, _top, _width, _height);
+      //console.log('DRAW_MIRROR DD_HTML5_Canvas.js: _left = ' + _left + ' _top = ' +_top);
+      
+      if (mirror == HTML5_Canvas.Image.DRAW_MIRROR){
+        HTML5_Canvas.context.scale(-1, 1);
+      }
     }
 };
-      //============================================================================
+//============================================================================
 
 
       HTML5_Canvas.ini_HTML5_Canvas();

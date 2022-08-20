@@ -31,11 +31,11 @@ window.TilesFrameDraw = {};
 
     let imageK ="";
    
-    HTML5_Canvas.context.clearRect( EditorFrames.tilesPanelFrame_Ground_X0 ,
-      EditorFrames.tilesPanelFrame_Ground_Y0,(SpritesMap.GROUNDS_MAX_COUNT-1) * Map.tile.width, Map.tile.height);
+    HTML5_Canvas.context.clearRect( EditorFrames.TilesPanelFrame.Ground_X0 ,
+      EditorFrames.TilesPanelFrame.Ground_Y0,(SpritesMap.GROUNDS_MAX_COUNT-1) * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH, EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT);
 
-    HTML5_Canvas.Primitive.drawRect( EditorFrames.tilesPanelFrame_Ground_X0 ,
-      EditorFrames.tilesPanelFrame_Ground_Y0,(SpritesMap.GROUNDS_MAX_COUNT-1) * Map.tile.width, Map.tile.height, 1, 'green', 0);
+    HTML5_Canvas.Primitive.drawRect( EditorFrames.TilesPanelFrame.Ground_X0 ,
+      EditorFrames.TilesPanelFrame.Ground_Y0,(SpritesMap.GROUNDS_MAX_COUNT-1) * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH, EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT, 1, 'green', 0);
     
 
     //console.log("DD_Map.js: TilesFrameDraw.drawSelectTilesG_X0 = " + TilesFrameDraw.drawSelectTilesG_X0);
@@ -54,14 +54,14 @@ window.TilesFrameDraw = {};
       j_1 = j;// что бы первая координата была 0 а не с добавкой размера тайла. Записал через черточку для заметности
 
       //
-      HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + EditorFrames.tilesPanelFrame_Ground_X0, 
-        EditorFrames.tilesPanelFrame_Ground_Y0, Map.tile.width, Map.tile.height);
+      HTML5_Canvas.Image.drawImage(imageK, j_1 * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + EditorFrames.TilesPanelFrame.Ground_X0, 
+        EditorFrames.TilesPanelFrame.Ground_Y0, EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH, EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT);
 
       //
-      //HTML5_Canvas.context.strokeText (SpritesMap.tilesLoad[SpritesMap.GROUNDS][j].tile_char, j_1 * Map.tile.width + Map.drawSelectTilesG_X0, Map.drawSelectTilesG_Y0 +10);//
+      //HTML5_Canvas.context.strokeText (SpritesMap.tilesLoad[SpritesMap.GROUNDS][j].tile_char, j_1 * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + Map.drawSelectTilesG_X0, Map.drawSelectTilesG_Y0 +10);//
 
       //
-      //HTML5_Canvas.Primitive.drawRect(j_1 * Map.tile.width + Map.drawSelectTilesG_X0, Map.drawSelectTilesG_Y0, Map.tile.width, Map.tile.height, 1, 'blue', 0);
+      //HTML5_Canvas.Primitive.drawRect(j_1 * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + Map.drawSelectTilesG_X0, Map.drawSelectTilesG_Y0, EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH, EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT, 1, 'blue', 0);
     }
 
 /////////////////////////////////////////////////////////////////
@@ -77,14 +77,14 @@ window.TilesFrameDraw = {};
       j_1 = j;// что бы первая координата была 0 а не с добавкой размера тайла. Записал через черточку для заметности
 
       //
-      HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + EditorFrames.tilesPanelFrame_Item_X0, 
-        EditorFrames.tilesPanelFrame_Item_Y0, Map.tile.width, Map.tile.height);
+      HTML5_Canvas.Image.drawImage(imageK, j_1 * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + EditorFrames.TilesPanelFrame.Item_X0, 
+        EditorFrames.TilesPanelFrame.Item_Y0, EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH, EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT);
 
 
-      //HTML5_Canvas.context.strokeText (SpritesMap.tilesLoad[SpritesMap.ITEMS][j].tile_char, j_1 * Map.tile.width + Map.drawSelectTilesI_X0, Map.drawSelectTilesI_Y0 +10);//
+      //HTML5_Canvas.context.strokeText (SpritesMap.tilesLoad[SpritesMap.ITEMS][j].tile_char, j_1 * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + Map.drawSelectTilesI_X0, Map.drawSelectTilesI_Y0 +10);//
       //
-      HTML5_Canvas.Primitive.drawRect(j_1 * Map.tile.width + EditorFrames.tilesPanelFrame_Item_X0, 
-        EditorFrames.tilesPanelFrame_Item_Y0, Map.tile.width, Map.tile.height, 1, 'blue', 0);
+      HTML5_Canvas.Primitive.drawRect(j_1 * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + EditorFrames.TilesPanelFrame.Item_X0, 
+        EditorFrames.TilesPanelFrame.Item_Y0, EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH, EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT, 1, 'blue', 0);
     }
 
 /////////////////////////////////////////////////////////////////
@@ -97,13 +97,13 @@ window.TilesFrameDraw = {};
 
       j_1 = j;
 
-      HTML5_Canvas.Image.drawImageG(imageK, j_1 * Map.tile.width + EditorFrames.tilesPanelFrame_Monster_X0, 
-        EditorFrames.tilesPanelFrame_Monster_Y0, Map.tile.width, Map.tile.height);
+      HTML5_Canvas.Image.drawImage(imageK, j_1 * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + EditorFrames.TilesPanelFrame.Monster_X0, 
+        EditorFrames.TilesPanelFrame.Monster_Y0, EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH, EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT);
 
 
-      //HTML5_Canvas.context.strokeText (SpritesMap.tilesLoad[SpritesMap.MONSTERS][j].tile_char, j_1 * Map.tile.width + Map.drawSelectTilesM_X0, Map.drawSelectTilesM_Y0 +10);//
-      HTML5_Canvas.Primitive.drawRect(j_1 * Map.tile.width + EditorFrames.tilesPanelFrame_Monster_X0, 
-        EditorFrames.tilesPanelFrame_Monster_Y0, Map.tile.width, Map.tile.height, 1, 'blue', 0);
+      //HTML5_Canvas.context.strokeText (SpritesMap.tilesLoad[SpritesMap.MONSTERS][j].tile_char, j_1 * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + Map.drawSelectTilesM_X0, Map.drawSelectTilesM_Y0 +10);//
+      HTML5_Canvas.Primitive.drawRect(j_1 * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + EditorFrames.TilesPanelFrame.Monster_X0, 
+        EditorFrames.TilesPanelFrame.Monster_Y0, EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH, EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT, 1, 'blue', 0);
       
     }
 /////////////////////////////////////////////////////////////////

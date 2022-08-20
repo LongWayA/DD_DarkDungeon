@@ -18,11 +18,14 @@ window.MapsEditor = {};
   MapsEditor.NAME = "DD_MapsEditor";//
   MapsEditor.stopClick = false;//
 
+  //--------------------------------------
+  // 
+  //
   MapsEditor.nameMapLoadingFromServerJ = document.getElementById("nameMapLoadingFromServer");
   MapsEditor.nameMapLoadingFromServerJ.onpaste = function(event) {
     //console.log("DD_MapsEditor.js: MapsEditor.nameMapLoadingFromServerJ *****");
   }
-
+//--------------------------------------
 // 
  //=============================================================================
  MapsEditor.storyLoadingMapsJ_click = function() {

@@ -52,8 +52,8 @@ window.MapFrameDraw = {};
         imageK = SpritesMap.tilesLoad[SpritesMap.GROUNDS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
 
         if(MapFrameDraw.checkbox_drawGrounds_checked == true){
-          // рисуем тайл на экране в заданном месте и заданного размера
-          HTML5_Canvas.Image.drawImageG(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
+          // рисуем тайл на экране в заданном месте и заданного размера, HTML5_Canvas.Image.DRAW_MIRROR
+          HTML5_Canvas.Image.drawImage(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
         }
          // рисуем символ соответствующий тайлу
          //HTML5_Canvas.context.strokeText (Map.MapArrayTile_2d[i][j].G_char, i * Map.tile.width + _X0, j * Map.tile.height + _Y0 + 10);//
@@ -76,8 +76,8 @@ window.MapFrameDraw = {};
           imageK = SpritesMap.tilesLoad[SpritesMap.ITEMS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
           
           if(MapFrameDraw.checkbox_drawItems_checked == true){
-            // рисуем тайл на экране в заданном месте и заданного размера
-            HTML5_Canvas.Image.drawImageG(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
+            // рисуем тайл на экране в заданном месте и заданного размера , HTML5_Canvas.Image.DRAW_MIRROR
+            HTML5_Canvas.Image.drawImage(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
           }
         }
         //--------------------------------------------------------------------------------------
@@ -94,8 +94,8 @@ window.MapFrameDraw = {};
           imageK = SpritesMap.tilesLoad[SpritesMap.MONSTERS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
 
           if(MapFrameDraw.checkbox_drawMonsters_checked == true){
-            // рисуем тайл на экране в заданном месте и заданного размера
-            HTML5_Canvas.Image.drawImageG(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
+            // рисуем тайл на экране в заданном месте и заданного размера , HTML5_Canvas.Image.DRAW_MIRROR
+            HTML5_Canvas.Image.drawImage(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
           }
         }
         //-------------------------------------------------------------------------------------- 

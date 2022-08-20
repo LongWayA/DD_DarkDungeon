@@ -50,8 +50,8 @@ window.EditorFrames = {};
 
     //------------------------------------------------------------------------
     // Область вывода карты>>>>>>>>>>>>>>>>>>>>>>
-    EditorFrames.MapFrameTile_SIZE_WIDTH  = 50;// px это размер тайла по горизонтали
-    EditorFrames.MapFrameTile_SIZE_HEIGHT = 50;// px это размер тайла по вертикали
+    EditorFrames.MapFrame.tile_SIZE_WIDTH  = 50;// px это размер тайла карты по горизонтали
+    EditorFrames.MapFrame.tile_SIZE_HEIGHT = 50;// px это размер тайла карты по вертикали
     EditorFrames.MapFrame.HEIGHT_PX = 500;
     EditorFrames.MapFrame.X0     = EditorFrames.EditorFrame.X0;
     EditorFrames.MapFrame.Y0     = EditorFrames.EditorFrame.Y0;
@@ -70,6 +70,8 @@ window.EditorFrames = {};
 
     //------------------------------------------------------------------------
     // Область вывода выбора элементов карты>>>>>>>>>>>>>>>>>>>>>>
+    EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH  = 50;// px это размер тайла панели выбора по горизонтали
+    EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT = 50;// px это размер тайла панели выбора по вертикали
     EditorFrames.TilesPanelFrame.HEIGHT_PX = 190;
     EditorFrames.TilesPanelFrame.X0     = EditorFrames.MapFrame.X0;
     EditorFrames.TilesPanelFrame.Y0     = EditorFrames.MapFrame.Y_Max;
@@ -82,17 +84,17 @@ window.EditorFrames = {};
     EditorFrames.TilesPanelFrame.Y_Max  = EditorFrames.TilesPanelFrame.Y0 + EditorFrames.TilesPanelFrame.height;
     //---------------------------
 
-    EditorFrames.tilesPanelFrame_Ground_X0     = EditorFrames.TilesPanelFrame.X0;// задаем горизонтальное расстояние для тайлов слоя граунд
-    EditorFrames.tilesPanelFrame_Ground_Y0     = EditorFrames.TilesPanelFrame.Y0 + 10;// задаем вертикальное расстояние для тайлов слоя граунд
-    EditorFrames.tilesPanelFrame_Ground_Y_Max  = EditorFrames.tilesPanelFrame_Ground_Y0 + EditorFrames.MapFrameTile_SIZE_HEIGHT;// задаем вертикальное расстояние для тайлов слоя граунд
+    EditorFrames.TilesPanelFrame.Ground_X0     = EditorFrames.TilesPanelFrame.X0;// задаем горизонтальное расстояние для тайлов слоя граунд
+    EditorFrames.TilesPanelFrame.Ground_Y0     = EditorFrames.TilesPanelFrame.Y0 + 10;// задаем вертикальное расстояние для тайлов слоя граунд
+    EditorFrames.TilesPanelFrame.Ground_Y_Max  = EditorFrames.TilesPanelFrame.Ground_Y0 + EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT;// задаем вертикальное расстояние для тайлов слоя граунд
 
-    EditorFrames.tilesPanelFrame_Item_X0       = EditorFrames.TilesPanelFrame.X0;
-    EditorFrames.tilesPanelFrame_Item_Y0       = EditorFrames.tilesPanelFrame_Ground_Y_Max + 10;
-    EditorFrames.tilesPanelFrame_Item_Y_Max    = EditorFrames.tilesPanelFrame_Item_Y0 + EditorFrames.MapFrameTile_SIZE_HEIGHT;
+    EditorFrames.TilesPanelFrame.Item_X0       = EditorFrames.TilesPanelFrame.X0;
+    EditorFrames.TilesPanelFrame.Item_Y0       = EditorFrames.TilesPanelFrame.Ground_Y_Max + 10;
+    EditorFrames.TilesPanelFrame.Item_Y_Max    = EditorFrames.TilesPanelFrame.Item_Y0 + EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT;
      
-    EditorFrames.tilesPanelFrame_Monster_X0    = EditorFrames.TilesPanelFrame.X0;    
-    EditorFrames.tilesPanelFrame_Monster_Y0    = EditorFrames.tilesPanelFrame_Item_Y_Max + 10;
-    EditorFrames.tilesPanelFrame_Monster_Y_Max = EditorFrames.tilesPanelFrame_Monster_Y0 + EditorFrames.MapFrameTile_SIZE_HEIGHT;
+    EditorFrames.TilesPanelFrame.Monster_X0    = EditorFrames.TilesPanelFrame.X0;    
+    EditorFrames.TilesPanelFrame.Monster_Y0    = EditorFrames.TilesPanelFrame.Item_Y_Max + 10;
+    EditorFrames.TilesPanelFrame.Monster_Y_Max = EditorFrames.TilesPanelFrame.Monster_Y0 + EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT;
     // Область вывода выбора элементов карты<<<<<<<<<<<<<<<<<<<<<<
     //------------------------------------------------------------------------
 

@@ -97,67 +97,6 @@ window.SpritesMap = {};
   };
   //============================================================================
 
-
-  // draw image
-  //============================================================================
-  SpritesMap.drawSprite = function(_type, _index, _middle, _bottom,) {
-
-    //HTML5_Canvas.context.clearRect(0, 0, HTML5_Canvas.Id.width, HTML5_Canvas.Id.height);
-    //console.log(" HTML5_Canvas.Id.width = " + HTML5_Canvas.Id.width + " HTML5_Canvas.Id.height = " +HTML5_Canvas.Id.height);
-
-         let height =SpritesMap.tilesLoad[_type][_index].tile_Image.height;
-         let width = SpritesMap.tilesLoad[_type][_index].tile_Image.width;
-
-         //console.log(" width = " + width + " height = " + height);
-
-         let top = _bottom - height;
-         let left = _middle - width/2;
-         
-         HTML5_Canvas.Image.drawImageG(SpritesMap.tilesLoad[_type][_index].tile_Image, left, top);
-         //HTML5_Canvas.Image.drawImageG(SpritesMap.spritesSheeva_mk3_img[_type][_index].tile_Image, 100, 100, 100, 100);
-
-
-         HTML5_Canvas.Primitive.drawRect(left, top, width,height,1, 'blue', 0);
-         HTML5_Canvas.Primitive.drawRect(_middle, top, 2,height,1, 'red', 0);
-
-         HTML5_Canvas.Text.drawText ("i " + "frame = " + _index, left+5, _bottom-40, 'italic 20px sans-serif', 'black', 1);
-         HTML5_Canvas.Text.drawText ("i " + SpritesMap.TXT_SPRITES_FIGHTER_SET[_type], left+5, _bottom-20, 'italic 20px sans-serif', 'black', 1);
-
-        // _GameText_R.drawText ("i " + "middle = " + _middle, left+5, _bottom-140, 'italic 20px sans-serif', 'white', 1);
-        // _GameText_R.drawText ("i " + "width = " + width, left+5, _bottom-120, 'italic 20px sans-serif', 'white', 1);
-        // _GameText_R.drawText ("i " + "left = " + left, left+5, _bottom-100, 'italic 20px sans-serif', 'white', 1);
-  };
-  //============================================================================
-
-
-  // draw image mirror
-  //============================================================================
-  SpritesMap.drawSpriteMirror = function(_type, _index, _middle, _bottom,) {
-
-        let height = SpritesMap.tilesLoad[_type][_index].tile_Image.height;
-        let width = SpritesMap.tilesLoad[_type][_index].tile_Image.width;
-        let top = _bottom - height;
-        let left = _middle - width/2;
-        let right = left + width;
-
-         HTML5_Canvas.context.scale(-1, 1);
-         HTML5_Canvas.Image.drawImageG(SpritesMap.tilesLoad[_type][_index].tile_Image, -right, top);
-         HTML5_Canvas.Primitive.drawRect(-right, top, width, height, 1, 'blue', 0);
-         HTML5_Canvas.context.scale(-1, 1);
-
-         HTML5_Canvas.Primitive.drawRect(_middle, top, 2,height,1, 'red', 0);
-
-         HTML5_Canvas.Text.drawText ("im " + "frame = " + _index, _middle + 5, _bottom-40, 'italic 20px sans-serif', 'white', 1);
-         HTML5_Canvas.Text.drawText ("im " + SpritesMap.TXT_SPRITES_FIGHTER_SET[_type], _middle+5, _bottom -20, 'italic 20px sans-serif', 'white', 1);
-
-        // _GameText_R.drawText ("i " + "middle = " + _middle, left+5, _bottom-140, 'italic 20px sans-serif', 'white', 1);
-        // _GameText_R.drawText ("i " + "width = " + width, left+5, _bottom-120, 'italic 20px sans-serif', 'white', 1);
-        // _GameText_R.drawText ("i " + "left = " + left, left+5, _bottom-100, 'italic 20px sans-serif', 'white', 1);
-        // _GameText_R.drawText ("i " + "right = " + right, left+5, _bottom-80, 'italic 20px sans-serif', 'white', 1);
-  };
-  //============================================================================
-
-
  // ini Image
   //============================================================================
   SpritesMap.iniSprite = function(_type,_path){
@@ -473,10 +412,10 @@ console.log("DD_HTML5_SpritesMaps.js:SpritesMap.MonstersMapString.get(nameTilesI
   //============================================================================
   SpritesMap.loadAllSprite = function() {
     //SpritesMap.iniSprite(SpritesMap.REZERV,"");
-    SpritesMap.iniSprite(SpritesMap.ADVENTURES,"image/DD_Map/adventures/advans_");
-    SpritesMap.iniSprite(SpritesMap.GROUNDS,"image_DD_Map/grounds/gr_");
-    SpritesMap.iniSprite(SpritesMap.ITEMS,"image/DD_Map/items/it_");
-    SpritesMap.iniSprite(SpritesMap.MONSTERS,"image/DD_Map/monsters/mons_");
+    SpritesMap.iniSprite(SpritesMap.ADVENTURES,"images_DD_Map/adventures/advans_");
+    SpritesMap.iniSprite(SpritesMap.GROUNDS,"images_DD_Map/grounds/gr_");
+    SpritesMap.iniSprite(SpritesMap.ITEMS,"images_DD_Map/items/it_");
+    SpritesMap.iniSprite(SpritesMap.MONSTERS,"images_DD_Map/monsters/mons_");
 
     SpritesMap.ini_tiles_char();
 };

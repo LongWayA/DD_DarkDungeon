@@ -41,9 +41,11 @@ window.Map = {};
 //=============================================================================
   Map.ini_Map = function(){
     
-      Map.tile.width  = EditorFrames.MapFrameTile_SIZE_WIDTH  = 50;// px это размер тайла по горизонтали
-      Map.tile.height = EditorFrames.MapFrameTile_SIZE_HEIGHT = 50;// px это размер тайла по вертикали
-      
+      Map.tile.width  = EditorFrames.MapFrame.tile_SIZE_WIDTH;// px это размер тайла по горизонтали
+      Map.tile.height = EditorFrames.MapFrame.tile_SIZE_HEIGHT;// px это размер тайла по вертикали
+      //console.log("DD_Map.js: Map.tile.width = " + Map.tile.width);
+      //console.log("DD_Map.js: Map.tile.height = " + Map.tile.height);
+
       Map.stringMap.saveGrounds  = "";
       Map.stringMap.saveItems    = "";
       Map.stringMap.saveMonsters = "";
@@ -54,9 +56,12 @@ window.Map = {};
       // количество тайлов вычисляем по размеру тайловой карты и тайла
       Map.widthMaxTilesCount = Map.widthMax_px/Map.tile.width;
       Map.heightMaxTilesCount = Map.heightMax_px/Map.tile.height;
-      
-      //console.log("DD_Map.js: Map.widthMaxTilesCount = " + Map.widthMaxTilesCount);
-      //console.log("DD_Map.js: Map.heightMaxTilesCount = " + Map.heightMaxTilesCount);
+
+      Map.widthMaxTilesCount  = Math.ceil(Map.widthMaxTilesCount);
+      Map.heightMaxTilesCount = Math.ceil(Map.heightMaxTilesCount);
+
+      console.log("DD_Map.js: Map.widthMaxTilesCount = " + Map.widthMaxTilesCount);
+      console.log("DD_Map.js: Map.heightMaxTilesCount = " + Map.heightMaxTilesCount);
 
       Map.MapArrayTile_2d = new Array(Map.widthMaxTilesCount);// двухмерный массив тайлов
 
@@ -77,9 +82,9 @@ window.Map = {};
 
     for (let j = 0; j < Map.heightMaxTilesCount; j++) {
       Map.MapArrayTile_2d[i][j] = new Tile_for_Map_C();
-      Map.MapArrayTile_2d[i][j].G_char ="a";//
-      Map.MapArrayTile_2d[i][j].I_char ="b";//-
-      Map.MapArrayTile_2d[i][j].M_char ="c";//-
+      Map.MapArrayTile_2d[i][j].G_char ="c";//
+      Map.MapArrayTile_2d[i][j].I_char ="-";//-
+      Map.MapArrayTile_2d[i][j].M_char ="-";//-
     }
   }
 };
