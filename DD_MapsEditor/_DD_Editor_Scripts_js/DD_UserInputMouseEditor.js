@@ -116,24 +116,24 @@ UserInputMouse.clikMapSetTile = function(_mouse_X, _mouse_Y, _X0, _Y0) {
      //console.log("DD_UserInputMouse.js: TILE_MAP ");
      //console.log("__DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetGROUND_Tipe = " + UserInputMouse.clikMapGetGROUND_Tipe);
 
-     let X0 =  SpritesMap.GROUNDS_MAX_COUNT *  Map.tile.width + EditorFrames.TilesPanelFrame.Ground_X0 + 20;
+     let X0 =  SpritesMap_2D.GROUNDS_MAX_COUNT *  Map_2D.tile.width + EditorFrames.TilesPanelFrame.Ground_X0 + 20;
      let Y0 = EditorFrames.TilesPanelFrame.Ground_Y0;
 
 
      if( UserInputMouse.selectedLayer == "GROUND" ){
           if( UserInputMouse.clikMapGetChar != " " ){
 
-               let x = Math.ceil( (_mouse_X - _X0) / Map.tile.width);// округление до наибольшего целого
-               let y = Math.ceil( (_mouse_Y - _Y0) / Map.tile.height);// округление до наибольшего целого
+               let x = Math.ceil( (_mouse_X - _X0) / Map_2D.tile.width);// округление до наибольшего целого
+               let y = Math.ceil( (_mouse_Y - _Y0) / Map_2D.tile.height);// округление до наибольшего целого
 
                //console.log("DD_UserInputMouse.js:clikMapSetTile  x = " + x);
                //console.log("DD_UserInputMouse.js:clikMapSetTile  y = " + y);
                //console.log("DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetChar = " + UserInputMouse.clikMapGetChar);
 
-               Map.MapArrayTile_2d[x-1][y-1].G_char = UserInputMouse.clikMapGetChar;
-               if( Map.MapArrayTile_2d[x-1][y-1].G_char != SpritesMap.GROUND_FLOOR ) {
-                    Map.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap.ITEMS_NOTHING;
-                    Map.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap.MONSTERS_NOTHING
+               Map_2D.MapArrayTile_2d[x-1][y-1].G_char = UserInputMouse.clikMapGetChar;
+               if( Map_2D.MapArrayTile_2d[x-1][y-1].G_char != SpritesMap_2D.GROUND_FLOOR ) {
+                    Map_2D.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap_2D.ITEMS_NOTHING;
+                    Map_2D.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap_2D.MONSTERS_NOTHING
                }
 
                EditorFrameDraw.drowFrame();
@@ -143,24 +143,24 @@ UserInputMouse.clikMapSetTile = function(_mouse_X, _mouse_Y, _X0, _Y0) {
      } else if( UserInputMouse.selectedLayer == "ITEM" ){
           if( UserInputMouse.clikMapGetChar != " " ){
 
-               let x = Math.ceil( (_mouse_X - _X0) / Map.tile.width);// округление до наибольшего целого
-               let y = Math.ceil( (_mouse_Y - _Y0) / Map.tile.height);// округление до наибольшего целого
+               let x = Math.ceil( (_mouse_X - _X0) / Map_2D.tile.width);// округление до наибольшего целого
+               let y = Math.ceil( (_mouse_Y - _Y0) / Map_2D.tile.height);// округление до наибольшего целого
 
                //console.log("DD_UserInputMouse.js:clikMapSetTile  x = " + x);
                //console.log("DD_UserInputMouse.js:clikMapSetTile  y = " + y);
                //console.log("DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetChar = " + UserInputMouse.clikMapGetChar);
 
                //---------------------------------------------------------------------------
-               if( Map.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap.GROUND_FLOOR ) {
+               if( Map_2D.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap_2D.GROUND_FLOOR ) {
 
-                    if(Map.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap.MONSTERS_NOTHING){
+                    if(Map_2D.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap_2D.MONSTERS_NOTHING){
 
-                         Map.MapArrayTile_2d[x-1][y-1].I_char = UserInputMouse.clikMapGetChar;
+                         Map_2D.MapArrayTile_2d[x-1][y-1].I_char = UserInputMouse.clikMapGetChar;
                          EditorFrameDraw.drowFrame();
                          HTML5_Canvas.Primitive.drawRect(X0, Y0, 500, 30, 1, 'green', 0);
                          HTML5_Canvas.context.clearRect(X0, Y0, 500, 30);
                     } else {
-                              Map.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap.ITEMS_NOTHING;
+                              Map_2D.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap_2D.ITEMS_NOTHING;
                               let x2 = _mouse_X + 10;
                               let y2 = _mouse_Y;
                               EditorFrameDraw.drowFrame();
@@ -170,12 +170,12 @@ UserInputMouse.clikMapSetTile = function(_mouse_X, _mouse_Y, _X0, _Y0) {
                               HTML5_Canvas.Primitive.drawRect(X0, Y0, 500, 30, 1, 'green', 0);
                               HTML5_Canvas.context.clearRect(X0, Y0, 500, 30);
                               HTML5_Canvas.context.strokeText ("ЗАНЯТО МОНСТРОМ", X0 + 10, Y0 + 20);
-                    }//if(Map.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap.MONSTERS_NOTHING){
+                    }//if(Map_2D.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap_2D.MONSTERS_NOTHING){
           
 
 
                } else {
-                    Map.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap.ITEMS_NOTHING;
+                    Map_2D.MapArrayTile_2d[x-1][y-1].I_char = SpritesMap_2D.ITEMS_NOTHING;
                     let x2 = _mouse_X + 10;
                     let y2 = _mouse_Y;
                     EditorFrameDraw.drowFrame();
@@ -186,33 +186,33 @@ UserInputMouse.clikMapSetTile = function(_mouse_X, _mouse_Y, _X0, _Y0) {
                     HTML5_Canvas.context.clearRect(X0, Y0, 500, 30);
                     HTML5_Canvas.context.strokeText ("НЕТ СВОБОДНОГО ПРОСТРАНСТВА", X0 + 10, Y0 + 20);
   
-               }//if( Map.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap.GROUND_FLOOR ) {
+               }//if( Map_2D.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap_2D.GROUND_FLOOR ) {
                //---------------------------------------------------------------------------
           }
      } else if( UserInputMouse.selectedLayer == "MONSTER" ){
           if( UserInputMouse.clikMapGetChar != " " ){
 
-               let x = Math.ceil( (_mouse_X - _X0) / Map.tile.width);// округление до наибольшего целого
-               let y = Math.ceil( (_mouse_Y - _Y0) / Map.tile.height);// округление до наибольшего целого
+               let x = Math.ceil( (_mouse_X - _X0) / Map_2D.tile.width);// округление до наибольшего целого
+               let y = Math.ceil( (_mouse_Y - _Y0) / Map_2D.tile.height);// округление до наибольшего целого
 
                //console.log("DD_UserInputMouse.js:clikMapSetTile  x = " + x);
                //console.log("DD_UserInputMouse.js:clikMapSetTile  y = " + y);
                //console.log("DD_UserInputMouse.js:clikMapSetTile  UserInputMouse.clikMapGetChar = " + UserInputMouse.clikMapGetChar);
 
-               //Map.MapArrayTile_2d[x-1][y-1].M_char = UserInputMouse.clikMapGetChar;
+               //Map_2D.MapArrayTile_2d[x-1][y-1].M_char = UserInputMouse.clikMapGetChar;
                //EditorFrameDraw.drowFrame();
 
                              //---------------------------------------------------------------------------
-                             if( Map.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap.GROUND_FLOOR ) {
+                             if( Map_2D.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap_2D.GROUND_FLOOR ) {
 
-                              if(Map.MapArrayTile_2d[x-1][y-1].I_char == SpritesMap.ITEMS_NOTHING){
+                              if(Map_2D.MapArrayTile_2d[x-1][y-1].I_char == SpritesMap_2D.ITEMS_NOTHING){
           
-                                   Map.MapArrayTile_2d[x-1][y-1].M_char = UserInputMouse.clikMapGetChar;
+                                   Map_2D.MapArrayTile_2d[x-1][y-1].M_char = UserInputMouse.clikMapGetChar;
                                    EditorFrameDraw.drowFrame();
                                    HTML5_Canvas.Primitive.drawRect(X0, Y0, 500, 30, 1, 'green', 0);
                                    HTML5_Canvas.context.clearRect(X0, Y0, 500, 30);
                               } else {
-                                        Map.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap.MONSTERS_NOTHING;
+                                        Map_2D.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap_2D.MONSTERS_NOTHING;
                                         let x2 = _mouse_X + 10;
                                         let y2 = _mouse_Y;
                                         EditorFrameDraw.drowFrame();
@@ -222,10 +222,10 @@ UserInputMouse.clikMapSetTile = function(_mouse_X, _mouse_Y, _X0, _Y0) {
                                         HTML5_Canvas.Primitive.drawRect(X0, Y0, 500, 30, 1, 'green', 0);
                                         HTML5_Canvas.context.clearRect(X0, Y0, 500, 30);
                                         HTML5_Canvas.context.strokeText ("ЗАНЯТО ПРЕДМЕТОМ", X0 + 10, Y0 + 20);
-                              }//if(Map.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap.MONSTERS_NOTHING){
+                              }//if(Map_2D.MapArrayTile_2d[x-1][y-1].M_char == SpritesMap_2D.MONSTERS_NOTHING){
                     
                          } else {
-                              Map.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap.MONSTERS_NOTHING;
+                              Map_2D.MapArrayTile_2d[x-1][y-1].M_char = SpritesMap_2D.MONSTERS_NOTHING;
                               let x2 = _mouse_X + 10;
                               let y2 = _mouse_Y;
                               EditorFrameDraw.drowFrame();
@@ -236,7 +236,7 @@ UserInputMouse.clikMapSetTile = function(_mouse_X, _mouse_Y, _X0, _Y0) {
                               HTML5_Canvas.context.clearRect(X0, Y0, 500, 30);
                               HTML5_Canvas.context.strokeText ("НЕТ СВОБОДНОГО ПРОСТРАНСТВА", X0 + 10, Y0 + 20);
             
-                         }//if( Map.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap.GROUND_FLOOR ) {
+                         }//if( Map_2D.MapArrayTile_2d[x-1][y-1].G_char == SpritesMap_2D.GROUND_FLOOR ) {
                          //---------------------------------------------------------------------------
 
           }
@@ -252,8 +252,8 @@ UserInputMouse.clikMapGetTile = function(_mouse_X, _mouse_Y,  _X0, _Y0, _layer) 
 
      //console.log("DD_UserInputMouse.js: UserInputMouse.clikMapGetTile ");
 
-    // Map.drawMap(0,0);
-    // Map.drawSelectTiles(0);
+    // Map_2D.drawMap(0,0);
+    // Map_2D.drawSelectTiles(0);
      let maxCount = 0;
      let typeLayer ="";
      let trueLayer = false; 
@@ -262,22 +262,22 @@ UserInputMouse.clikMapGetTile = function(_mouse_X, _mouse_Y,  _X0, _Y0, _layer) 
 
      if (_layer == "GROUND"){
           //console.log("DD_UserInputMouse.js: _layer == GROUND ");
-          maxCount = SpritesMap.GROUNDS_MAX_COUNT;
-          typeLayer = SpritesMap.GROUNDS;
+          maxCount = SpritesMap_2D.GROUNDS_MAX_COUNT;
+          typeLayer = SpritesMap_2D.GROUNDS;
           trueLayer = true;
 
      } else if(_layer == "ITEM"){
 
           //console.log("DD_UserInputMouse.js: ITEM ");
-          maxCount = SpritesMap.ITEMS_MAX_COUNT ;
-          typeLayer = SpritesMap.ITEMS;
+          maxCount = SpritesMap_2D.ITEMS_MAX_COUNT ;
+          typeLayer = SpritesMap_2D.ITEMS;
           trueLayer = true;
 
      } else if(_layer == "MONSTER"){
 
           //console.log("DD_UserInputMouse.js: MONSTER ");
-          maxCount = SpritesMap.MONSTERS_MAX_COUNT ;
-          typeLayer = SpritesMap.MONSTERS;
+          maxCount = SpritesMap_2D.MONSTERS_MAX_COUNT ;
+          typeLayer = SpritesMap_2D.MONSTERS;
           trueLayer = true;
      } 
 
@@ -301,14 +301,14 @@ UserInputMouse.clikMapGetTile = function(_mouse_X, _mouse_Y,  _X0, _Y0, _layer) 
                HTML5_Canvas.Primitive.drawRect(j * EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + _X0, _Y0, 
                     EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH, EditorFrames.TilesPanelFrame.tile_SIZE_HEIGHT, 2, 'red', 0);
 
-               UserInputMouse.clikMapGetChar = SpritesMap.tilesLoad[typeLayer][j].tile_char;
+               UserInputMouse.clikMapGetChar = SpritesMap_2D.tilesLoad[typeLayer][j].tile_char;
 
-               let X0 =  SpritesMap.GROUNDS_MAX_COUNT *  EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + EditorFrames.TilesPanelFrame.Ground_X0 + 20;
+               let X0 =  SpritesMap_2D.GROUNDS_MAX_COUNT *  EditorFrames.TilesPanelFrame.tile_SIZE_WIDTH + EditorFrames.TilesPanelFrame.Ground_X0 + 20;
                let Y0 = EditorFrames.TilesPanelFrame.Ground_Y0;
 
                HTML5_Canvas.Primitive.drawRect(X0, Y0, 500, 30, 1, 'green', 0);
                HTML5_Canvas.context.clearRect(X0, Y0, 500, 30);
-               HTML5_Canvas.context.strokeText (" " + SpritesMap.tilesLoad[typeLayer][j].tile_String, X0 + 10, Y0 + 20);
+               HTML5_Canvas.context.strokeText (" " + SpritesMap_2D.tilesLoad[typeLayer][j].tile_String, X0 + 10, Y0 + 20);
 
 
                //console.log("DD_UserInputMouse.js:clikMapGet_X = " + clikMapGet_X);
@@ -323,13 +323,8 @@ UserInputMouse.clikMapGetTile = function(_mouse_X, _mouse_Y,  _X0, _Y0, _layer) 
 }
 //==============================================================================
 
-UserInputMouse.ini_UserInputMouse();
+     UserInputMouse.ini_UserInputMouse();
 
+     HTML5_Canvas.TestLoadedScripts.testLoading ('DD_UserInputMouseEditor.js');
 
-//==============================================================================
-HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-HTML5_Canvas.context.strokeText ('script DD_UserInputMouse.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
-
-UserInputMouse.isOk = "OK";//
-
-//==============================================================================
+     UserInputMouse.isOk = "OK";//

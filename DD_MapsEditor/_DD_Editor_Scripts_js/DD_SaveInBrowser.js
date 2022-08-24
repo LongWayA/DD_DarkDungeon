@@ -25,11 +25,11 @@ SaveInBrowser.OKresponse = "";
  //=============================================================================
  SaveInBrowser.saveInBrowser = function() {
 
-  Map.saveMapArrayTile();
+  Map_2D.saveMapArrayTile();
 
-  localStorage.GROUND   = Map.stringMap.saveGrounds;
-  localStorage.ITEMS    = Map.stringMap.saveItems;
-  localStorage.MONSTERS = Map.stringMap.saveMonsters;
+  localStorage.GROUND   = Map_2D.stringMap.saveGrounds;
+  localStorage.ITEMS    = Map_2D.stringMap.saveItems;
+  localStorage.MONSTERS = Map_2D.stringMap.saveMonsters;
 
   // удалить ключ
   // delete localStorage.test;
@@ -37,9 +37,6 @@ SaveInBrowser.OKresponse = "";
 };
 //=============================================================================
 
- //=============================================================================
- HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
- HTML5_Canvas.context.strokeText ('script DD_SaveInBrowser.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+  HTML5_Canvas.TestLoadedScripts.testLoading ('DD_SaveInBrowser.js'); 
 
- SaveInBrowser.isOk = "OK";//
- //=============================================================================
+  SaveInBrowser.isOk = "OK";//

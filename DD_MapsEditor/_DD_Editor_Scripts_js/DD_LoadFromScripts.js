@@ -32,7 +32,7 @@ LoadFromScripts.resetMapInBrowser = function() {
   let saveItems    = LoadFromScripts.resetItems;
   let saveMonsters = LoadFromScripts.resetMonsters;
 
-  Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
+  Map_2D.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
   EditorFrameDraw.drowFrame();
 };
 //=============================================================================
@@ -49,7 +49,7 @@ LoadFromScripts.resetMapInBrowser = function() {
    let saveItems    = LoadFromScripts.savedItems;
    let saveMonsters = LoadFromScripts.savedMonsters;
  
-   Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
+   Map_2D.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
    EditorFrameDraw.drowFrame();
 
  };
@@ -98,6 +98,11 @@ bnfkkkkkkkkkkkkkkkkkkfnb
 bnffffffffffffffffffffnb
 bnnnnnnnnnnnnnnnnnnnnnnb
 bbbbbbbbbbbbbbbbbbbbbbbb`;
+//************************************************
+
+
+//************************************************
+LoadFromScripts.listLoadingMapsNotSorting  = `aaa_166049861010872800.map!nameUserMapDefault_166045772813586100.map!TEST_1_166045432241485100.map!a_166058583166303900.map!nameUserMapDefault_166057137646274300.map!aaaaaaaaa_166098447721756800.map!testing from bro_166057142258942400.map!nameUserMapDefault_166045821377869700.map!testing from bro_166057141048917600.map!nameUserMapDefault_166075851318186700.map!q2_166045791250258900.map!nameUserMapDefault_166098397839015700.map!nameUserMapDefault_166075878560985400.map!nameUserMapDefault_166049887843040200.map!ttt_166075813539358400.map!nameUserMapDefault_166075815840922400.map!qw_166049894704985100.map!nameUserMapDefault_166049846871727300.map!nameUserMapDefault_166075852963099500.map!nameUserMapDefault_166058577958526300.map!`;
 //************************************************
 
 }
@@ -199,11 +204,9 @@ LoadFromScripts.resetMonsters =
   }
   //=============================================================================
   
-  
+ 
 
- //=============================================================================
- HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
- HTML5_Canvas.context.strokeText ('script DD_LoadFromScripts.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
 
- LoadFromScripts.isOk = "OK";//
- //=============================================================================
+  HTML5_Canvas.TestLoadedScripts.testLoading ('DD_LoadFromScripts.js'); 
+
+  LoadFromScripts.isOk = "OK";//

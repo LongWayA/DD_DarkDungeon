@@ -27,19 +27,19 @@ Test.NAME = "Test";//
       //if(HTML5_Canvas.isOk != "OK")       alert("DD_Timer.js:script DD_HTML5_Canvas.js NOT OK!");//
 
       //DD_HTML5_SpritesMaps.js
-      if(SpritesMap.isOk != "OK") console.log("DD_Timer.js:script DD_HTML5_SpritesMaps.js NOT OK!");//
-      //if(SpritesMap.isOk == "OK") console.log("DD_Timer.js:script DD_HTML5_SpritesMaps.js OK!");//
-      //if(SpritesMap.isOk != "OK")       alert("DD_Timer.js:script DD_HTML5_SpritesMaps.js NOT OK!");//
+      if(SpritesMap_2D.isOk != "OK") console.log("DD_Timer.js:script DD_HTML5_SpritesMaps.js NOT OK!");//
+      //if(SpritesMap_2D.isOk == "OK") console.log("DD_Timer.js:script DD_HTML5_SpritesMaps.js OK!");//
+      //if(SpritesMap_2D.isOk != "OK")       alert("DD_Timer.js:script DD_HTML5_SpritesMaps.js NOT OK!");//
 
       //DD_EditorFrames.js
       if(EditorFrames.isOk != "OK") console.log("DD_Timer.js:script DD_EditorFrames.js NOT OK!");//
       //if(EditorFrames.isOk == "OK") console.log("DD_Timer.js:script DD_EditorFrames.js OK!");//
       //if(EditorFrames.isOk != "OK")       alert("DD_Timer.js:script DD_EditorFrames.js NOT OK!");//
 
-      //DD_Map.js
-      if(Map.isOk != "OK") console.log("DD_Timer.js:script DD_Map.js NOT OK!");//
-      //if(Map.isOk == "OK") console.log("DD_Timer.js:script DD_Map.js OK!");//
-      //if(Map.isOk != "OK")       alert("DD_Timer.js:script DD_Map.js NOT OK!");//
+      //DD_Map_2D.js
+      if(Map_2D.isOk != "OK") console.log("DD_Timer.js:script DD_Map_2D.js NOT OK!");//
+      //if(Map_2D.isOk == "OK") console.log("DD_Timer.js:script DD_Map_2D.js OK!");//
+      //if(Map_2D.isOk != "OK")       alert("DD_Timer.js:script DD_Map_2D.js NOT OK!");//
 
       //DD_MapFrameDraw.js
       if(MapFrameDraw.isOk != "OK") console.log("DD_Timer.js:script DD_MapFrameDraw.js NOT OK!");//
@@ -93,9 +93,4 @@ if(window.itIsDebugging == true){
   Test.testAll();
 }
 
-
-//============================================================================
-HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-HTML5_Canvas.context.strokeText ('script DD_Test.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
-
-//==============================================================================
+  HTML5_Canvas.TestLoadedScripts.testLoading ('DD_Test.js'); 

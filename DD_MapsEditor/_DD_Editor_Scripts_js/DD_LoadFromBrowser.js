@@ -32,7 +32,7 @@ LoadFromBrowser.OKresponse = "";
   let saveItems    = localStorage.ITEMS;
   let saveMonsters = localStorage.MONSTERS;
 
-  Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
+  Map_2D.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
 
   EditorFrameDraw.drowFrame();
 
@@ -42,9 +42,6 @@ LoadFromBrowser.OKresponse = "";
 };
 //=============================================================================
 
- //=============================================================================
- HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
- HTML5_Canvas.context.strokeText ('script DD_LoadFromBrowser.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+HTML5_Canvas.TestLoadedScripts.testLoading ('DD_LoadFromBrowser.js'); 
 
  LoadFromBrowser.isOk = "OK";//
- //=============================================================================

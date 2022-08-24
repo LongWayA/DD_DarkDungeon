@@ -40,12 +40,8 @@ window.EditorFrameDraw = {};
   };
 //=============================================================================
 
+  EditorFrameDraw.ini_EditorFrameDraw();
 
-EditorFrameDraw.ini_EditorFrameDraw();
+  HTML5_Canvas.TestLoadedScripts.testLoading ('DD_EditorFrameDraw.js'); 
 
- //=============================================================================
- HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
- HTML5_Canvas.context.strokeText ('script DD_EditorFrameDraw.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
-
- EditorFrameDraw.isOk = "OK";//
- //=============================================================================
+  EditorFrameDraw.isOk = "OK";//

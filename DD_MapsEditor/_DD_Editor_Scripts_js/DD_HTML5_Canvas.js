@@ -5,12 +5,12 @@
 
   /*
    НАЗНАЧЕНИЕ
-    Печатаем текст.
+    Работаем с HTML5 Canvas
 
    ИСПОЛЬЗУЕТ МОДУЛИ
-
+    -
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
-
+    всех
   */
 
 
@@ -106,15 +106,12 @@ strokeStyle = color
 
 */
 
-//==============================================================================
-
-// самый корневой класс Р-роуте-корень
+// 
   window.HTML5_Canvas = {};
   HTML5_Canvas.isOk = " ";//
   
   HTML5_Canvas.NAME = "HTML5_Canvas";//
 
-//------------------------------------------------------------------------------------------------------------------
 //=============================================================================
 HTML5_Canvas.ini_HTML5_Canvas = function(){
 
@@ -143,10 +140,15 @@ HTML5_Canvas.ini_HTML5_Canvas = function(){
       //HTML5_Canvas.context.fillText ('LOAD REC', 10, 10);
       //HTML5_Canvas.context.fillRect( 100, 100, 100, 100);
       //HTML5_Canvas.context.strokeRect( 10, 10, 100, 100);
+
+      HTML5_Canvas.TestLoadedScripts.TEST_X = 750;//
+      HTML5_Canvas.TestLoadedScripts.TEST_Y = 50;//
+      HTML5_Canvas.TestLoadedScripts.TEST_dY = 30;//
+      HTML5_Canvas.TestLoadedScripts.TEST_COUNT = 1;//
 }
 //=============================================================================
 
-//============================================================================
+//=============================================================================
 HTML5_Canvas.setColor = function(color) {
 
   let style;
@@ -304,18 +306,25 @@ HTML5_Canvas.Image.drawImage = function(_image, _left, _top, _width = 0, _height
 };
 //============================================================================
 
+//------------------------------------------------------------------------------------------------------------------
+HTML5_Canvas.TestLoadedScripts = {};
+HTML5_Canvas.TestLoadedScripts.NAME = "Test loading Scripts";//
 
-      HTML5_Canvas.ini_HTML5_Canvas();
+  //============================================================================
+  // сообщаем что модуль был прочитан до конца
+  HTML5_Canvas.TestLoadedScripts.testLoading = function(_nameScript) {
 
- // сообщаем что модуль был прочитан до конца
+    HTML5_Canvas.context.strokeText (HTML5_Canvas.TestLoadedScripts.TEST_COUNT + ' script ' + _nameScript + ' loaded', 
+    HTML5_Canvas.TestLoadedScripts.TEST_X, HTML5_Canvas.TestLoadedScripts.TEST_Y);
+
+    HTML5_Canvas.TestLoadedScripts.TEST_Y     = HTML5_Canvas.TestLoadedScripts.TEST_Y  + HTML5_Canvas.TestLoadedScripts.TEST_dY;//
+    HTML5_Canvas.TestLoadedScripts.TEST_COUNT = HTML5_Canvas.TestLoadedScripts.TEST_COUNT + 1;//
+  };
   //============================================================================
-  HTML5_Canvas.xT = 900;//
-  HTML5_Canvas.yT = 50;//
-  HTML5_Canvas.dyT = 20;//
-  //============================================================================
-  HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-  HTML5_Canvas.context.strokeText ('script DD_HTML5_Canvas.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+
+  HTML5_Canvas.ini_HTML5_Canvas();
+
+ 
+ HTML5_Canvas.TestLoadedScripts.testLoading ('DD_HTML5_Canvas.js'); 
 
   HTML5_Canvas.isOk = "OK";//
-
-//==============================================================================

@@ -16,7 +16,13 @@ LoadFromServer.isOk = " ";//
 LoadFromServer.NAME = "LoadFromServer";//
 LoadFromServer.OKresponse = "";
 
+//=============================================================================
+LoadFromServer.ini = function(){
 
+    LoadFromServer.LoadingMapsString = new Array(10000); // массив имен карт.
+    LoadFromServer.LoadingMapsInt    = new Array(10000); // массив ид чисел карт. по ним сортируем карты
+}
+//=============================================================================
 
 //=============================================================================
 //
@@ -36,19 +42,19 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
         
         //  console.log(' >Grounds '  + '\n');        
         // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-        for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
-            for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
+        for ( let j = 0; j < Map_2D.heightMaxTilesCount; j++) {
+            for ( let i = 0; i < Map_2D.widthMaxTilesCount; i++) {
  
-                //Map.MapArrayTile_2d[i][j].G_char = mapOneString[pozChar];
+                //Map_2D.MapArrayTile_2d[i][j].G_char = mapOneString[pozChar];
                 //console.log('g_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
                 saveGrounds = saveGrounds + mapOneString[pozChar];
                 pozChar = pozChar + 1;
-            }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+            }//for ( let i = Map_2D.widthMaxTilesCount - 1; i >= 0; i--) {
  
             //console.log('**g_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
             saveGrounds = saveGrounds + mapOneString[pozChar];
             pozChar = pozChar + 1;
-        }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {        
+        }//for ( let j = Map_2D.heightMaxTilesCount - 1; j >= 0; j--) {        
 
 //////////////////////////////////////////////////////////// 
   
@@ -57,18 +63,18 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
   
         // console.log(' >Items '  + '\n');
         // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-        for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
-            for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
-                //Map.MapArrayTile_2d[i][j].I_char = mapOneString[pozChar];
+        for ( let j = 0; j < Map_2D.heightMaxTilesCount; j++) {
+            for ( let i = 0; i < Map_2D.widthMaxTilesCount; i++) {
+                //Map_2D.MapArrayTile_2d[i][j].I_char = mapOneString[pozChar];
                 //console.log('i_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
                 saveItems = saveItems + mapOneString[pozChar];
                 pozChar = pozChar + 1;
-            }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+            }//for ( let i = Map_2D.widthMaxTilesCount - 1; i >= 0; i--) {
                      
             //console.log('**i_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
             saveItems = saveItems + mapOneString[pozChar];
             pozChar = pozChar + 1;
-        }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
+        }//for ( let j = Map_2D.heightMaxTilesCount - 1; j >= 0; j--) {
 
 ////////////////////////////////////////////////////////////
   
@@ -77,22 +83,22 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
    
         //  console.log(' >Monsters '  + '\n');
         // создаем двухмерный массив объектов тайл. в них три слоя для земли, предметов, монстров
-        for ( let j = 0; j < Map.heightMaxTilesCount; j++) {
-            for ( let i = 0; i < Map.widthMaxTilesCount; i++) {
+        for ( let j = 0; j < Map_2D.heightMaxTilesCount; j++) {
+            for ( let i = 0; i < Map_2D.widthMaxTilesCount; i++) {
  
-                //Map.MapArrayTile_2d[i][j].M_char = mapOneString[pozChar];
+                //Map_2D.MapArrayTile_2d[i][j].M_char = mapOneString[pozChar];
                 // console.log('m_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
                 saveMonsters = saveMonsters + mapOneString[pozChar];
                 // console.log(' saveMonsters = ' + saveMonsters + '\n');
                 pozChar = pozChar + 1;
               
-            }//for ( let i = Map.widthMaxTilesCount - 1; i >= 0; i--) {
+            }//for ( let i = Map_2D.widthMaxTilesCount - 1; i >= 0; i--) {
           
             // console.log('**m_mapOneString[' + pozChar + ']= ' + mapOneString[pozChar] + '\n');
             saveMonsters = saveMonsters + mapOneString[pozChar];
             pozChar = pozChar + 1;
           
-        }//for ( let j = Map.heightMaxTilesCount - 1; j >= 0; j--) {
+        }//for ( let j = Map_2D.heightMaxTilesCount - 1; j >= 0; j--) {
   
 /////////////////////////////////////////////////////////////////////////
 
@@ -109,7 +115,7 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
         //console.log(' saveGrounds = ' + saveGrounds + '\n');
         //console.log(' saveMapName = ' + saveMapName + '\n');
     
-        Map.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
+        Map_2D.loadMapArrayTile(saveGrounds, saveItems, saveMonsters);
 
         EditorFrameDraw.drowFrame();       
         //MapFrameDraw.drawMap(0,0,true);    
@@ -171,6 +177,78 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
 //=============================================================================
 
 
+//=============================================================================
+LoadFromServer.sortingLoadingMaps = function(listLoadingMapsNotSorting_) {
+   // aaa_166049861010872800.map!
+
+    let pozCharMax = listLoadingMapsNotSorting_.length;
+    let listLoadingMapsSorting_Buff = '';
+    let k = 0;
+    let numStart = 0;
+    for ( let i = 0; i < pozCharMax; i++) {
+      
+     // console.log('DD_MapsEditor.js:listLoadingMapsNotSorting_ [' + i + ']= ' + listLoadingMapsNotSorting_[i] + '\n');
+
+      if((listLoadingMapsNotSorting_[i] == "!") &&
+         (listLoadingMapsNotSorting_[i-1] == "p")&&
+         (listLoadingMapsNotSorting_[i-2] == "a")&&
+         (listLoadingMapsNotSorting_[i-3] == "m")
+      ){
+        let numString = '';
+        for ( let j = (i - 22); j < (i - 4); j++) {
+
+            numString = numString + listLoadingMapsNotSorting_[j];
+        }//for j
+
+        LoadFromServer.LoadingMapsString[k] = listLoadingMapsNotSorting_.slice(numStart, i) + '\n';
+        LoadFromServer.LoadingMapsInt[k]    = Number(numString);
+
+      //  console.log('DD_MapsEditor.js: LoadFromServer.LoadingMapsString[' + k + '] = ' + LoadFromServer.LoadingMapsString[k] +' \n');
+      //  console.log('DD_MapsEditor.js: LoadFromServer.LoadingMapsInt[' + k + '] = ' + LoadFromServer.LoadingMapsInt[k] +' \n');
+        k = k + 1;
+
+       // listLoadingMapsNotSorting_Buff = listLoadingMapsNotSorting_Buff + '\n';
+        numStart = i + 1;
+       // console.log('DD_MapsEditor.js: YES' + '\n');
+      } else {
+       // listLoadingMapsNotSorting_Buff = listLoadingMapsNotSorting_Buff + listLoadingMapsNotSorting_[i];
+      }// if
+    }// for ( let i = 0; i < pozCharMax; i++) {
+
+    let LoadingMapsInt_Buf;
+    let LoadingMapsString_Buf;
+
+        for ( let i2 = 0; i2 < k; i2++) {
+            for ( let i3 = i2 + 1; i3 < k; i3++) {
+
+                if(LoadFromServer.LoadingMapsInt[i2] < LoadFromServer.LoadingMapsInt[i3]){
+
+                    LoadingMapsString_Buf = LoadFromServer.LoadingMapsString[i2];
+                    LoadingMapsInt_Buf    = LoadFromServer.LoadingMapsInt[i2];
+
+                    LoadFromServer.LoadingMapsString[i2] = LoadFromServer.LoadingMapsString[i3];
+                    LoadFromServer.LoadingMapsInt[i2]    = LoadFromServer.LoadingMapsInt[i3];
+
+                    LoadFromServer.LoadingMapsString[i3] = LoadingMapsString_Buf;
+                    LoadFromServer.LoadingMapsInt[i3]    = LoadingMapsInt_Buf;
+                }// if
+            } // for i3
+        } // for i2
+
+        for ( let i4 = 0; i4 < k; i4++) {
+
+            //console.log('DD_MapsEditor.js: LoadFromServer.LoadingMapsString[' + i4 + '] = ' + LoadFromServer.LoadingMapsString[i4] +' \n');
+           // console.log('DD_MapsEditor.js: LoadFromServer.LoadingMapsInt[' + i4 + '] = ' + LoadFromServer.LoadingMapsInt[i4] +' \n');
+           listLoadingMapsSorting_Buff = listLoadingMapsSorting_Buff + LoadFromServer.LoadingMapsString[i4]; // +' \n'
+
+        }//for i4
+
+    return listLoadingMapsSorting_Buff;
+  
+};//sortingLoadingMaps
+//=============================================================================
+
+
 // 
  //=============================================================================
  LoadFromServer.loadListMapsFromServer = function() {
@@ -189,7 +267,7 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
         if (xhr.status == 200) {
            // console.log(xhr.response);
             if(xhr.response != "") {
-                MapsEditor.storyLoadingMapsJ.value = xhr.response;
+                MapsEditor.storyLoadingMapsJ.value = LoadFromServer.sortingLoadingMaps(xhr.response);
             }
         } else {
             console.log("Ошибка " + this.status);
@@ -199,10 +277,8 @@ LoadFromServer.mapStrigToDraw = function(mapOneString) {
 };//LoadFromServer.loadListMapsFromServer = function() {
 //=============================================================================
 
+    LoadFromServer.ini();
 
- //=============================================================================
- HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
- HTML5_Canvas.context.strokeText ('script DD_LoadFromServer.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+    HTML5_Canvas.TestLoadedScripts.testLoading ('DD_LoadFromServer.js'); 
 
- LoadFromServer.isOk = "OK";//
- //=============================================================================
+    LoadFromServer.isOk = "OK";//

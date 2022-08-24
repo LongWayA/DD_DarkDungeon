@@ -147,9 +147,6 @@ window.EditorFrames = {};
 
   EditorFrames.ini_EditorFrames();
 
-  //=============================================================================
-  HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-  HTML5_Canvas.context.strokeText ('script DD_EditorFrames.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+  HTML5_Canvas.TestLoadedScripts.testLoading ('DD_EditorFrames.js'); 
 
   EditorFrames.isOk = "OK";//
-  //=============================================================================

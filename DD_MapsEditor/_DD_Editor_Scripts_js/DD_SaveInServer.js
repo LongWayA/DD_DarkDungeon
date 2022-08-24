@@ -26,11 +26,11 @@ SaveInServer.OKresponse = "";
   let saveMonsters = "";
   let saveMapString = "";
 
-  Map.saveMapArrayTile();
+  Map_2D.saveMapArrayTile();
 
-  saveGrounds  = Map.stringMap.saveGrounds;
-  saveItems    = Map.stringMap.saveItems;
-  saveMonsters = Map.stringMap.saveMonsters;
+  saveGrounds  = Map_2D.stringMap.saveGrounds;
+  saveItems    = Map_2D.stringMap.saveItems;
+  saveMonsters = Map_2D.stringMap.saveMonsters;
 
   // заполним FormData данными из формы
   let formData = new FormData();
@@ -65,9 +65,6 @@ SaveInServer.OKresponse = "";
 };//SaveInServer.saveInServer = function() {
 //=============================================================================
 
- //=============================================================================
- HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
- HTML5_Canvas.context.strokeText ('script DD_SaveInServer.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
-
- SaveInServer.isOk = "OK";//
- //=============================================================================
+  HTML5_Canvas.TestLoadedScripts.testLoading ('DD_SaveInServer.js'); 
+ 
+  SaveInServer.isOk = "OK";//

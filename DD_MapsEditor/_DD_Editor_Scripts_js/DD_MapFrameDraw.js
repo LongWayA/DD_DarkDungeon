@@ -37,73 +37,73 @@ window.MapFrameDraw = {};
     let imageK    = " ";// сюда перезаписываем картинку тайла которую хотим нарисовать
 
     //HTML5_Canvas.context.clearRect(_X0, _Y0, HTML5_Canvas.Id.width, HTML5_Canvas.Id.height);
-    HTML5_Canvas.context.clearRect(_X0, _Y0, Map.widthMax_px, Map.heightMax_px);
+    HTML5_Canvas.context.clearRect(_X0, _Y0, Map_2D.widthMax_px, Map_2D.heightMax_px);
     
-    for (let j = 0; j < Map.heightMaxTilesCount; j++) {
-      for ( let i = 0; i < Map.widthMaxTilesCount; i++) { 
+    for (let j = 0; j < Map_2D.heightMaxTilesCount; j++) {
+      for ( let i = 0; i < Map_2D.widthMaxTilesCount; i++) { 
         
         //GROUNDS--------------------------------------------------------------------------------------
-        // смотрим тип тайла записанный в массиве тайлов(Map.MapArrayTile_2d) который мы рисуем
-        G_char_L = Map.MapArrayTile_2d[i][j].G_char;// находим символ нужного тайла
-        tipeTiles = SpritesMap.GroundsMapChars.get(G_char_L);// по символу находим номер нужного тайла
+        // смотрим тип тайла записанный в массиве тайлов(Map_2D.MapArrayTile_2d) который мы рисуем
+        G_char_L = Map_2D.MapArrayTile_2d[i][j].G_char;// находим символ нужного тайла
+        tipeTiles = SpritesMap_2D.GroundsMapChars.get(G_char_L);// по символу находим номер нужного тайла
         
         if(log == true)  console.log('m ' + i + ' ' + j + ' G_char_L = ' + G_char_L);
 
-        imageK = SpritesMap.tilesLoad[SpritesMap.GROUNDS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
+        imageK = SpritesMap_2D.tilesLoad[SpritesMap_2D.GROUNDS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
 
         if(MapFrameDraw.checkbox_drawGrounds_checked == true){
           // рисуем тайл на экране в заданном месте и заданного размера, HTML5_Canvas.Image.DRAW_MIRROR
-          HTML5_Canvas.Image.drawImage(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
+          HTML5_Canvas.Image.drawImage(imageK, i * Map_2D.tile.width + _X0, j * Map_2D.tile.height + _Y0, Map_2D.tile.width, Map_2D.tile.height);
         }
          // рисуем символ соответствующий тайлу
-         //HTML5_Canvas.context.strokeText (Map.MapArrayTile_2d[i][j].G_char, i * Map.tile.width + _X0, j * Map.tile.height + _Y0 + 10);//
+         //HTML5_Canvas.context.strokeText (Map_2D.MapArrayTile_2d[i][j].G_char, i * Map_2D.tile.width + _X0, j * Map_2D.tile.height + _Y0 + 10);//
 
         //
-        HTML5_Canvas.Primitive.drawRect(i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height, 1, 'blue', 0);
+        HTML5_Canvas.Primitive.drawRect(i * Map_2D.tile.width + _X0, j * Map_2D.tile.height + _Y0, Map_2D.tile.width, Map_2D.tile.height, 1, 'blue', 0);
 
         
         //--------------------------------------------------------------------------------------
 
        //ITEMS--------------------------------------------------------------------------------------
-        // смотрим тип тайла записанный в массиве тайлов(Map.MapArrayTile_2d) который мы рисуем
-        I_char_L = Map.MapArrayTile_2d[i][j].I_char;// находим символ нужного тайла
+        // смотрим тип тайла записанный в массиве тайлов(Map_2D.MapArrayTile_2d) который мы рисуем
+        I_char_L = Map_2D.MapArrayTile_2d[i][j].I_char;// находим символ нужного тайла
 
         if(log == true)  console.log('m ' + i + ' ' + j + ' I_char_L = ' + I_char_L);       
         
         if(I_char_L != "-"){
-          tipeTiles = SpritesMap.ItemsMapChars.get(I_char_L);// по символу находим номер нужного тайла
+          tipeTiles = SpritesMap_2D.ItemsMapChars.get(I_char_L);// по символу находим номер нужного тайла
 
-          imageK = SpritesMap.tilesLoad[SpritesMap.ITEMS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
+          imageK = SpritesMap_2D.tilesLoad[SpritesMap_2D.ITEMS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
           
           if(MapFrameDraw.checkbox_drawItems_checked == true){
             // рисуем тайл на экране в заданном месте и заданного размера , HTML5_Canvas.Image.DRAW_MIRROR
-            HTML5_Canvas.Image.drawImage(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
+            HTML5_Canvas.Image.drawImage(imageK, i * Map_2D.tile.width + _X0, j * Map_2D.tile.height + _Y0, Map_2D.tile.width, Map_2D.tile.height);
           }
         }
         //--------------------------------------------------------------------------------------
        
        //MONSTERS--------------------------------------------------------------------------------------
-        // смотрим тип тайла записанный в массиве тайлов(Map.MapArrayTile_2d) который мы рисуем
-        M_char_L = Map.MapArrayTile_2d[i][j].M_char;// находим символ нужного тайла
+        // смотрим тип тайла записанный в массиве тайлов(Map_2D.MapArrayTile_2d) который мы рисуем
+        M_char_L = Map_2D.MapArrayTile_2d[i][j].M_char;// находим символ нужного тайла
 
         if(log == true)  console.log('m ' + i + ' ' + j + ' M_char_L = ' + M_char_L);              
         
         if(M_char_L != "-"){       
-          tipeTiles = SpritesMap.MonstersMapChars.get(M_char_L);// по символу находим номер нужного тайла
+          tipeTiles = SpritesMap_2D.MonstersMapChars.get(M_char_L);// по символу находим номер нужного тайла
 
-          imageK = SpritesMap.tilesLoad[SpritesMap.MONSTERS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
+          imageK = SpritesMap_2D.tilesLoad[SpritesMap_2D.MONSTERS][tipeTiles].tile_Image;// находим картинку тайла которую хотим нарисовать
 
           if(MapFrameDraw.checkbox_drawMonsters_checked == true){
             // рисуем тайл на экране в заданном месте и заданного размера , HTML5_Canvas.Image.DRAW_MIRROR
-            HTML5_Canvas.Image.drawImage(imageK, i * Map.tile.width + _X0, j * Map.tile.height + _Y0, Map.tile.width, Map.tile.height);
+            HTML5_Canvas.Image.drawImage(imageK, i * Map_2D.tile.width + _X0, j * Map_2D.tile.height + _Y0, Map_2D.tile.width, Map_2D.tile.height);
           }
         }
         //-------------------------------------------------------------------------------------- 
 
       }
     }
-    //HTML5_Canvas.Primitive.drawRect(_X0, _Y0, Map.widthMax_px,Map.heightMax_px, 1, 'blue', 0);
-    //HTML5_Canvas.context.clearRect(_X0, _Y0, Map.widthMax_px, Map.heightMax_px);
+    //HTML5_Canvas.Primitive.drawRect(_X0, _Y0, Map_2D.widthMax_px,Map_2D.heightMax_px, 1, 'blue', 0);
+    //HTML5_Canvas.context.clearRect(_X0, _Y0, Map_2D.widthMax_px, Map_2D.heightMax_px);
 
   };
   //============================================================================
@@ -112,9 +112,6 @@ window.MapFrameDraw = {};
   MapFrameDraw.ini_MapFrameDraw();
 
 
- //=============================================================================
- HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
- HTML5_Canvas.context.strokeText ('script DD_MapFrameDraw.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
+  HTML5_Canvas.TestLoadedScripts.testLoading ('DD_MapFrameDraw.js'); 
 
- MapFrameDraw.isOk = "OK";//
- //=============================================================================
+  MapFrameDraw.isOk = "OK";//

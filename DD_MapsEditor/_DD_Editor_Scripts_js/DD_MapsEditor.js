@@ -18,13 +18,19 @@ window.MapsEditor = {};
   MapsEditor.NAME = "DD_MapsEditor";//
   MapsEditor.stopClick = false;//
 
+
+ 
+
   //--------------------------------------
   // 
   //
   MapsEditor.nameMapLoadingFromServerJ = document.getElementById("nameMapLoadingFromServer");
   MapsEditor.nameMapLoadingFromServerJ.onpaste = function(event) {
     //console.log("DD_MapsEditor.js: MapsEditor.nameMapLoadingFromServerJ *****");
-  }
+
+  //  MapsEditor.storyLoadingMapsJ.value = LoadFromServer.sortingLoadingMaps(LoadFromScripts.listLoadingMapsNotSorting);
+
+  }// onpaste
 //--------------------------------------
 // 
  //=============================================================================
@@ -85,7 +91,7 @@ MapsEditor.ini = function(){
   MapsEditor.checkbox_drawMonsters = document.getElementById("checkbox_drawMonsters");
   MapsEditor.checkbox_drawMonsters.addEventListener("click", MapsEditor.drawMap_by_checkboxMonsters, false);//click  input
 
-  SpritesMap.loadAllSprite();
+  SpritesMap_2D.loadAllSprite();
 };
 //=============================================================================
 
@@ -131,8 +137,4 @@ MapsEditor.ini = function(){
 
 MapsEditor.ini();
 
-//============================================================================
-HTML5_Canvas.yT = HTML5_Canvas.yT + HTML5_Canvas.dyT;//
-HTML5_Canvas.context.strokeText ('script DD_MapsEditor.js loaded', HTML5_Canvas.xT, HTML5_Canvas.yT);
-
-//==============================================================================
+HTML5_Canvas.TestLoadedScripts.testLoading ('DD_MapsEditor.js'); 
