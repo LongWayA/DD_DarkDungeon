@@ -12,7 +12,7 @@
     <body>
  
         <h1 class = "w" > <img src="images_DD_Map/monsters/mons_1.png" alt = "g"> DD_MapsEditor (в разработке) <img src="images_DD_Map/monsters/mons_1.png" alt = "g"></h1>
-        <h4 class = "w"> Последнее изменение <time datetime = "2022-08-24">24.08.22</time> </h4>
+        <h4 class = "w"> Последнее изменение <time datetime = "2022-09-05">05.09.22</time> </h4>
 
         <a href="http://alphagameset.xyz/" class = "st7" title="Главный сайт со всеми работами "> На главную </a>
 
@@ -31,25 +31,30 @@
             // счетчик посещений страницы
             //-----------------------------------------------------------
             if(window.itIsONLINE){
-                    // 1. Создаём новый объект XMLHttpRequest
-                    let xhr = new XMLHttpRequest();
+                try {
+                            // 1. Создаём новый объект XMLHttpRequest
+                            let xhr = new XMLHttpRequest();
 
-                    // 2. Конфигурируем его: GET-запрос на URL скрипта считающего посещения на страницу. \
-                    // Посещения записываются в SQL базе
-                    xhr.open('GET','http://alphagameset.xyz/0_0_SQL_base/CountRequestsGet.php/?name=requests_dd', false);
+                            // 2. Конфигурируем его: GET-запрос на URL скрипта считающего посещения на страницу. \
+                            // Посещения записываются в SQL базе
+                            xhr.open('GET','http://alphagameset.xyz/0_0_SQL_base/CountRequestsGet.php/?name=requests_dd', false);
 
-                    // 3. Отсылаем запрос
-                    xhr.send();
-                
-                    // 4. Если код ответа сервера не 200, то это ошибка
-                    if (xhr.status != 200) {
-                        // обработать ошибку
-                        //alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-                    } else {
-                        // вывести результат
-                        document.write(' Запросов к странице = ' + xhr.response);// 
-                    }
-            }
+                            // 3. Отсылаем запрос
+                            xhr.send();
+                        
+                            // 4. Если код ответа сервера не 200, то это ошибка
+                            if (xhr.status != 200) {
+                                // обработать ошибку
+                                //alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+                            } else {
+                                // вывести результат
+                                document.write(' Запросов к странице = ' + xhr.response);// 
+                            } //if (xhr.status != 200) {
+                    } catch(err) {
+                        console.log('DD_MapsEditor.html: err = ' + err);
+                    }//try {
+
+            }// if(window.itIsONLINE){
             //-----------------------------------------------------------            
         </script>
         <br>
@@ -121,21 +126,21 @@
         </canvas>
 
         <!-- Scripts --> 
-        <script src = '_DD_Editor_Scripts_js/DD_HTML5_Canvas.js'>         </script> <!-- 1 -->  <!-- базовые графичиские инструменты HTML5 -->
-        <script src = '_DD_Editor_Scripts_js/DD_HTML5_SpritesMaps.js'>    </script> <!-- 2 -->  <!-- тайлы для карты --> 
-        <script src = '_DD_Editor_Scripts_js/DD_EditorFrames.js'>         </script> <!-- 3 -->  <!-- определяем структуру и размеры окон -->
-        <script src = '_DD_Editor_Scripts_js/DD_Map_2D.js'>               </script> <!-- 4 -->  <!-- карта --> 
-        <script src = '_DD_Editor_Scripts_js/DD_MapFrameDraw.js'>         </script> <!-- 5 -->  <!-- отрисовка карты -->
-        <script src = '_DD_Editor_Scripts_js/DD_TilesFrameDraw.js'>       </script> <!-- 6 -->  <!-- отрисовка панели выбора тайлов -->
-        <script src = '_DD_Editor_Scripts_js/DD_SaveInBrowser.js'>        </script> <!-- 7 -->  <!-- пишем карту в браузер -->
-        <script src = '_DD_Editor_Scripts_js/DD_LoadFromBrowser.js'>      </script> <!-- 8 -->  <!-- загружаем карту в браузер -->
-        <script src = '_DD_Editor_Scripts_js/DD_LoadFromScripts.js'>      </script> <!-- 9 -->  <!-- грузим карту из скрипта -->
-        <script src = '_DD_Editor_Scripts_js/DD_SaveInServer.js'>         </script> <!-- 10 --> <!-- сохраняем карту на сервере -->  
-        <script src = '_DD_Editor_Scripts_js/DD_LoadFromServer.js'>       </script> <!-- 11 --> <!-- загружаем карту с сервера -->  
-        <script src = '_DD_Editor_Scripts_js/DD_EditorFrameDraw.js'>      </script> <!-- 12 --> <!-- отрисовываем все окна редактора -->       
-        <script src = '_DD_Editor_Scripts_js/DD_UserInputMouseEditor.js'> </script> <!-- 13 --> <!-- работа с мышкой -->
-        <script src = '_DD_Editor_Scripts_js/DD_Test.js'>                 </script> <!-- 14 --> <!-- контроль загрузки и работы скриптов -->
-        <script src = '_DD_Editor_Scripts_js/DD_MapsEditor.js'>           </script> <!-- 15 --> <!-- редактор карт -->
+        <script src = '_DDE_js/DDE_HTML5_Canvas.js'>         </script> <!-- 1 -->  <!-- базовые графичиские инструменты HTML5 -->
+        <script src = '_DDE_js/DDE_HTML5_SpritesMaps.js'>    </script> <!-- 2 -->  <!-- тайлы для карты --> 
+        <script src = '_DDE_js/DDE_EditorFrames.js'>         </script> <!-- 3 -->  <!-- определяем структуру и размеры окон -->
+        <script src = '_DDE_js/DDE_Map_2D.js'>               </script> <!-- 4 -->  <!-- карта --> 
+        <script src = '_DDE_js/DDE_MapFrameDraw.js'>         </script> <!-- 5 -->  <!-- отрисовка карты -->
+        <script src = '_DDE_js/DDE_TilesFrameDraw.js'>       </script> <!-- 6 -->  <!-- отрисовка панели выбора тайлов -->
+        <script src = '_DDE_js/DDE_SaveInBrowser.js'>        </script> <!-- 7 -->  <!-- пишем карту в браузер -->
+        <script src = '_DDE_js/DDE_LoadFromBrowser.js'>      </script> <!-- 8 -->  <!-- загружаем карту в браузер -->
+        <script src = '_DDE_js/DDE_LoadFromScripts.js'>      </script> <!-- 9 -->  <!-- грузим карту из скрипта -->
+        <script src = '_DDE_js/DDE_SaveInServer.js'>         </script> <!-- 10 --> <!-- сохраняем карту на сервере -->  
+        <script src = '_DDE_js/DDE_LoadFromServer.js'>       </script> <!-- 11 --> <!-- загружаем карту с сервера -->  
+        <script src = '_DDE_js/DDE_EditorFrameDraw.js'>      </script> <!-- 12 --> <!-- отрисовываем все окна редактора -->       
+        <script src = '_DDE_js/DDE_UserInputMouseEditor.js'> </script> <!-- 13 --> <!-- работа с мышкой -->
+        <script src = '_DDE_js/DDE_Test.js'>                 </script> <!-- 14 --> <!-- контроль загрузки и работы скриптов -->
+        <script src = '_DDE_js/DDE_MapsEditor.js'>           </script> <!-- 15 --> <!-- редактор карт -->
         
         
     </body>
