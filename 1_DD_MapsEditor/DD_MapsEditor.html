@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"><!-- ru -->
+
+    <head>
+        <meta charset="utf-8">
+        <title> DD_MapsEditor </title>
+        <!-- Copyright (c) 2022, Brenkman Andrey and/or its affiliates. All rights reserved. -->
+        <!-- Last modified -02.08.2022-07.08.2022- -->
+        <link rel='stylesheet' href='DD_MapsEditor.css'/>
+    </head>    
+    
+    <body>
+<!-- ссылка на картинку монстра  --> 
+        <h1 class = "w" > <img src="DDME_images/monsters/mons_1.png" alt = "g"> DD_MapsEditor (в разработке) <img src="DDME_images/monsters/mons_1.png" alt = "g"></h1>
+<!-- дата в виде  The dateTime is specified in the following form "YYYY-MM-DDThh:mm:ss" 
+     where: YYYY indicates the year. MM indicates the month. DD indicates the day.-->         
+        <h4 class = "w"> Последнее изменение <time datetime = "2023-02-21">21.02.23</time> </h4>
+
+<!--S1 ссылка на главный сайт  -->
+        <a href="https://alphagameset.xyz/" class = "st7" title="Главный сайт со всеми работами "> На главную </a>
+
+        Редактор карт для игры 
+        <abbr title="Игра находится на очень ранней стадии разработки и что получится и получится ли непонятно">Темное Подземелье</abbr>.
+
+<!--S2 добавил код редактора карт на github -->
+        <a href="https://github.com/LongWayA/DD_DarkDungeon.git"> DD_MapsEditor add to github.com </a>
+
+ 
+            <!-- поле для вывода количества посещений -->
+            <input type = "text" id = "visit_counter" value = " " name = "visit_counter"
+            required size = "23"      placeholder = "счетчик посещений" 
+            minlength = "4" maxlength = "40"> 
+
+        <script>
+            //false true;
+            window.itIsONLINE = false;//true
+            window.itIsDebugging = true;
+
+            // счетчик посещений страницы
+            //-----------------------------------------------------------
+            if(window.itIsONLINE){
+
+            }// if(window.itIsONLINE){
+            //-----------------------------------------------------------            
+        </script>
+        <br>
+        <div id="container" >   
+
+            <!-- кнопка для записи карты в браузер -->
+			<input type = "button" class = "styled"     id = "buttonSaveMapBr"       value = "Save Map in Browser"     onclick="MapsEditor.saveInBrowserE()" />  
+
+            <!-- кнопка для загрузки карты из браузера -->
+            <input type = "button" class = "styled"     id = "buttonLoadMapBr"       value = "Load Map from Browser"   onclick="MapsEditor.loadFromBrowserE()" /> 
+
+            <!-- кнопка для обнуления карты. идет считывание шаблона из js кода -->
+            <input type = "button" class = "styled_res" id = "buttonResetMap"        value = "Reset Map"               onclick="MapsEditor.resetMapInBrowserE()" /> 
+
+            <!-- кнопка для записи карты на сервер. вызываем записывающий скрипт -->
+            <input type = "button" class = "styled_off" id = "buttonSaveMapServ"     value = "Save Map in Server"      onclick="MapsEditor.saveInServerE()" />   
+            
+            <!-- кнопка для загрузки карты с сервера. вызываем считывающий скрипт -->
+            <input type = "button" class = "styled_off" id = "buttonLoadMapServ"     value = "Load Map from Server"    onclick="MapsEditor.loadFromServerE()" /> <br>
+
+            <!-- поле для вывода размера записанной карты -->
+            <input type = "text"                        id = "st_map_save_in_server" value = "Размер записанной карты" name = "st_map_save_in_server"> 
+
+            <!-- поле для ввода названия записываемой карты -->
+            <input type = "text"                        id = "nameUserMap"                name = "nameUserMap" 
+            required size = "50"      placeholder = "enter name map saving in server(имя записываемой карты)" 
+            minlength = "4" maxlength = "30">
+
+<!--S4 ссылка на карты сохраненные на сервере  -->
+            <a href="http://alphagameset.xyz/3_DD_DarkDungeon_Saved_Maps/" class = "st7" 
+            title="Можно посмотреть все сохраненные карты и скачать их." > Посмотреть записанные карты на сервере. </a><br>
+            
+            <!-- поле для ввода имени карты которую решили загрузить с сервера -->
+            <input type = "text"                        id = "nameMapLoadingFromServer"   name = "nameMapLoadingFromServer" 
+            required size = "100"     placeholder = "enter full name map loading from server(имя карты смотрите и копипасте в списке записанных карт)"
+            minlength = "50" maxlength = "50"> <br>
+            
+            <!-- список карт которые в наличии на сервере. -->
+            <textarea id = "storyLoadingMaps" name = "storyLoadingMaps" rows = "5" cols = "97">
+                Click to open List loading maps.(Кликнуть чтобы получить список записанных карт.)
+                Границы окна можно двигать.
+            </textarea><br>
+
+            <!-- флажок отрисовки тайлов поверхности  -->
+            <input type = "checkbox" name ="drawGrounds"  id = "checkbox_drawGrounds"  checked >drawGrounds
+
+            <!-- флажок отрисовки тайлов предметов -->
+            <input type = "checkbox" name ="drawItems"    id = "checkbox_drawItems"    checked >drawItems _
+
+            <!-- флажок отрисовки тайлов монстров -->
+            <input type = "checkbox" name ="drawMonsters" id = "checkbox_drawMonsters" checked >drawMonsters<br>
+
+
+        </div>
+
+
+        <!--The game canvas-1600-800 -->
+        <canvas id='game-canvas' width='1200' height='800'>
+            Your browser does not support HTML5 Canvas<br>
+            Ваш браузер не поддерживает HTML5 графику<br>
+        </canvas>
+
+        <!-- Scripts --> 
+        <script src = 'DDME_js/DDME_HTML5_Canvas.js'>         </script> <!-- 1 -->  <!-- базовые графичиские инструменты HTML5 -->
+        <script src = 'DDME_js/DDME_Pathes.js'>               </script> <!-- 2 -->  <!-- задаем пути к ресурсам -->
+        <script src = 'DDME_js/DDME_HTML5_SpritesMap_2D.js'>  </script> <!-- 3 -->  <!-- тайлы для карты --> 
+        <script src = 'DDME_js/DDME_EditorFrames.js'>         </script> <!-- 4 -->  <!-- определяем структуру и размеры окон -->
+        <script src = 'DDME_js/DDME_Map_2D.js'>               </script> <!-- 5 -->  <!-- карта --> 
+        <script src = 'DDME_js/DDME_MapFrameDraw.js'>         </script> <!-- 6 -->  <!-- отрисовка карты -->
+        <script src = 'DDME_js/DDME_TilesFrameDraw.js'>       </script> <!-- 7 -->  <!-- отрисовка панели выбора тайлов -->
+        <script src = 'DDME_js/DDME_SaveInBrowser.js'>        </script> <!-- 8 -->  <!-- пишем карту в браузер -->
+        <script src = 'DDME_js/DDME_EditorFrameDraw.js'>      </script> <!-- 9 -->  <!-- отрисовываем все окна редактора -->
+        <script src = 'DDME_js/DDME_LoadFromBrowser.js'>      </script> <!-- 10 --> <!-- загружаем карту в браузер -->
+        <script src = 'DDME_js/DDME_LoadFromScripts.js'>      </script> <!-- 11 --> <!-- грузим карту из скрипта -->
+        <script src = 'DDME_js/DDME_SaveInServer.js'>         </script> <!-- 12 --> <!-- сохраняем карту на сервере -->  
+        <script src = 'DDME_js/DDME_LoadFromServer.js'>       </script> <!-- 13 --> <!-- загружаем карту с сервера -->  
+        <script src = 'DDME_js/DDME_UserInputMouse.js'>       </script> <!-- 14 --> <!-- работа с мышкой -->
+        <script src = 'DDME_js/DDME_VisitCounter.js'>         </script> <!-- 15 --> <!-- счетчик посещений страницы -->
+        <script src = 'DDME_js/DDME_Test.js'>                 </script> <!-- 16 --> <!-- контроль загрузки и работы скриптов -->
+        <script src = 'DDME_js/DDME_MapsEditor.js'>           </script> <!-- 17 --> <!-- редактор карт -->
+         
+        
+    <script>  
+    
+    //VisitCounter.start();
+    /*
+      script defer src =
+      Скрипты с defer всегда выполняются, когда дерево DOM готово, но до события DOMContentLoaded.
+      копия из https://learn.javascript.ru/script-async-defer
+    */ 
+    </script>
+
+    </body>
+    
+</html>
