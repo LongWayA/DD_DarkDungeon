@@ -1,6 +1,6 @@
 "use strict";
  // Copyright (c) 2023, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified -31.07.2022-
+ // Last modified -31.07.2022-18.03.2023
  //
 
   /*
@@ -29,7 +29,7 @@ var Game = {
   // Внешние ссылки
   HTML5_Canvas_OUT : {},
   HTML5_Canvas_TestLoadedScripts_testLoading_OUT : function(_nameScript : string){},
-  HTML5_Canvas_Primitive_drawRect_OUT: function(_left : number, _top : number, _width : number, _height : number,
+  HTML5_Canvas_Primitive_drawRect_OUT: function(_id : string,_left : number, _top : number, _width : number, _height : number,
     _lineWidth : number, _color : string, _fillYes : number){},
   HTML5_Canvas_Primitive_clearRect_OUT: function (_left : number, _top : number, _width : number, _height : number) {},
   HTML5_Canvas_printStartText_OUT : function (){},
@@ -103,7 +103,7 @@ var Game = {
 
       Game.Timer_updateTimeAfterTick_OUT();
 
-      if (Game.sprite < 51 ){
+      if (Game.sprite < 5 ){
            Game.timerId = setTimeout( tick, Game.Timer_getTimeThreadSleepGameMs_OUT());
       }
 
@@ -126,10 +126,10 @@ drawNuberTick : function() {
   let width0 = 352;
   let height0 = 92;
 
-  Game.HTML5_Canvas_Primitive_clearRect_OUT(left0, top0, width0, height0);
+  if(Game.sprite == 1) Game.HTML5_Canvas_Primitive_clearRect_OUT(left0, top0, width0, height0);
  
   Game.HTML5_Canvas_Primitive_clearRect_OUT(left, top, width, height);
-  Game.HTML5_Canvas_Primitive_drawRect_OUT(left, top, width, height, HTML5_Canvas.LINE_WIDTH_1, Game.HTML5_Canvas_GREEN_OUT, 0);
+  Game.HTML5_Canvas_Primitive_drawRect_OUT("drawNuberTick", left, top, width, height, HTML5_Canvas.LINE_WIDTH_1, Game.HTML5_Canvas_GREEN_OUT, 0);
  
   Game.HTML5_Canvas_Text_drawText_OUT("Game.tick = " + Game.sprite, left, top, Game.HTML5_Canvas_ITALIC_30PT_ARIAL_OUT,
      Game.HTML5_Canvas_GREEN_OUT, 1);

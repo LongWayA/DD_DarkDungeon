@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2023, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified -31.07.2022-
+// Last modified -31.07.2022-18.03.2023
 //
 /*
  НАЗНАЧЕНИЕ
@@ -25,7 +25,7 @@ var Game = {
     // Внешние ссылки
     HTML5_Canvas_OUT: {},
     HTML5_Canvas_TestLoadedScripts_testLoading_OUT: function (_nameScript) { },
-    HTML5_Canvas_Primitive_drawRect_OUT: function (_left, _top, _width, _height, _lineWidth, _color, _fillYes) { },
+    HTML5_Canvas_Primitive_drawRect_OUT: function (_id, _left, _top, _width, _height, _lineWidth, _color, _fillYes) { },
     HTML5_Canvas_Primitive_clearRect_OUT: function (_left, _top, _width, _height) { },
     HTML5_Canvas_printStartText_OUT: function () { },
     HTML5_Canvas_Text_drawText_OUT: function (_text, _left, _top, _font, _color, _fillYes) { },
@@ -79,7 +79,7 @@ var Game = {
             if (Game.loadEnd == 1)
                 Game.tick();
             Game.Timer_updateTimeAfterTick_OUT();
-            if (Game.sprite < 51) {
+            if (Game.sprite < 5) {
                 Game.timerId = setTimeout(tick, Game.Timer_getTimeThreadSleepGameMs_OUT());
             }
         }, Game.Timer_getTimeThreadSleepGameMs_OUT());
@@ -89,17 +89,18 @@ var Game = {
     //=============================================================================
     drawNuberTick: function () {
         // console.log('Game.drawNuberTick');
-        var left = 10;
-        var top = 5;
-        var width = 500;
-        var height = 35;
-        var left0 = 9;
-        var top0 = 49;
-        var width0 = 352;
-        var height0 = 92;
-        Game.HTML5_Canvas_Primitive_clearRect_OUT(left0, top0, width0, height0);
+        let left = 10;
+        let top = 5;
+        let width = 500;
+        let height = 35;
+        let left0 = 9;
+        let top0 = 49;
+        let width0 = 352;
+        let height0 = 92;
+        if (Game.sprite == 1)
+            Game.HTML5_Canvas_Primitive_clearRect_OUT(left0, top0, width0, height0);
         Game.HTML5_Canvas_Primitive_clearRect_OUT(left, top, width, height);
-        Game.HTML5_Canvas_Primitive_drawRect_OUT(left, top, width, height, HTML5_Canvas.LINE_WIDTH_1, Game.HTML5_Canvas_GREEN_OUT, 0);
+        Game.HTML5_Canvas_Primitive_drawRect_OUT("drawNuberTick", left, top, width, height, HTML5_Canvas.LINE_WIDTH_1, Game.HTML5_Canvas_GREEN_OUT, 0);
         Game.HTML5_Canvas_Text_drawText_OUT("Game.tick = " + Game.sprite, left, top, Game.HTML5_Canvas_ITALIC_30PT_ARIAL_OUT, Game.HTML5_Canvas_GREEN_OUT, 1);
         Game.sprite = Game.sprite + 1;
         if (Game.sprite > 1000000)
@@ -129,7 +130,8 @@ var Game = {
     tick: function () {
         Game.drawNuberTick();
         Game.drowFrames();
-    }
+    },
+    //=============================================================================
 }; //Game
 //=============================================================================
 // загрузка всего документа(вместе с картинками, звуком и т.д.) закончена

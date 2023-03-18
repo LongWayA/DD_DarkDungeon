@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2023, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified -15.08.2022-19.02.2023-17.03.2023
+// Last modified -15.08.2022-19.02.2023-18.03.2023
 //
 /*
  НАЗНАЧЕНИЕ
@@ -18,7 +18,7 @@ var Frames = {
     HTML5_Canvas_width_OUT: 0,
     HTML5_Canvas_height_OUT: 0,
     HTML5_Canvas_TestLoadedScripts_testLoading_OUT: function (_nameScript) { },
-    HTML5_Canvas_Primitive_drawRect_OUT: function (_left, _top, _width, _height, _lineWidth, _color, _fillYes) { },
+    HTML5_Canvas_Primitive_drawRect_OUT: function (_id, _left, _top, _width, _height, _lineWidth, _color, _fillYes) { },
     // рамки
     // Общая рамка экрана вывода графики
     EditorFrame: {
@@ -27,7 +27,7 @@ var Frames = {
         width: 0,
         height: 0,
         X_Max: 0,
-        Y_Max: 0
+        Y_Max: 0, // максимальная координата по вертикали. Вправо вниз
     },
     // Область вывода карты
     MapFrame: {
@@ -39,7 +39,7 @@ var Frames = {
         width: 0,
         height: 0,
         X_Max: 0,
-        Y_Max: 0
+        Y_Max: 0,
     },
     // Область вывода выбора элементов карты   
     TilesPanelFrame: {
@@ -61,7 +61,7 @@ var Frames = {
         Item_Y_Max: 0,
         Monster_X0: 0,
         Monster_Y0: 0,
-        Monster_Y_Max: 0
+        Monster_Y_Max: 0,
     },
     // Область печати сообщений редактора
     PrintFrame: {
@@ -71,7 +71,7 @@ var Frames = {
         width: 0,
         height: 0,
         X_Max: 0,
-        Y_Max: 0
+        Y_Max: 0,
     },
     //=============================================================================
     ini: function () {
@@ -158,26 +158,27 @@ var Frames = {
     //=============================================================================
     // EditorFrame
     drowEditorFrame: function () {
-        Frames.HTML5_Canvas_Primitive_drawRect_OUT(Frames.EditorFrame.x0, Frames.EditorFrame.y0, Frames.EditorFrame.width, Frames.EditorFrame.height, 2, 'blue', 0);
+        Frames.HTML5_Canvas_Primitive_drawRect_OUT("drowEditorFrame", Frames.EditorFrame.x0, Frames.EditorFrame.y0, Frames.EditorFrame.width, Frames.EditorFrame.height, 2, 'blue', 0);
     },
     //=============================================================================
     //=============================================================================
     // MapFrame
     drowMapFrame: function () {
-        Frames.HTML5_Canvas_Primitive_drawRect_OUT(Frames.MapFrame.x0, Frames.MapFrame.y0, Frames.MapFrame.width, Frames.MapFrame.height, 2, 'blue', 0);
+        Frames.HTML5_Canvas_Primitive_drawRect_OUT("drowMapFrame", Frames.MapFrame.x0, Frames.MapFrame.y0, Frames.MapFrame.width, Frames.MapFrame.height, 2, 'blue', 0);
     },
     //=============================================================================  
     //=============================================================================
     // TilesPanelFrame
     drowTilesPanelFrame: function () {
-        Frames.HTML5_Canvas_Primitive_drawRect_OUT(Frames.TilesPanelFrame.x0, Frames.TilesPanelFrame.y0, Frames.TilesPanelFrame.width, Frames.TilesPanelFrame.height, 2, 'blue', 0);
+        Frames.HTML5_Canvas_Primitive_drawRect_OUT("drowTilesPanelFrame", Frames.TilesPanelFrame.x0, Frames.TilesPanelFrame.y0, Frames.TilesPanelFrame.width, Frames.TilesPanelFrame.height, 2, 'blue', 0);
     },
     //=============================================================================  
     //=============================================================================
     // PrintFrame
     drowPrintFrameFrame: function () {
-        Frames.HTML5_Canvas_Primitive_drawRect_OUT(Frames.PrintFrame.x0, Frames.PrintFrame.y0, Frames.PrintFrame.width, Frames.PrintFrame.height, 2, 'blue', 0);
-    }
+        Frames.HTML5_Canvas_Primitive_drawRect_OUT("drowPrintFrameFrame", Frames.PrintFrame.x0, Frames.PrintFrame.y0, Frames.PrintFrame.width, Frames.PrintFrame.height, 2, 'blue', 0);
+    },
+    //=============================================================================  
 }; //Frames
 Frames.ini();
 Frames.HTML5_Canvas_TestLoadedScripts_testLoading_OUT('DDG_Frames.js');

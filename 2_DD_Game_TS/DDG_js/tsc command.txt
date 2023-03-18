@@ -1,3 +1,5 @@
 tsc 2_DarkDungeon/2_DD_Game_TS/DDG_js/DDG_Game.ts
 
- tsc -m ES2020 2_DarkDungeon/2_DD_Game_TS/DDG_js/DDG_Game.ts
+tsc -m ES2020 2_DarkDungeon/2_DD_Game_TS/DDG_js/DDG_Game.ts
+
+tsc -t ES2020 -m ES2020 2_DarkDungeon/2_DD_Game_TS/DDG_js/DDG_Game.ts

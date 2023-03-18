@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2023, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified -21.08.2021-31.07.2022-18.02.2023-08.03.2023-17.03.2023
+// Last modified -21.08.2021-31.07.2022-18.02.2023-08.03.2023-18.03.2023
 //
 /*
  НАЗНАЧЕНИЕ
@@ -15,6 +15,69 @@
   ИСПОЛЬЗУЕТ МОДУЛИ
   -
 */
+// "2d" создаем объекта CanvasRenderingContext2D,
+//  представляющий двумерный контекст.
+const idCanvas = document.getElementById('game-canvas');
+const contextCanvas = idCanvas.getContext('2d');
+//console.log("typeof idCanvas.getContext('2d') = " +typeof idCanvas.getContext('2d'));//typeof idCanvas.getContext('2d') = object
+var set_fillStyle = function (_color) {
+    contextCanvas.fillStyle = _color;
+};
+var get_fillStyle = function () {
+    return contextCanvas.fillStyle;
+};
+var set_strokeStyle = function (_color) {
+    contextCanvas.strokeStyle = _color;
+};
+// get_strokeStyle?
+var set_font = function (_font) {
+    contextCanvas.font = _font;
+};
+var get_font = function () {
+    return contextCanvas.font;
+};
+var set_lineWidth = function (_lineWidth) {
+    contextCanvas.lineWidth = _lineWidth;
+};
+var get_lineWidth = function () {
+    return contextCanvas.lineWidth;
+};
+var set_textBaseline = function (_textBaseline) {
+    contextCanvas.textBaseline = _textBaseline;
+};
+var get_widthCanvas = function () {
+    //console.log("contextCanvas.width = " + idCanvas.width);
+    return idCanvas.width;
+};
+var get_heightCanvas = function () {
+    //console.log("contextCanvas.height = " + idCanvas.height);
+    return idCanvas.height;
+};
+var fillText = function (_text, _left, _top) {
+    contextCanvas.fillText(_text, _left, _top);
+};
+var strokeText = function (_text, _left, _top) {
+    contextCanvas.strokeText(_text, _left, _top);
+};
+var clearRect = function (_left, _top, _width, _height) {
+    contextCanvas.clearRect(_left, _top, _width, _height);
+};
+var fillRect = function (_left, _top, _width, _height) {
+    contextCanvas.fillRect(_left, _top, _width, _height);
+};
+var strokeRect = function (_id, _left, _top, _width, _height) {
+    //console.log("strokeRect " + " _id = " + _id + " _left = " + _left + " _top = " + _top + " _width = " + _width + " _height = " + _height);
+    contextCanvas.strokeRect(_left, _top, _width, _height);
+};
+var drawImage = function (_image, _left, _top) {
+    contextCanvas.drawImage(_image, _left, _top);
+};
+var drawImage_f = function (_image, _left, _top, _width, _height) {
+    contextCanvas.drawImage(_image, _left, _top, _width, _height);
+};
+var scale = function () {
+    contextCanvas.scale(-1, 1);
+};
 // 
 var HTML5_Canvas = {
     isOk: "",
@@ -29,39 +92,35 @@ var HTML5_Canvas = {
     GREEN: 'green',
     BLUE: 'blue',
     LINE_WIDTH_1: 1,
-    // Внешние ссылки
-    // "2d" создаем объект CanvasRenderingContext2D,
-    //  представляющий двумерный контекст.
-    Id_OUT: HTMLElement,
-    context_OUT: {},
     width_OUT: 0,
     height_OUT: 0,
     load: 0,
+    test_A: function () {
+        HTML5_Canvas.width_OUT = get_widthCanvas();
+        HTML5_Canvas.height_OUT = get_heightCanvas();
+        console.log("test_A");
+    },
     //=============================================================================
     ini: function () {
         HTML5_Canvas.load = 0; //
-        // "2d" создаем объекта CanvasRenderingContext2D,
-        //  представляющий двумерный контекст.
-        HTML5_Canvas.Id_OUT = document.getElementById('game-canvas');
-        HTML5_Canvas.context_OUT = HTML5_Canvas.Id_OUT.getContext('2d');
         // определяем текст для тестового выода информации на экран, а также
         // когда надо напечатать до того как мы инициализровали текстовый объект
-        HTML5_Canvas.context_OUT.fillStyle = '#0000ff';
-        HTML5_Canvas.context_OUT.strokeStyle = '#0000ff';
-        HTML5_Canvas.context_OUT.font = HTML5_Canvas.ITALIC_30PT_ARIAL;
-        HTML5_Canvas.context_OUT.lineWidth = HTML5_Canvas.LINE_WIDTH_1;
+        set_fillStyle('#0000ff');
+        set_strokeStyle('#0000ff');
+        set_font(HTML5_Canvas.ITALIC_30PT_ARIAL);
+        set_lineWidth(HTML5_Canvas.LINE_WIDTH_1);
         // шрифт для тестовой печати на экране
-        HTML5_Canvas.context_OUT.font = HTML5_Canvas.ITALIC_15PT_ARIAL;
+        set_font(HTML5_Canvas.ITALIC_15PT_ARIAL);
         //HTML5_Canvas.context_OUT.fillText ('LOAD REC', 10, 10);
         //HTML5_Canvas.context_OUT.fillRect( 100, 100, 100, 100);
         //HTML5_Canvas.context_OUT.strokeRect( 10, 10, 100, 100);
-        HTML5_Canvas.width_OUT = HTML5_Canvas.Id_OUT.width;
-        HTML5_Canvas.height_OUT = HTML5_Canvas.Id_OUT.height;
+        HTML5_Canvas.width_OUT = get_widthCanvas();
+        HTML5_Canvas.height_OUT = get_heightCanvas();
     },
     //=============================================================================
     //=============================================================================
     setColor: function (_color) {
-        var style;
+        let style = '#ffffff';
         switch (_color) {
             case HTML5_Canvas.WHITE:
                 style = '#ffffff';
@@ -80,8 +139,8 @@ var HTML5_Canvas = {
                 break;
         }
         ;
-        HTML5_Canvas.context_OUT.fillStyle = style;
-        HTML5_Canvas.context_OUT.strokeStyle = style;
+        set_fillStyle(style);
+        set_strokeStyle(style);
     },
     //============================================================================
     //------------------------------------------------------------------------------------------------------------------
@@ -93,16 +152,16 @@ var HTML5_Canvas = {
         //=============================================================================
         //============================================================================
         setFont: function (_font) {
-            HTML5_Canvas.context_OUT.textBaseline = 'top';
+            set_textBaseline('top');
             switch (_font) {
                 case HTML5_Canvas.ITALIC_20PX_SANS_SERIF:
-                    HTML5_Canvas.context_OUT.font = _font;
+                    set_font(_font);
                     break;
                 case HTML5_Canvas.ITALIC_30PT_ARIAL:
-                    HTML5_Canvas.context_OUT.font = _font;
+                    set_font(_font);
                     break;
                 case HTML5_Canvas.BOLD_30PX_SANS_SERIF:
-                    HTML5_Canvas.context_OUT.font = _font;
+                    set_font(_font);
                     break;
             }
             ;
@@ -114,21 +173,21 @@ var HTML5_Canvas = {
         //HTML5_Canvas.WHITE, HTML5_Canvas.BLACK, HTML5_Canvas.RED, HTML5_Canvas.GREEN, HTML5_Canvas.BLUE
         // HTML5_Canvas.Text.drawText("text", 10, 5, HTML5_Canvas.ITALIC_30PT_ARIAL, HTML5_Canvas.GREEN, 1);
         drawText: function (_text, _left, _top, _font, _color, _fillYes) {
-            var style_r = HTML5_Canvas.context_OUT.fillStyle;
-            var font_r = HTML5_Canvas.context_OUT.font;
+            let style_r = get_fillStyle();
+            let font_r = get_font();
             HTML5_Canvas.setColor(_color);
             HTML5_Canvas.Text.setFont(_font);
             if (_fillYes == 1) {
-                HTML5_Canvas.context_OUT.fillText(_text, _left, _top);
+                fillText(_text, _left, _top);
             }
             else {
-                HTML5_Canvas.context_OUT.strokeText(_text, _left, _top);
+                strokeText(_text, _left, _top);
             }
             ;
             // restore
-            HTML5_Canvas.context_OUT.fillStyle = style_r;
-            HTML5_Canvas.context_OUT.strokeStyle = style_r;
-            HTML5_Canvas.context_OUT.font = font_r;
+            set_fillStyle(style_r);
+            set_strokeStyle(style_r);
+            set_font(font_r);
         }
     },
     //------------------------------------------------------------------------------------------------------------------
@@ -141,26 +200,26 @@ var HTML5_Canvas = {
         //=============================================================================
         //============================================================================
         clearRect: function (_left, _top, _width, _height) {
-            HTML5_Canvas.context_OUT.clearRect(_left, _top, _width, _height);
+            clearRect(_left, _top, _width, _height);
         },
         //============================================================================
         //============================================================================
-        drawRect: function (_left, _top, _width, _height, _lineWidth, _color, _fillYes) {
-            var style_r = HTML5_Canvas.context_OUT.fillStyle;
-            var lineWidth_r = HTML5_Canvas.context_OUT.lineWidth;
+        drawRect: function (_id, _left, _top, _width, _height, _lineWidth, _color, _fillYes) {
+            let style_r = get_fillStyle();
+            let lineWidth_r = get_lineWidth();
+            set_lineWidth(_lineWidth);
             HTML5_Canvas.setColor(_color);
-            HTML5_Canvas.context_OUT.lineWidth = _lineWidth;
             if (_fillYes == 1) {
-                HTML5_Canvas.context_OUT.fillRect(_left, _top, _width, _height);
+                fillRect(_left, _top, _width, _height);
             }
             else {
-                HTML5_Canvas.context_OUT.strokeRect(_left, _top, _width, _height);
+                strokeRect(_id, _left, _top, _width, _height);
             }
             ;
             // restore
-            HTML5_Canvas.context_OUT.fillStyle = style_r;
-            HTML5_Canvas.context_OUT.strokeStyle = style_r;
-            HTML5_Canvas.context_OUT.lineWidth = lineWidth_r;
+            set_fillStyle(style_r);
+            set_strokeStyle(style_r);
+            set_lineWidth(lineWidth_r);
         }
     },
     //------------------------------------------------------------------------------------------------------------------
@@ -185,19 +244,19 @@ var HTML5_Canvas = {
                 _mirror = !HTML5_Canvas.Image.DRAW_MIRROR;
             }
             if ((_width == 0) || (_height == 0)) {
-                HTML5_Canvas.context_OUT.drawImage(_image, _left, _top);
+                drawImage(_image, _left, _top);
                 //console.log('drawImage(_image, _left, _top);');
             }
             else {
                 if (_mirror == HTML5_Canvas.Image.DRAW_MIRROR) {
                     _left = _left + _width;
                     _left = -_left;
-                    HTML5_Canvas.context_OUT.scale(-1, 1);
+                    scale();
                 }
-                HTML5_Canvas.context_OUT.drawImage(_image, _left, _top, _width, _height);
+                drawImage_f(_image, _left, _top, _width, _height);
                 //console.log('DRAW_MIRROR DD_HTML5_Canvas.js: _left = ' + _left + ' _top = ' +_top);
                 if (_mirror == HTML5_Canvas.Image.DRAW_MIRROR) {
-                    HTML5_Canvas.context_OUT.scale(-1, 1);
+                    scale();
                 }
             }
         }
@@ -228,20 +287,20 @@ var HTML5_Canvas = {
     },
     //=============================================================================
     printStartText: function () {
-        var left = 10;
-        var top = 50;
-        var width = 350;
-        var height = 90;
-        HTML5_Canvas.context_OUT.fillStyle = '#0000ff';
-        HTML5_Canvas.context_OUT.strokeStyle = '#0000ff';
-        HTML5_Canvas.context_OUT.font = HTML5_Canvas.ITALIC_30PT_ARIAL;
-        HTML5_Canvas.context_OUT.lineWidth = HTML5_Canvas.LINE_WIDTH_1;
-        HTML5_Canvas.Primitive.drawRect(left, top, width, height, HTML5_Canvas.LINE_WIDTH_1, HTML5_Canvas.GREEN, 0);
+        let left = 10;
+        let top = 50;
+        let width = 350;
+        let height = 90;
+        set_fillStyle('#0000ff');
+        set_strokeStyle('#0000ff');
+        set_font(HTML5_Canvas.ITALIC_30PT_ARIAL);
+        set_lineWidth(HTML5_Canvas.LINE_WIDTH_1);
+        HTML5_Canvas.Primitive.drawRect("printStartText", left, top, width, height, HTML5_Canvas.LINE_WIDTH_1, HTML5_Canvas.GREEN, 0);
         // пишем текст до загрузки изображений. потом он закрывается картинкой
-        HTML5_Canvas.context_OUT.strokeText('Загрузка модулей.', 10, 80); //была надпись LOADING RESOURCES
-        HTML5_Canvas.context_OUT.strokeText('Modules loading', 10, 130); //была надпись LOADING RESOURCES
+        strokeText('Загрузка модулей.', 10, 80); //была надпись LOADING RESOURCES
+        strokeText('Modules loading', 10, 130); //была надпись LOADING RESOURCES
         // шрифт для тестовой печати на экране
-        HTML5_Canvas.context_OUT.font = HTML5_Canvas.ITALIC_15PT_ARIAL;
+        set_font(HTML5_Canvas.ITALIC_15PT_ARIAL);
     }
 }; //HTML5_Canvas
 HTML5_Canvas.ini();
