@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2023, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified -08.08.2021-31.07.2022-06.03.2023-18.03.2023
+// Last modified -08.08.2021-31.07.2022-06.03.2023-18.03.2023-26.03.2023
 //
 
 
@@ -15,15 +15,23 @@
 //==============================================================================
 
 import {HTML5_Canvas} from './DDG_HTML5_Canvas.js';
+// Внешние ссылки
+var Out = {
+    // HTML5_Canvas
+    // function(_nameScript : string)
+    HTML5_Canvas_TestLoadedScripts_testLoading : HTML5_Canvas.TestLoadedScripts.testLoading,
+    //=============================================================================
+    ini : function() : void{
+    },
+    //=============================================================================
+};
 
+//Out.ini();
 
 var Timer = {
 
   isOk : "",//
   NAME : "Timer",//
-
-  // Внешние ссылки
-  HTML5_Canvas_TestLoadedScripts_testLoading_OUT : function(_nameScript : string){},
 
   ticksPerSecond : 0,// количество циклов в секунду или по другому количество кадров в секунду
   // 1000 задержка в секунду. т.е тысяча милисекунд это секунда
@@ -42,29 +50,9 @@ var Timer = {
   timeOldStartTickMs : 0,// время начала предыдущего тика нужно для вычисления времени полного круга цикла
   timeBetweenStartMinOldStartTickMs : 0,// время прошедшее за полный круг цикла игры
 
-  
-
   //=============================================================================
   ini : function() : void{
 
-    Timer.HTML5_Canvas_TestLoadedScripts_testLoading_OUT = HTML5_Canvas.TestLoadedScripts.testLoading ;
-
-      Timer.ticksPerSecond = 0;// количество циклов в секунду или по другому количество кадров в секунду
-            // 1000 задержка в секунду. т.е тысяча милисекунд это секунда
-            // 60 кадров это 0,01(6) sek = 16,(6) millis
-            // 30 кадров это 0,03(3) sek = 30,(3) millis
-            // 25 кадров это 0,04 sek = 40 millis
-            // 10 кадров это 0,1 sek = 100 millis
-
-      Timer.tickMustTimeMs = 0;// время отведенное на один круг
-
-      Timer.timeStartTickMs = 0;// фиксируем время начала тика
-      Timer.timeEndTickMs = 0;// фиксируем время после тика
-      Timer.timeBetweenEndMinStartTickMs = 0;// время тика	в это время идет расчет и отрисовка игры
-      Timer.timeThreadSleepGameMs = 0;// время бездействия потока игры. мы все сделали и оставшееся время бездействуем
-
-      Timer.timeOldStartTickMs = 0;// время начала предыдущего тика нужно для вычисления времени полного круга цикла
-      Timer.timeBetweenStartMinOldStartTickMs = 0;// время прошедшее за полный круг цикла игры
   },
   //=============================================================================
 
@@ -139,21 +127,21 @@ var Timer = {
 
 //============================================================================
 getTimeThreadSleepGameMs : function() : number {
-  return Timer.timeThreadSleepGameMs ;
+  return Timer.timeThreadSleepGameMs;
 },
 //============================================================================
 
  //=============================================================================
 };//Timer
 
- Timer.ini();
+ //Timer.ini();
 
  //=============================================================================
- Timer.HTML5_Canvas_TestLoadedScripts_testLoading_OUT('DDG_Timer.js');
+ Out.HTML5_Canvas_TestLoadedScripts_testLoading('DDG_Timer.js');
 
  Timer.isOk = "OK";//
 
  //=============================================================================
 
 
- export {Timer } ;//, Timer.ini, Timer.timeThreadSleepGameMs
+ export {Timer} ;//, Timer.ini, Timer.timeThreadSleepGameMs

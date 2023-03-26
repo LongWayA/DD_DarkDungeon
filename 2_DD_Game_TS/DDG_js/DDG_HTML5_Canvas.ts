@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2023, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified -21.08.2021-31.07.2022-18.02.2023-08.03.2023-18.03.2023
+// Last modified -21.08.2021-31.07.2022-18.02.2023-08.03.2023-18.03.2023-26.03.2023
 //
 /*
  НАЗНАЧЕНИЕ
@@ -18,89 +18,100 @@
 
 // "2d" создаем объекта CanvasRenderingContext2D,
 //  представляющий двумерный контекст.
-const idCanvas : HTMLElement = <HTMLElement>document.getElementById('game-canvas');
-const contextCanvas : any = idCanvas!.getContext('2d');
+//const idCanvas : HTMLElement = <HTMLElement>document.getElementById('game-canvas');
+const idCanvas :  any = <HTMLElement>document.getElementById('game-canvas');
+
+const contextCanvas : any = idCanvas.getContext('2d');
+
+// Внешние ссылки
+var Out_API = {
 
 //console.log("typeof idCanvas.getContext('2d') = " +typeof idCanvas.getContext('2d'));//typeof idCanvas.getContext('2d') = object
 
-var set_fillStyle = function(_color : string){
+set_fillStyle : function(_color : string){
     contextCanvas.fillStyle = _color;
-};
+},
 
-var get_fillStyle = function() : string{
-    return contextCanvas.fillStyle;
-};
+get_fillStyle : function() : string{
+    return <string>contextCanvas.fillStyle;
+},
 
-var set_strokeStyle = function(_color : string){
+set_strokeStyle : function(_color : string){
     contextCanvas.strokeStyle = _color;
-};
+},
 
 // get_strokeStyle?
 
-var set_font = function(_font : string){
+set_font : function(_font : string){
     contextCanvas.font = _font;
-};
+},
 
-var get_font = function() : string{
-    return contextCanvas.font;
-};
+get_font : function() : string{
+    return <string>contextCanvas.font;
+},
 
-var set_lineWidth = function(_lineWidth : number){
+set_lineWidth : function(_lineWidth : number){
     contextCanvas.lineWidth = _lineWidth;
-};
+},
 
-var get_lineWidth = function() : number{
-    return contextCanvas.lineWidth;
-};
+get_lineWidth : function() : number{
+    return <number>contextCanvas.lineWidth;
+},
 
-var set_textBaseline = function(_textBaseline : string){
+set_textBaseline : function(_textBaseline : string){
     contextCanvas.textBaseline = _textBaseline;
-};
+},
 
-
-
-var get_widthCanvas = function() : number{
+get_widthCanvas : function() : number{// | undefined
     //console.log("contextCanvas.width = " + idCanvas.width);
-    return idCanvas!.width;
-};
+    return <number>idCanvas.width;
+},
 
-var get_heightCanvas = function() : number{
+get_heightCanvas : function() : number{
     //console.log("contextCanvas.height = " + idCanvas.height);
-    return idCanvas!.height;
-};
+    return <number>idCanvas.height;
+},
 
-var fillText = function(_text : string, _left : number, _top : number){
+fillText : function(_text : string, _left : number, _top : number){
     contextCanvas.fillText(_text, _left, _top);
-};
+},
 
-var strokeText = function(_text : string, _left : number, _top : number){
+strokeText : function(_text : string, _left : number, _top : number){
     contextCanvas.strokeText(_text, _left, _top);
-};
+},
 
-var clearRect = function(_left : number, _top : number, _width : number, _height : number) {
+clearRect : function(_left : number, _top : number, _width : number, _height : number) {
     contextCanvas.clearRect(_left, _top, _width, _height);
-};
+},
 
-var fillRect = function(_left : number, _top : number, _width : number, _height : number) {
+fillRect : function(_left : number, _top : number, _width : number, _height : number) {
     contextCanvas.fillRect(_left, _top, _width, _height);
-};
+},
 
-var strokeRect = function(_id : string, _left : number, _top : number, _width : number, _height : number) {
+strokeRect : function(_id : string, _left : number, _top : number, _width : number, _height : number) {
     //console.log("strokeRect " + " _id = " + _id + " _left = " + _left + " _top = " + _top + " _width = " + _width + " _height = " + _height);
     contextCanvas.strokeRect(_left, _top, _width, _height);
-};
+},
 
-var drawImage = function(_image : {}, _left : number, _top : number) {
+drawImage : function(_image : {}, _left : number, _top : number) {
     contextCanvas.drawImage(_image, _left, _top);
-};
+},
 
-var drawImage_f = function(_image : {}, _left : number, _top : number, _width : number, _height : number) {
+drawImage_f : function(_image : {}, _left : number, _top : number, _width : number, _height : number) {
     contextCanvas.drawImage(_image, _left, _top, _width, _height);
-};
+},
 
-var scale = function(){
+scale : function(){
     contextCanvas.scale(-1, 1);
-};
+},
+
+//=============================================================================
+ini : function() : void{
+},
+//=============================================================================
+
+};//Out_API
+//Out_API.ini();
 
 // 
 var HTML5_Canvas = {
@@ -120,30 +131,31 @@ var HTML5_Canvas = {
     height_OUT : 0,
     load: 0,
 
-    test_A: function () {
-       HTML5_Canvas.width_OUT = get_widthCanvas();
-       HTML5_Canvas.height_OUT = get_heightCanvas();
-       console.log("test_A");
-    },
     //=============================================================================
     ini: function () {
-        HTML5_Canvas.load = 0; //
         // определяем текст для тестового выода информации на экран, а также
         // когда надо напечатать до того как мы инициализровали текстовый объект
-        set_fillStyle('#0000ff');
-        set_strokeStyle('#0000ff');
-        set_font(HTML5_Canvas.ITALIC_30PT_ARIAL);
-        set_lineWidth(HTML5_Canvas.LINE_WIDTH_1);
+        Out_API.set_fillStyle('#0000ff');
+        Out_API.set_strokeStyle('#0000ff');
+        Out_API.set_font(HTML5_Canvas.ITALIC_30PT_ARIAL);
+        Out_API.set_lineWidth(HTML5_Canvas.LINE_WIDTH_1);
         // шрифт для тестовой печати на экране
-        set_font(HTML5_Canvas.ITALIC_15PT_ARIAL);
+        Out_API.set_font(HTML5_Canvas.ITALIC_15PT_ARIAL);
         //HTML5_Canvas.context_OUT.fillText ('LOAD REC', 10, 10);
         //HTML5_Canvas.context_OUT.fillRect( 100, 100, 100, 100);
         //HTML5_Canvas.context_OUT.strokeRect( 10, 10, 100, 100);
 
-        HTML5_Canvas.width_OUT = get_widthCanvas();
-        HTML5_Canvas.height_OUT = get_heightCanvas();
+        HTML5_Canvas.width_OUT = Out_API.get_widthCanvas();
+        HTML5_Canvas.height_OUT = Out_API.get_heightCanvas();
     },
+
     //=============================================================================
+    test_A: function () {
+        HTML5_Canvas.width_OUT = Out_API.get_widthCanvas();
+        HTML5_Canvas.height_OUT = Out_API.get_heightCanvas();
+        console.log("test_A");
+     },
+
     //=============================================================================
     setColor: function (_color : string) : void{
         let style : string = '#ffffff';
@@ -165,8 +177,8 @@ var HTML5_Canvas = {
                 break;
         };
 
-        set_fillStyle(style);
-        set_strokeStyle(style);
+        Out_API.set_fillStyle(style);
+        Out_API.set_strokeStyle(style);
     },
     //============================================================================
     //------------------------------------------------------------------------------------------------------------------
@@ -178,16 +190,16 @@ var HTML5_Canvas = {
         //=============================================================================
         //============================================================================
         setFont: function (_font : string) {
-            set_textBaseline('top');
+            Out_API.set_textBaseline('top');
             switch (_font) {
                 case HTML5_Canvas.ITALIC_20PX_SANS_SERIF:
-                    set_font(_font);
+                    Out_API.set_font(_font);
                     break;
                 case HTML5_Canvas.ITALIC_30PT_ARIAL:
-                    set_font(_font);
+                    Out_API.set_font(_font);
                     break;
                 case HTML5_Canvas.BOLD_30PX_SANS_SERIF:
-                    set_font(_font);
+                    Out_API.set_font(_font);
                     break;
             }
             ;
@@ -199,23 +211,23 @@ var HTML5_Canvas = {
         //HTML5_Canvas.WHITE, HTML5_Canvas.BLACK, HTML5_Canvas.RED, HTML5_Canvas.GREEN, HTML5_Canvas.BLUE
         // HTML5_Canvas.Text.drawText("text", 10, 5, HTML5_Canvas.ITALIC_30PT_ARIAL, HTML5_Canvas.GREEN, 1);
         drawText: function (_text : string, _left : number, _top : number, _font : string, _color : string, _fillYes : number) {
-            let style_r = get_fillStyle();
-            let font_r = get_font();
+            let style_r = Out_API.get_fillStyle();
+            let font_r = Out_API.get_font();
 
             HTML5_Canvas.setColor(_color);
             HTML5_Canvas.Text.setFont(_font);
 
             if (_fillYes == 1) {
-                fillText(_text, _left, _top);
+                Out_API.fillText(_text, _left, _top);
             }
             else {
-                strokeText(_text, _left, _top);
+                Out_API.strokeText(_text, _left, _top);
             };
             
             // restore
-            set_fillStyle(style_r);
-            set_strokeStyle(style_r);
-            set_font(font_r);
+            Out_API.set_fillStyle(style_r);
+            Out_API.set_strokeStyle(style_r);
+            Out_API.set_font(font_r);
         }
     },
     //------------------------------------------------------------------------------------------------------------------
@@ -228,31 +240,30 @@ var HTML5_Canvas = {
         //=============================================================================
         //============================================================================
         clearRect: function (_left : number, _top : number, _width : number, _height : number) {
-            clearRect(_left, _top, _width, _height);
+            Out_API.clearRect(_left, _top, _width, _height);
         },
         //============================================================================
         //============================================================================
         drawRect: function (_id : string, _left : number, _top : number, _width : number, _height : number,
            _lineWidth : number, _color : string, _fillYes : number) {
 
-            let style_r = get_fillStyle();
-            let lineWidth_r = get_lineWidth();
+            let style_r = Out_API.get_fillStyle();
+            let lineWidth_r = Out_API.get_lineWidth();
 
-            set_lineWidth(_lineWidth);
+            Out_API.set_lineWidth(_lineWidth);
 
             HTML5_Canvas.setColor(_color);
             
             if (_fillYes == 1) {
-                fillRect(_left, _top, _width, _height);
+                Out_API.fillRect(_left, _top, _width, _height);
             }
             else {
-                strokeRect(_id, _left, _top, _width, _height);
-            }
-            ;
+                Out_API.strokeRect(_id, _left, _top, _width, _height);
+            };
             // restore
-            set_fillStyle(style_r);
-            set_strokeStyle(style_r);
-            set_lineWidth(lineWidth_r);
+            Out_API.set_fillStyle(style_r);
+            Out_API.set_strokeStyle(style_r);
+            Out_API.set_lineWidth(lineWidth_r);
         }
     },
     //------------------------------------------------------------------------------------------------------------------
@@ -271,19 +282,19 @@ var HTML5_Canvas = {
             if (_height === void 0) { _height = 0; }
             if (_mirror === void 0) { _mirror = !HTML5_Canvas.Image.DRAW_MIRROR; }
             if ((_width == 0) || (_height == 0)) {
-                drawImage(_image, _left, _top);
+                Out_API.drawImage(_image, _left, _top);
                 //console.log('drawImage(_image, _left, _top);');
             }
             else {
                 if (_mirror == HTML5_Canvas.Image.DRAW_MIRROR) {
                     _left = _left + _width;
                     _left = -_left;
-                    scale();
+                    Out_API.scale();
                 }
-                drawImage_f(_image, _left, _top, _width, _height);
+                Out_API.drawImage_f(_image, _left, _top, _width, _height);
                 //console.log('DRAW_MIRROR DD_HTML5_Canvas.js: _left = ' + _left + ' _top = ' +_top);
                 if (_mirror == HTML5_Canvas.Image.DRAW_MIRROR) {
-                    scale();
+                    Out_API.scale();
                 }
             }
         }
@@ -319,17 +330,17 @@ var HTML5_Canvas = {
         let top = 50;
         let width = 350;
         let height = 90;
-        set_fillStyle('#0000ff');
-        set_strokeStyle('#0000ff');
-        set_font(HTML5_Canvas.ITALIC_30PT_ARIAL);
-        set_lineWidth(HTML5_Canvas.LINE_WIDTH_1);
+        Out_API.set_fillStyle('#0000ff');
+        Out_API.set_strokeStyle('#0000ff');
+        Out_API.set_font(HTML5_Canvas.ITALIC_30PT_ARIAL);
+        Out_API.set_lineWidth(HTML5_Canvas.LINE_WIDTH_1);
  
         HTML5_Canvas.Primitive.drawRect("printStartText", left, top, width, height, HTML5_Canvas.LINE_WIDTH_1, HTML5_Canvas.GREEN, 0);
         // пишем текст до загрузки изображений. потом он закрывается картинкой
-        strokeText('Загрузка модулей.', 10, 80); //была надпись LOADING RESOURCES
-        strokeText('Modules loading', 10, 130); //была надпись LOADING RESOURCES
+        Out_API.strokeText('Загрузка модулей.', 10, 80); //была надпись LOADING RESOURCES
+        Out_API.strokeText('Modules loading', 10, 130); //была надпись LOADING RESOURCES
         // шрифт для тестовой печати на экране
-        set_font(HTML5_Canvas.ITALIC_15PT_ARIAL);
+        Out_API.set_font(HTML5_Canvas.ITALIC_15PT_ARIAL);
     }
 }; //HTML5_Canvas
 HTML5_Canvas.ini();

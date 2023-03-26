@@ -1,6 +1,6 @@
 "use strict";
  // Copyright (c) 2023, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified -31.07.2022-18.03.2023
+ // Last modified -31.07.2022-18.03.2023-26.03.2023
  //
 
   /*
@@ -21,72 +21,58 @@
    import {Timer} from './DDG_Timer.js';
    import {Frames} from './DDG_Frames.js';
 
-// 
-//window.Game = {};//
+// Внешние ссылки
+var Out = {
+  // HTML5_Canvas
+  HTML5_Canvas : HTML5_Canvas,
+  HTML5_Canvas_GREEN : HTML5_Canvas.GREEN,   
+  HTML5_Canvas_ITALIC_30PT_ARIAL : HTML5_Canvas.ITALIC_30PT_ARIAL,
+
+  //function(_nameScript : string)
+  HTML5_Canvas_TestLoadedScripts_testLoading : HTML5_Canvas.TestLoadedScripts.testLoading,
+  // function(_id : string,_left : number, _top : number, _width : number, _height : number,
+  //  _lineWidth : number, _color : string, _fillYes : number)
+  HTML5_Canvas_Primitive_drawRect: HTML5_Canvas.Primitive.drawRect,
+  // function (_left : number, _top : number, _width : number, _height : number)
+  HTML5_Canvas_Primitive_clearRect: HTML5_Canvas.Primitive.clearRect,
+  HTML5_Canvas_printStartText : HTML5_Canvas.printStartText,
+  // function (_text : string, _left : number, _top : number,
+  // _font : string, _color : string, _fillYes : number)
+  HTML5_Canvas_Text_drawText : HTML5_Canvas.Text.drawText, 
+
+  // Timer
+  Timer : Timer,
+  // function(n : number)
+  Timer_ini : Timer.ini_OUT,
+  Timer_getTimeThreadSleepGameMs : Timer.getTimeThreadSleepGameMs,
+  Timer_updateTimeBeforeTick : Timer.updateTimeBeforeTick,
+  Timer_updateTimeAfterTick : Timer.updateTimeAfterTick,
+
+  // Frames
+  Frames : {},
+  Frames_drowEditorFrame : Frames.drowEditorFrame,
+  Frames_drowMapFrame : Frames.drowMapFrame,
+  Frames_drowTilesPanelFrame : Frames.drowTilesPanelFrame,
+  Frames_drowPrintFrameFrame : Frames.drowPrintFrameFrame,
+
+  //=============================================================================
+  ini : function() : void{
+  },
+  //=============================================================================
+};
+//Out.ini();
+
+//
 var Game = {
   NAME : "DarkDungeon_Client",
-
-  // Внешние ссылки
-  HTML5_Canvas_OUT : {},
-  HTML5_Canvas_TestLoadedScripts_testLoading_OUT : function(_nameScript : string){},
-  HTML5_Canvas_Primitive_drawRect_OUT: function(_id : string,_left : number, _top : number, _width : number, _height : number,
-    _lineWidth : number, _color : string, _fillYes : number){},
-  HTML5_Canvas_Primitive_clearRect_OUT: function (_left : number, _top : number, _width : number, _height : number) {},
-  HTML5_Canvas_printStartText_OUT : function (){},
-  HTML5_Canvas_Text_drawText_OUT : function (_text : string, _left : number, _top : number,
-     _font : string, _color : string, _fillYes : number){}, 
-  HTML5_Canvas_GREEN_OUT : "",   
-  HTML5_Canvas_ITALIC_30PT_ARIAL_OUT : "",
-
-  Timer_OUT : {},
-  Timer_ini_OUT : function(n : number){},
-  Timer_getTimeThreadSleepGameMs_OUT : function(){return 0},
-  Timer_updateTimeBeforeTick_OUT : function(){},
-  Timer_updateTimeAfterTick_OUT : function(){},
-
-  Frames_OUT : {},
-  Frames_drowEditorFrame_OUT : function(){},
-  Frames_drowMapFrame_OUT : function(){},
-  Frames_drowTilesPanelFrame_OUT : function(){},
-  Frames_drowPrintFrameFrame_OUT : function(){},
-
   timerId : 0,
-
-  sprite : 0,
+  sprite : 1,
   loadEnd : 0,
 
 //=============================================================================
   ini : function(){
-
-  console.log('Game.ini');
-
-  Game.HTML5_Canvas_OUT = HTML5_Canvas;
-  Game.HTML5_Canvas_TestLoadedScripts_testLoading_OUT = HTML5_Canvas.TestLoadedScripts.testLoading;
-  Game.HTML5_Canvas_Primitive_drawRect_OUT = HTML5_Canvas.Primitive.drawRect;
-  Game.HTML5_Canvas_Primitive_clearRect_OUT = HTML5_Canvas.Primitive.clearRect;
-  Game.HTML5_Canvas_printStartText_OUT = HTML5_Canvas.printStartText;
-  Game.HTML5_Canvas_Text_drawText_OUT = HTML5_Canvas.Text.drawText;
-  Game.HTML5_Canvas_GREEN_OUT = HTML5_Canvas.GREEN;
-  Game.HTML5_Canvas_ITALIC_30PT_ARIAL_OUT = HTML5_Canvas.ITALIC_30PT_ARIAL;
-
-
-  Game.Timer_OUT = Timer;
-  Game.Timer_ini_OUT = Timer.ini_OUT;
-  Game.Timer_getTimeThreadSleepGameMs_OUT = Timer.getTimeThreadSleepGameMs;
-  Game.Timer_updateTimeBeforeTick_OUT = Timer.updateTimeBeforeTick;
-  Game.Timer_updateTimeAfterTick_OUT = Timer.updateTimeAfterTick;
-
-  Game.Frames_OUT = Frames;
-  Game.Frames_drowEditorFrame_OUT = Frames.drowEditorFrame;
-  Game.Frames_drowMapFrame_OUT = Frames.drowMapFrame;
-  Game.Frames_drowTilesPanelFrame_OUT = Frames.drowTilesPanelFrame;
-  Game.Frames_drowPrintFrameFrame_OUT = Frames.drowPrintFrameFrame;
-
-
-  Game.sprite = 1;
-  Game.loadEnd = 0;
-  Game.Timer_ini_OUT(5);//8
-
+  //console.log('Game.ini');
+  Out.Timer_ini(5);//8
 },
 //=============================================================================
 
@@ -97,17 +83,17 @@ var Game = {
   Game.timerId = setTimeout( function tick(){
 
    // console.log("Game.Timer_getTimeThreadSleepGameMs_OUT() = " + Game.Timer_getTimeThreadSleepGameMs_OUT());
-    Game.Timer_updateTimeBeforeTick_OUT();//
+   Out.Timer_updateTimeBeforeTick();//
 
       if( Game.loadEnd == 1 ) Game.tick();
 
-      Game.Timer_updateTimeAfterTick_OUT();
+      Out.Timer_updateTimeAfterTick();
 
       if (Game.sprite < 5 ){
-           Game.timerId = setTimeout( tick, Game.Timer_getTimeThreadSleepGameMs_OUT());
+           Game.timerId = setTimeout( tick, Out.Timer_getTimeThreadSleepGameMs());
       }
 
-  }, Game.Timer_getTimeThreadSleepGameMs_OUT());
+  }, Out.Timer_getTimeThreadSleepGameMs());
  // console.log("Game.Timer_getTimeThreadSleepGameMs_OUT() = " + Game.Timer_getTimeThreadSleepGameMs_OUT());
 },
 //=============================================================================
@@ -126,13 +112,13 @@ drawNuberTick : function() {
   let width0 = 352;
   let height0 = 92;
 
-  if(Game.sprite == 1) Game.HTML5_Canvas_Primitive_clearRect_OUT(left0, top0, width0, height0);
+  if(Game.sprite == 1) Out.HTML5_Canvas_Primitive_clearRect(left0, top0, width0, height0);
  
-  Game.HTML5_Canvas_Primitive_clearRect_OUT(left, top, width, height);
-  Game.HTML5_Canvas_Primitive_drawRect_OUT("drawNuberTick", left, top, width, height, HTML5_Canvas.LINE_WIDTH_1, Game.HTML5_Canvas_GREEN_OUT, 0);
+  Out.HTML5_Canvas_Primitive_clearRect(left, top, width, height);
+  Out.HTML5_Canvas_Primitive_drawRect("drawNuberTick", left, top, width, height, HTML5_Canvas.LINE_WIDTH_1, Out.HTML5_Canvas_GREEN, 0);
  
-  Game.HTML5_Canvas_Text_drawText_OUT("Game.tick = " + Game.sprite, left, top, Game.HTML5_Canvas_ITALIC_30PT_ARIAL_OUT,
-     Game.HTML5_Canvas_GREEN_OUT, 1);
+  Out.HTML5_Canvas_Text_drawText("Game.tick = " + Game.sprite, left, top, Out.HTML5_Canvas_ITALIC_30PT_ARIAL,
+  Out.HTML5_Canvas_GREEN, 1);
  
   Game.sprite = Game.sprite + 1;
   if (Game.sprite > 1000000 ) Game.sprite = 1;
@@ -145,10 +131,10 @@ drawNuberTick : function() {
     
  // Game.MapFrameDraw_OUT.drawMap(EditorFrameDraw.EditorFrames_OUT.MapFrame.x0,EditorFrameDraw.EditorFrames_OUT.MapFrame.y0);
  // TilesFrameDraw.drawSelectTiles(0);
- Game.Frames_drowEditorFrame_OUT();
- Game.Frames_drowMapFrame_OUT();
- Game.Frames_drowTilesPanelFrame_OUT();
- Game.Frames_drowPrintFrameFrame_OUT();
+ Out.Frames_drowEditorFrame();
+ Out.Frames_drowMapFrame();
+ Out.Frames_drowTilesPanelFrame();
+ Out.Frames_drowPrintFrameFrame();
 
   //console.log('DD_EditorFrameDraw.js: EditorFrameDraw.drowFrame');
 },
@@ -157,15 +143,15 @@ drawNuberTick : function() {
 //=============================================================================
 start : function(){
   //alert("!");
-  console.log('Game.start');
-  Game.HTML5_Canvas_printStartText_OUT();
+  //console.log('Game.start');
+  Out.HTML5_Canvas_printStartText();
 
 },
 //============================================================================= 
 
 //=============================================================================
 tick : function() {
-
+  //console.log('Game.tick');
   Game.drawNuberTick();
   Game.drowFrames();
 },
@@ -186,6 +172,6 @@ Game.start();
 Game.loop();
 
 //============================================================================
-Game.HTML5_Canvas_TestLoadedScripts_testLoading_OUT ('DDG_Game.js');
+Out.HTML5_Canvas_TestLoadedScripts_testLoading ('DDG_Game.js');
 
 //==============================================================================

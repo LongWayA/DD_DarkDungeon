@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2023, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified -15.08.2022-19.02.2023-18.03.2023
+// Last modified -15.08.2022-19.02.2023-18.03.2023-26.03.2023
 //
 
 
@@ -14,18 +14,30 @@
 
    import {HTML5_Canvas} from './DDG_HTML5_Canvas.js';
 
+// Внешние ссылки
+var Out = {
+  // HTML5_Canvas
+  HTML5_Canvas : HTML5_Canvas,
+  HTML5_Canvas_width : HTML5_Canvas.width_OUT,
+  HTML5_Canvas_height : HTML5_Canvas.height_OUT,
+  //
+  // function(_nameScript : string)
+  HTML5_Canvas_TestLoadedScripts_testLoading : HTML5_Canvas.TestLoadedScripts.testLoading,
+  //function(_id : string, _left : number, _top : number, _width : number, _height : number,
+  //_lineWidth : number, _color : string, _fillYes : number)
+  HTML5_Canvas_Primitive_drawRect: HTML5_Canvas.Primitive.drawRect,
+
+  //=============================================================================
+  ini : function() : void{
+  },
+  //=============================================================================
+};
+
+//Out.ini();
 
 var Frames = {
   isOk : "",//
   NAME : "Frames",//
-
-  // Внешние ссылки
-  HTML5_Canvas_OUT : {},
-  HTML5_Canvas_width_OUT : 0,
-  HTML5_Canvas_height_OUT : 0,
-  HTML5_Canvas_TestLoadedScripts_testLoading_OUT : function(_nameScript : string){},
-  HTML5_Canvas_Primitive_drawRect_OUT: function(_id : string, _left : number, _top : number, _width : number, _height : number,
-    _lineWidth : number, _color : string, _fillYes : number){},
 
   // рамки
   // Общая рамка экрана вывода графики
@@ -87,18 +99,12 @@ var Frames = {
   //=============================================================================
   ini : function(){
 
-    Frames.HTML5_Canvas_OUT = HTML5_Canvas;
-    Frames.HTML5_Canvas_TestLoadedScripts_testLoading_OUT = HTML5_Canvas.TestLoadedScripts.testLoading;
-    Frames.HTML5_Canvas_Primitive_drawRect_OUT = HTML5_Canvas.Primitive.drawRect;
-
-    Frames.HTML5_Canvas_width_OUT = HTML5_Canvas.width_OUT;
-    Frames.HTML5_Canvas_height_OUT = HTML5_Canvas.height_OUT;
     //------------------------------------------------------------------------
     // Общая рамка экрана вывода графики>>>>>>>>>>>>>>>>>>>>>>
     Frames.EditorFrame.x0     = 0;// нулевая координата по горизонтали общего окна. т.е. самая левая точка.
     Frames.EditorFrame.y0     = 0;// нулевая координата по вертикали общего окна. т.е. самая верхняя точка. Влево вверх.
-    Frames.EditorFrame.width  = Frames.HTML5_Canvas_width_OUT;// ширина окна берется из канвы сайта
-    Frames.EditorFrame.height = Frames.HTML5_Canvas_height_OUT;// высота окна берется из канвы сайта
+    Frames.EditorFrame.width  = Out.HTML5_Canvas_width;// ширина окна берется из канвы сайта
+    Frames.EditorFrame.height = Out.HTML5_Canvas_height;// высота окна берется из канвы сайта
     Frames.EditorFrame.X_Max  = Frames.EditorFrame.x0 + Frames.EditorFrame.width;// максимальная координата по горизонтали.
     Frames.EditorFrame.Y_Max  = Frames.EditorFrame.y0 + Frames.EditorFrame.height;// максимальная координата по вертикали. Вправо вниз
    
@@ -183,14 +189,14 @@ var Frames = {
   //=============================================================================
   // EditorFrame
   drowEditorFrame : function() {
-    Frames.HTML5_Canvas_Primitive_drawRect_OUT("drowEditorFrame", Frames.EditorFrame.x0, Frames.EditorFrame.y0, 
+    Out.HTML5_Canvas_Primitive_drawRect("drowEditorFrame", Frames.EditorFrame.x0, Frames.EditorFrame.y0, 
     Frames.EditorFrame.width,Frames.EditorFrame.height, 2, 'blue', 0);
   },
   //=============================================================================
  //=============================================================================
   // MapFrame
   drowMapFrame : function() {
-    Frames.HTML5_Canvas_Primitive_drawRect_OUT("drowMapFrame", Frames.MapFrame.x0, Frames.MapFrame.y0, 
+    Out.HTML5_Canvas_Primitive_drawRect("drowMapFrame", Frames.MapFrame.x0, Frames.MapFrame.y0, 
     Frames.MapFrame.width,Frames.MapFrame.height, 2, 'blue', 0);
   },
   //=============================================================================  
@@ -198,7 +204,7 @@ var Frames = {
   //=============================================================================
   // TilesPanelFrame
   drowTilesPanelFrame : function() {
-    Frames.HTML5_Canvas_Primitive_drawRect_OUT("drowTilesPanelFrame", Frames.TilesPanelFrame.x0, Frames.TilesPanelFrame.y0, 
+    Out.HTML5_Canvas_Primitive_drawRect("drowTilesPanelFrame", Frames.TilesPanelFrame.x0, Frames.TilesPanelFrame.y0, 
     Frames.TilesPanelFrame.width,Frames.TilesPanelFrame.height, 2, 'blue', 0);
   },
   //=============================================================================  
@@ -206,7 +212,7 @@ var Frames = {
   //=============================================================================
   // PrintFrame
   drowPrintFrameFrame : function() {
-    Frames.HTML5_Canvas_Primitive_drawRect_OUT("drowPrintFrameFrame", Frames.PrintFrame.x0, Frames.PrintFrame.y0, 
+    Out.HTML5_Canvas_Primitive_drawRect("drowPrintFrameFrame", Frames.PrintFrame.x0, Frames.PrintFrame.y0, 
     Frames.PrintFrame.width,Frames.PrintFrame.height, 2, 'blue', 0);
   },
   //=============================================================================  
@@ -214,7 +220,7 @@ var Frames = {
 
   Frames.ini();
 
-  Frames.HTML5_Canvas_TestLoadedScripts_testLoading_OUT ('DDG_Frames.js'); 
+  Out.HTML5_Canvas_TestLoadedScripts_testLoading ('DDG_Frames.js'); 
 
   Frames.isOk = "OK";//
 
