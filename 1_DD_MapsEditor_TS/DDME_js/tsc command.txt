@@ -1,0 +1,1 @@
+tsc -t ES2020 -m ES2020 2_DarkDungeon/1_DD_MapsEditor_TS/DDME_js/DDME_Test.ts
