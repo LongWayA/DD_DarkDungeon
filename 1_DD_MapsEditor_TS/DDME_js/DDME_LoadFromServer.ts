@@ -158,7 +158,7 @@ mapStrigToDraw : function(_mapOneString : string) {
 
     // заполним FormData данными из формы
     let formData = new FormData();
-    let nameMapLoadingFromServer = <HTMLElement>document.getElementById('nameMapLoadingFromServer');
+    let nameMapLoadingFromServer : any = <HTMLElement>document.getElementById('nameMapLoadingFromServer');
     let nameUserMapValue = "TEST_1_166045432241485100.map";
     
     if(nameMapLoadingFromServer.value != "") {
@@ -282,7 +282,7 @@ sortingLoadingMaps : function(_listLoadingMapsNotSorting : string) {
 
 // 
  //=============================================================================
- loadListMapsFromServer : function(_storyLoadingMapsJ : {}) {
+ loadListMapsFromServer : function(_storyLoadingMapsJ : any) {
      try {
 
         //console.log(' !!! loadFromServer.loadFromServer -> click ');

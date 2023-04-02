@@ -26,6 +26,7 @@ import { Pathes } from './DDME_Pathes.js';
 import { TilesFrameDraw } from './DDME_TilesFrameDraw.js';
 import { UserInputMouse } from './DDME_UserInputMouse.js';
 import { MapsEditor } from './DDME_MapsEditor.js';
+let itIsDebugging = true;
 // Внешние ссылки
 var Out = {
     HTML5_Canvas: HTML5_Canvas,
@@ -168,7 +169,7 @@ var Test = {
     //=============================================================================
 }; //Test
 Test.ini();
-if (window.itIsDebugging == true) {
+if (itIsDebugging == true) {
     Test.testAll();
 }
 Out.HTML5_Canvas_TestLoadedScripts.testLoading('DDME_Test.js');

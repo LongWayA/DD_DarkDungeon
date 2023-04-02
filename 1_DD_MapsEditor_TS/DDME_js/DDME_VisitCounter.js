@@ -14,6 +14,7 @@
 */
 import { HTML5_Canvas } from './DDG_HTML5_Canvas.js';
 import { Pathes } from './DDME_Pathes.js';
+let visitСounter = document.getElementById("visit_counter");
 // Внешние ссылки
 var Out = {
     HTML5_Canvas_TestLoadedScripts: HTML5_Canvas.TestLoadedScripts,
@@ -27,7 +28,6 @@ var Out = {
 var VisitCounter = {
     isOk: " ",
     NAME: "VisitCounter",
-    visitСounter: document.getElementById("visit_counter"),
     i: 0,
     //=============================================================================
     ini: function () {
@@ -55,7 +55,7 @@ var VisitCounter = {
                 // вывести результат
                 //document.write(' Запросов к странице = ' + xhr.response);// 
                 //console.log('DDME_VisitCounter.js:i = ' + VisitCounter.i + ' Запросов к странице = ' + xhr.response + ' ');
-                VisitCounter.visitСounter.value = ' Запросов к странице = ' + xhr.response + ' ';
+                visitСounter.value = ' Запросов к странице = ' + xhr.response + ' ';
                 VisitCounter.i = VisitCounter.i + 1;
             } //if (xhr.status != 200) {
         }

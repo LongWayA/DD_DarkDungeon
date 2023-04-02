@@ -69,7 +69,8 @@ var SaveInServer = {
             if (xhr.status == 200) {
                 console.log(xhr.response);
                 SaveInServer.OKresponse = xhr.response;
-                document.getElementById("st_map_save_in_server").value = SaveInServer.OKresponse;
+                let st_map_save_in_server = document.getElementById('st_map_save_in_server');
+                st_map_save_in_server.value = SaveInServer.OKresponse;
             }
             else {
                 console.log("Ошибка " + this.status);

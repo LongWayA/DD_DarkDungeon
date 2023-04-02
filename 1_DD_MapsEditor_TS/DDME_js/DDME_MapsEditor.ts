@@ -190,17 +190,17 @@ buttonLoadMapServ.onclick = function(){
 // buttons------------------------------------------------------------------------
 
 // получаем доступ к текстовому полю storyLoadingMaps и добавляем к нему слушателя на клик мышки
-let storyLoadingMapsJ = <HTMLElement>document.getElementById("storyLoadingMaps");//
+let storyLoadingMapsJ : any = <HTMLElement>document.getElementById("storyLoadingMaps");//
 storyLoadingMapsJ.addEventListener("click", MapsEditor.storyLoadingMapsJ_click, false);//click  input
 
 // получаем доступ к флажкам и добавляем к ним слушателя на клик мышки
-let checkbox_drawGrounds = <HTMLElement>document.getElementById("checkbox_drawGrounds");
+let checkbox_drawGrounds : any  = <HTMLElement>document.getElementById("checkbox_drawGrounds");
 checkbox_drawGrounds.addEventListener("click", MapsEditor.drawMap_by_checkboxGrounds, false);//click  input
 
-let checkbox_drawItems = <HTMLElement>document.getElementById("checkbox_drawItems");//
+let checkbox_drawItems : any  = <HTMLElement>document.getElementById("checkbox_drawItems");//
 checkbox_drawItems.addEventListener("click", MapsEditor.drawMap_by_checkboxItems, false);//click  input
 
-let checkbox_drawMonsters = <HTMLElement>document.getElementById("checkbox_drawMonsters");//
+let checkbox_drawMonsters : any  = <HTMLElement>document.getElementById("checkbox_drawMonsters");//
 checkbox_drawMonsters.addEventListener("click", MapsEditor.drawMap_by_checkboxMonsters, false);//click  input
 
   // получаем доступ к полю nameMapLoadingFromServer

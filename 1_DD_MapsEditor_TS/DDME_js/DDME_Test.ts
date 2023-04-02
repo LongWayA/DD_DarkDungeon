@@ -29,6 +29,10 @@
      import { UserInputMouse } from './DDME_UserInputMouse.js';
      import { MapsEditor } from './DDME_MapsEditor.js'; 
 
+
+     let itIsDebugging  = true;
+
+
  // Внешние ссылки
 var Out = {
   HTML5_Canvas : HTML5_Canvas,
@@ -183,7 +187,7 @@ ini : function(){
 
 Test.ini();
 
-if(window.itIsDebugging == true){
+if(itIsDebugging == true){
   Test.testAll();
 }
 
